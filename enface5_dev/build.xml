@@ -1,0 +1,636 @@
+<?xml version="1.0"?>
+
+<project name="enface5_dev_201710" default="deploy.tomcat.appliance">
+    <property file="build.properties"/>
+	
+	<target name="init">
+        <!-- Directories -->
+    </target>
+	
+	<target name="prepare.compile" depends="init">
+		<!-- make necessary directories -->
+		<path id="compile.classpath">
+			<fileset dir="${sharedLib.dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</path>
+	</target>
+	
+	<target name="compile" depends="prepare.compile">
+		<copy todir="${target.dir}" filtering="yes">
+		  <fileset dir="${res.dir}">
+			<include name="**/*.properties"/>
+		  </fileset>
+		  <fileset dir="${src.dir}">
+			<include name="**/*.java"/>
+		  </fileset>
+		</copy>
+	</target>
+	
+	<target name="makeJAR" depends="compile">
+        <jar jarfile="${basedir}/${project.id}-${version}.jar" duplicate="preserve" filesonly="true">
+            <fileset dir="${target.dir}">
+                <include name="**/*.*"/>
+            	<exclude name="**/*.java"/>
+            </fileset>
+        </jar>
+    </target>
+	
+	<target name="deploy.tomcat.basic" depends="makeJAR">
+		<copy todir="${deploy.tomcat.domain.dir}/basic/webapps/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.domain.dir}/basic/webapps/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.domain.dir}/basic/webapps">
+		    <fileset dir="${web.dir}">
+				<include name="**/*.*"/>
+				<exclude name="**/*.sns"/>
+				<exclude name="**/*.professional"/>
+				<exclude name="**/*.enterprise"/>
+		    </fileset>
+		</copy>
+		<rename src="${deploy.tomcat.domain.dir}/basic/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml.${product.bsc}" dest="${deploy.tomcat.domain.dir}/basic/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml"/>
+	</target>
+	<target name="deploy.tomcat.professional" depends="makeJAR">
+		<copy todir="${deploy.tomcat.domain.dir}/professional/webapps/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.domain.dir}/professional/webapps/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.domain.dir}/professional/webapps">
+		    <fileset dir="${web.dir}">
+				<include name="**/*.*"/>
+				<exclude name="**/*.sns"/>
+				<exclude name="**/*.basic"/>
+				<exclude name="**/*.enterprise"/>
+		    </fileset>
+		</copy>
+		<rename src="${deploy.tomcat.domain.dir}/professional/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml.${product.pro}" dest="${deploy.tomcat.domain.dir}/professional/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml"/>
+	</target>
+	<target name="deploy.tomcat.enterprise" depends="makeJAR">
+		<copy todir="${deploy.tomcat.domain.dir}/enterprise/webapps/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.domain.dir}/enterprise/webapps/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.domain.dir}/enterprise/webapps">
+		    <fileset dir="${web.dir}">
+				<include name="**/*.*"/>
+				<exclude name="**/*.sns"/>
+				<exclude name="**/*.basic"/>
+				<exclude name="**/*.professional"/>
+		    </fileset>
+		</copy>
+		<rename src="${deploy.tomcat.domain.dir}/enterprise/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml.${product.ent}" dest="${deploy.tomcat.domain.dir}/enterprise/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml"/>
+	</target>
+	<target name="deploy.tomcat.appliance" depends="makeJAR">
+		<copy todir="${deploy.tomcat.domain.dir}/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.domain.dir}/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.domain.dir}/">
+		    <fileset dir="${web.dir}">
+				<include name="**/*.*"/>
+				<exclude name="**/*.sns"/>
+				<exclude name="**/*.basic"/>
+				<exclude name="**/*.professional"/>
+		    </fileset>
+		</copy>
+		<rename src="${deploy.tomcat.domain.dir}/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml.${product.ent}" dest="${deploy.tomcat.domain.dir}/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml"/>
+	</target>
+	
+	<target name="deploy.tomcat.sns.saltware" depends="makeJAR">
+	   <copy todir="${deploy.tomcat.dir}/saltware/webapps/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.dir}/saltware/webapps/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.dir}/saltware/webapps">
+		    <fileset dir="${web.dir}">
+				<include name="**/*.*"/>
+				<exclude name="**/applicationContext.xml"/>
+				<exclude name="**/enface-servlet.xml"/>
+		    </fileset>
+		</copy>
+		<rename src="${deploy.tomcat.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/assembly/applicationContext.xml.${product.sns}" dest="${deploy.tomcat.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/assembly/applicationContext.xml"/>
+		<rename src="${deploy.tomcat.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/assembly/enface-servlet.xml.${product.sns}" dest="${deploy.tomcat.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/assembly/enface-servlet.xml"/>
+		<rename src="${deploy.tomcat.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml.${product.ent}" dest="${deploy.tomcat.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml"/>
+	</target>
+	
+	<target name="deploy.tomcat.sns.uos" depends="makeJAR">
+	   <copy todir="${deploy.tomcat.dir}/uos/webapps/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.dir}/uos/webapps/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.tomcat.dir}/uos/webapps">
+		    <fileset dir="${web.dir}">
+				<include name="**/*.*"/>
+				<exclude name="**/applicationContext.xml"/>
+				<exclude name="**/enface-servlet.xml"/>
+		    </fileset>
+		</copy>
+		<rename src="${deploy.tomcat.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/assembly/applicationContext.xml.${product.sns}" dest="${deploy.tomcat.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/assembly/applicationContext.xml"/>
+		<rename src="${deploy.tomcat.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/assembly/enface-servlet.xml.${product.sns}" dest="${deploy.tomcat.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/assembly/enface-servlet.xml"/>
+		<rename src="${deploy.tomcat.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml.${product.ent}" dest="${deploy.tomcat.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml"/>
+	</target>
+	
+	<target name="deploy.jboss.sns.saltware" depends="makeJAR">
+	   <copy todir="${deploy.jboss.dir}/saltware/webapps/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.jboss.dir}/saltware/webapps/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.jboss.dir}/saltware/webapps">
+		    <fileset dir="${web.dir}">
+				<include name="**/*.*"/>
+				<exclude name="**/applicationContext.xml"/>
+				<exclude name="**/enface-servlet.xml"/>
+		    </fileset>
+		</copy>
+		<rename src="${deploy.jboss.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/assembly/applicationContext.xml.${product.sns}" dest="${deploy.jboss.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/assembly/applicationContext.xml"/>
+		<rename src="${deploy.jboss.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/assembly/enface-servlet.xml.${product.sns}" dest="${deploy.jboss.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/assembly/enface-servlet.xml"/>
+		<rename src="${deploy.jboss.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml.${product.ent}" dest="${deploy.jboss.dir}/saltware/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml"/>
+	</target>
+	
+	<target name="deploy.jboss.sns.uos" depends="makeJAR">
+	   <copy todir="${deploy.jboss.dir}/uos/webapps/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.jboss.dir}/uos/webapps/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.jboss.dir}/uos/webapps">
+		    <fileset dir="${web.dir}">
+				<include name="**/*.*"/>
+				<exclude name="**/applicationContext.xml"/>
+				<exclude name="**/enface-servlet.xml"/>
+		    </fileset>
+		</copy>
+		<rename src="${deploy.jboss.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/assembly/applicationContext.xml.${product.sns}" dest="${deploy.jboss.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/assembly/applicationContext.xml"/>
+		<rename src="${deploy.jboss.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/assembly/enface-servlet.xml.${product.sns}" dest="${deploy.jboss.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/assembly/enface-servlet.xml"/>
+		<rename src="${deploy.jboss.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml.${product.ent}" dest="${deploy.jboss.dir}/uos/webapps/WEB-INF/apps/enface/WEB-INF/enview-portlet.xml"/>
+	</target>
+	
+	<target name="resource.tomcat.basic" depends="init">
+		<copy todir="${deploy.tomcat.domain.dir}/basic/webdocs">
+			<fileset dir="${web.dir}">
+			    <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="resource.tomcat.professional" depends="init">
+		<copy todir="${deploy.tomcat.domain.dir}/professional/webdocs">
+			<fileset dir="${web.dir}">
+			    <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="resource.tomcat.enterprise" depends="init">
+		<copy todir="${deploy.tomcat.domain.dir}/enterprise/webdocs">
+			<fileset dir="${web.dir}">
+			   <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="resource.tomcat.appliance" depends="init">
+		<copy todir="${deploy.tomcat.domain.dir}/appliance/webdocs">
+			<fileset dir="${web.dir}">
+			    <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="resource.tomcat.sns.saltware" depends="init">
+		<copy todir="${deploy.tomcat.dir}/saltware/webdocs">
+			<fileset dir="${web.dir}">
+			    <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="resource.tomcat.sns.uos" depends="init">
+		<copy todir="${deploy.tomcat.dir}/uos/webdocs">
+			<fileset dir="${web.dir}">
+			    <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="resource.jboss.sns.saltware" depends="init">
+		<copy todir="${deploy.jboss.dir}/saltware/webdocs">
+			<fileset dir="${web.dir}">
+			    <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="resource.jboss.sns.uos" depends="init">
+		<copy todir="${deploy.jboss.dir}/uos/webdocs">
+			<fileset dir="${web.dir}">
+			    <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="ftp.jboss.sns.saltware">
+	    <copy todir="${deploy.jboss.dir}/saltware/enface-webapps/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.jboss.dir}/saltware/enface-webapps/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.jboss.dir}/saltware/enface-webapps">
+		    <fileset dir="${web.dir}">
+		      <include name="**/*.*"/>
+		    </fileset>
+		</copy>
+	    <zip destfile="${deploy.jboss.dir}/saltware/enface-webapps.zip" basedir="${deploy.jboss.dir}/saltware/enface-webapps" includes="**/*.*" />
+	    <ftp server="${ftp.server.ip}" port="21"
+	        remotedir="${ftp.src.saltware.basedir}"
+	    	userid="jboss" password="jboss00"
+	    	binary="yes" verbose="yes">
+            <fileset dir="${deploy.jboss.dir}/saltware">
+                <include name="enface-webapps.zip"></include>
+            </fileset>
+	    </ftp>
+   	    <!-- sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="rm -R ${ftp.src.saltware.basedir}/webapps/saltware.war"/-->
+	    <sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="unzip -o ${ftp.src.saltware.basedir}/enface-webapps.zip -d ${ftp.src.saltware.basedir}/webapps"/>
+   		<sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="sleep 1"/>
+	     <sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="mv /was/jboss/servers/jboss-0/deployments/saltware.war.deployed /was/jboss/servers/jboss-0/deployments/saltware.war.dodeploy"/>
+	</target>
+	
+	<target name="ftp.resource.jboss.sns.saltware">
+	    <copy todir="${deploy.jboss.dir}/saltware/enface-webdocs">
+			<fileset dir="${web.dir}">
+			    <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+		<zip destfile="${deploy.jboss.dir}/saltware/enface-webdocs.zip" basedir="${deploy.jboss.dir}/saltware/enface-webdocs" includes="**/*.*" />
+	    <ftp server="${ftp.server.ip}" port="21"
+	        remotedir="${ftp.src.saltware.basedir}"
+	    	userid="jboss" password="jboss00"
+	    	binary="yes" verbose="yes">
+            <fileset dir="${deploy.jboss.dir}/saltware">
+                <include name="enface-webdocs.zip"></include>
+            </fileset>
+	    </ftp>
+	    <sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="unzip -o ${ftp.src.saltware.basedir}/enface-webdocs.zip -d ${ftp.src.saltware.basedir}/webdocs"/>
+	</target>
+	
+	<target name="ftp.jboss.sns.uos">
+	    <copy todir="${deploy.jboss.dir}/uos/enface-webapps/WEB-INF/lib">
+		    <fileset dir="${basedir}">
+		      <include name="**/*.jar"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.jboss.dir}/uos/enface-webapps/WEB-INF/classes">
+		    <fileset dir="${res.dir}">
+		      <include name="**/*.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${deploy.jboss.dir}/uos/enface-webapps">
+		    <fileset dir="${web.dir}">
+		      <include name="**/*.*"/>
+		    </fileset>
+		</copy>
+	    <zip destfile="${deploy.jboss.dir}/uos/enface-webapps.zip" basedir="${deploy.jboss.dir}/uos/enface-webapps" includes="**/*.*" />
+	    <ftp server="${ftp.server.ip}" port="21"
+	        remotedir="${ftp.src.uos.basedir}"
+	    	userid="jboss" password="jboss00"
+	    	binary="yes" verbose="yes">
+            <fileset dir="${deploy.jboss.dir}/uos">
+                <include name="enface-webapps.zip"></include>
+            </fileset>
+	    </ftp>
+   	    <!-- sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="rm -R ${ftp.src.uos.basedir}/webapps/uos.war"/-->
+	    <sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="unzip -o ${ftp.src.uos.basedir}/enface-webapps.zip -d ${ftp.src.uos.basedir}/webapps"/>
+   		<sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="sleep 1"/>
+		<sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="mv /was/jboss/servers/jboss-1/deployments/uos.war.deployed /was/jboss/servers/jboss-1/deployments/uos.war.dodeploy"/>
+		<sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="mv /was/jboss/servers/jboss-2/deployments/uos.war.deployed /was/jboss/servers/jboss-2/deployments/uos.war.dodeploy"/>
+		<sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="mv /was/jboss/servers/jboss-3/deployments/uos.war.deployed /was/jboss/servers/jboss-3/deployments/uos.war.dodeploy"/>
+	</target>
+	
+	<target name="ftp.resource.jboss.sns.uos">
+	    <copy todir="${deploy.jboss.dir}/uos/enface-webdocs">
+			<fileset dir="${web.dir}">
+			    <!-- Image Extension -->
+				<include name="**/*.jpg"/>
+				<include name="**/*.JPG"/>
+				
+				<include name="**/*.gif"/>
+				<include name="**/*.GIF"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<include name="**/*.png"/>
+				<include name="**/*.PNG"/>
+				
+				<!-- Etc Extension -->
+				<include name="**/*.css"/>
+				<include name="**/*.js"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.html"/>
+				<include name="**/*.swf"/>
+				<include name="**/*.mp3"/>
+				<include name="**/*.mp4"/>
+				<include name="**/*.mpeg"/>
+				<include name="**/*.svntmp"/>
+				<include name="**/*.apk"/>
+			</fileset>
+		</copy>
+	    <zip destfile="${deploy.jboss.dir}/uos/enface-webdocs.zip" basedir="${deploy.jboss.dir}/uos/enface-webdocs" includes="**/*.*" />
+	    <ftp server="${ftp.server.ip}" port="21"
+	        remotedir="${ftp.src.uos.basedir}"
+	    	userid="jboss" password="jboss00"
+	    	binary="yes" verbose="yes">
+            <fileset dir="${deploy.jboss.dir}/uos">
+                <include name="enface-webdocs.zip"></include>
+            </fileset>
+	    </ftp>
+	    <sshexec host="${ftp.server.ip}" trust="true"
+	        username="jboss" password="jboss00"
+	        command="unzip -o ${ftp.src.uos.basedir}/enface-webdocs.zip -d ${ftp.src.uos.basedir}/webdocs"/>
+	</target>	
+</project>

@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, target-densitydpi=medium-dpi" />
+<title>KAIST</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<!--[if lt IE 9]>
+	<script src="js/html5.js"></script>
+<![endif]-->
+<LINK rel=stylesheet href="css/touchSlider.css">
+<LINK rel=stylesheet href="css/webkit.css">
+<script type="text/javascript"	src="/javascript/jquery/jquery-1.10.2.min.js"></script>
+<SCRIPT type=text/javascript src="js/jquery.event.drag-1.5.min.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/jquery.touchSlider.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/portal_new.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/fastclick.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/m.fullmenu.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/commons.js"></SCRIPT>
+<SCRIPT type=text/javascript>
+	$(document).ready(function() {
+		$("#wrap").height($("html").height());
+		$(".full_menu_wrap").height($("html").height());
+
+		$("#wrap").attr("style", "overflow: auto; ");
+	});
+
+	function iframe_autoresize(arg) {
+		try {
+			arg.height = $(arg.contentWindow.document.body).outerHeight(true);
+		} catch (e) {
+
+		}
+	}
+
+	function autoresize_iframe_portlets() {
+		var iframes = document.getElementsByTagName("iframe");
+		for ( var i = 0; i < iframes.length; i++) {
+			if (iframes[i].name.indexOf("IframePortlet") == 0) {
+				iframe_autoresize(iframes[i])
+			}
+		}
+	}
+</SCRIPT>
+</head>
+
+<body>
+	<!-- 메뉴보기 클릭시 id="wrap"을 30px만 남기고 left 로 이동
+		예) style="left:-290px"
+	-->
+	<div id="wrap">
+
+		<header role="banner">
+			<!-- 메뉴보기
+				<div class="logo_wrap" 에 overflow:visible 추가
+			-->
+			<div class="logo_wrap">
+				<h1>
+					<a href=""><img src="images/logo.png" alt="enview appliance"></a>
+				</h1>
+				<A id="fullMenu" class=btn_menu href="javascript:fullmenu('true');"><IMG
+					alt=메뉴 src="images/btn_menu.png"></A> 
+				<A id="fullMenu_dis" class=btn_menu style="DISPLAY: none"
+					href="javascript:fullmenu(false);"><IMG alt=메뉴
+					src="images/btn_menu.png"></A> <SPAN class=bul_arr></SPAN>
+			</div>
+		</header>
+		<!-- end header -->
+
+		<section role="main" id="container">
+			<article class="content_gray">
+				<div class="h2_box">
+					<h2 class="hidden">업무 공지사항</h2>
+					<ul class="location">
+						<li class="first"><a href="">공지사항</a></li>
+						<li><a href="">업무 공지사항</a></li>
+					</ul>
+					<a href="" class="btn_a">다른게시판보기</a>
+				</div>
+
+				<div class="list_wrap_w">
+					<ul class="ul_list">
+						<li class="first"><a href="">
+								<p class="title">원내 전화번호 공지(2013.09.25)원내 전화번호
+									공지(2013.09.25)원내 전화번호 공지(2013.09.25)원내 전화번호 공지(2013.09.25)원내
+									전화번호 공지(2013.09.25)</p> <span class="date">2013.12.12</span> <span
+								class="num_ck">조회수 : 233</span> <span class="writer">홍길동</span>
+								<span class="file"><img src="images/icon_file.gif"
+									alt="파일"></span>
+						</a> <span class="bu_arr"></span></li>
+						<li><a href="">
+								<p class="title">원내 전화번호 공지(2013.09.25)</p> <span class="date">2013.12.12</span>
+								<span class="num_ck">조회수 : 233</span> <span class="writer">홍길동</span>
+								<span class="file"><img src="images/icon_file.gif"
+									alt="파일"></span>
+						</a> <span class="bu_arr"></span></li>
+						<li><a href="">
+								<p class="title">원내 전화번호 공지(2013.09.25)</p> <span class="date">2013.12.12</span>
+								<span class="num_ck">조회수 : 233</span> <span class="writer">홍길동</span>
+						</a> <span class="bu_arr"></span></li>
+
+					</ul>
+
+					<div class="btn_box">
+						<button type="submit" class="btn medium white">등록</button>
+						<a href="" class="btn medium white">목록</a>
+					</div>
+
+					<div class="paginate">
+						<a href="#" class="pre"><img src="images/bu_pg_l.gif" alt="이전"></a>
+						<a href="#">1</a> <strong>2</strong> <a href="#">3</a> <a href="#">4</a>
+						<a href="#">5</a> <a href="#" class="next"><img
+							src="images/bu_pg_r.gif" alt="다음"></a>
+					</div>
+				</div>
+			</article>
+		</section>
+		<!-- end section -->
+
+		<footer role="contentinfo">
+			<div class="footer_wrap">
+				<ul class="f_link">
+					<li><a href="">로그아웃</a></li>
+					<li><a href="">PC버전</a></li>
+					<li><a href="">English</a></li>
+				</ul>
+				<p class="copy">
+					<span>&copy; KAIST</span> <a href="">개인정보보호정책</a>
+				</p>
+			</div>
+		</footer>
+		<!-- end footer -->
+
+	</div>
+	<!-- end wrap -->
+
+	<DIV class=full_menu_wrap
+		style="OVERFLOW-Y: auto; DISPLAY: block; WIDTH: 270px">
+		<H2>전체서비스</H2>
+		<UL id=moa class=menu_depth1>
+			<LI id=menu_notice class="menu_depth1_li active"><SPAN
+				onclick="showMenuList('notice');" class=bul></SPAN><A
+				class=menu_depth1_a href="javascript:showMenuList('notice');"
+				name=title>공지사항</A> <INPUT id=_default_notice type=hidden value=24>
+				<UL id=notice_ul class=menu_depth2>
+					<LI onclick="goMenu('/portal/default/notice/it_newsletter.page');"
+						id=menuit_newsletter class="subMenuLink_li "><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>IT서비스 뉴스레터</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/notice.page');"
+						id=menunotice class="subMenuLink_li "><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>업무공지사항</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/International.page');"
+						id=menuInternational class="subMenuLink_li "><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>International Community</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/notice/computer_network.page');"
+						id=menucomputer_network class="subMenuLink_li "><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>컴퓨터/네트워크</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/notice/influenza_a_h1n1.page');"
+						id=menuinfluenza_a_h1n1 class="subMenuLink_li "><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>체육 및 건강관리/클리닉</LABEL>
+						<DIV id=more_box_notice class=more_box>
+							<A class=btn_more href="javascript:showMoreList('notice');">더보기</A>
+						</DIV></LI>
+					<LI onclick="goMenu('/portal/default/notice/rnd_notices.page');"
+						id=menurnd_notices class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>연구개발사업 공지사항</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/manuals_forms.page');"
+						id=menumanuals_forms class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>업무편람/양식</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/seminar_events.page');"
+						id=menuseminar_events class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>세미나/행사공지</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/student_notice.page');"
+						id=menustudent_notice class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>학생공지사항</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/notice/lecture_academic_paper.page');"
+						id=menulecture_academic_paper class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>수강/학적/논문</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/notice/leadership_intern_counseling.page');"
+						id=menuleadership_intern_counseling
+						class="subMenuLink_li hiddenSubMenu"><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>리더십/인턴/상담</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/notice/dormitory_scholarship_welfare.page');"
+						id=menudormitory_scholarship_welfare
+						class="subMenuLink_li hiddenSubMenu"><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>생활관/장학/복지</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/notice/academic_courses.page');"
+						id=menuacademic_courses class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>교과과정신설변경</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/recruiting.page');"
+						id=menurecruiting class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>취업</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/gsc_usc_notice.page');"
+						id=menugsc_usc_notice class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>원총/총학공지</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/student_club.page');"
+						id=menustudent_club class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>학생동아리소개</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/notice/researcher_on_military_duty.page');"
+						id=menuresearcher_on_military_duty
+						class="subMenuLink_li hiddenSubMenu"><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>전문연구요원</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/classified.page');"
+						id=menuclassified class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>경조사</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/work_notice.page');"
+						id=menuwork_notice class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>작업공지</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/notice/today_notice.page');"
+						id=menutoday_notice class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>오늘의 공지사항</LABEL></LI>
+				</UL></LI>
+			<LI id=menu_board class="menu_depth1_li "><SPAN
+				onclick="showMenuList('board');" class=bul></SPAN><A
+				class=menu_depth1_a href="javascript:showMenuList('board');"
+				name=title>게시판</A> <INPUT id=_default_board type=hidden value=19>
+				<UL id=board_ul class=menu_depth2>
+					<LI onclick="goMenu('/portal/default/board/discussions.page');"
+						id=menudiscussions class="subMenuLink_li "><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>자유게시판</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/board/gungdong_apt.page');"
+						id=menugungdong_apt class="subMenuLink_li "><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>궁동아파트</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/board/lostfound.page');"
+						id=menulostfound class="subMenuLink_li "><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>유실물게시판</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/board/dormitory.page');"
+						id=menudormitory class="subMenuLink_li "><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>(구)생활관</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/board/praises.page');"
+						id=menupraises class="subMenuLink_li "><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>칭찬게시판</LABEL>
+						<DIV id=more_box_board class=more_box>
+							<A class=btn_more href="javascript:showMoreList('board');">더보기</A>
+						</DIV></LI>
+					<LI
+						onclick="goMenu('/portal/default/board/general_proposals.page');"
+						id=menugeneral_proposals class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>제안상황판</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/board/overseas_staff_training_report.page');"
+						id=menuoverseas_staff_training_report
+						class="subMenuLink_li hiddenSubMenu"><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>해외연수 결과보고</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/board/cop_activity_report.page');"
+						id=menucop_activity_report class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>직원 CoP활동 결과보고</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/board/fixing_cleaning_inquiry.page');"
+						id=menufixing_cleaning_inquiry
+						class="subMenuLink_li hiddenSubMenu"><SPAN class=bul></SPAN><LABEL
+						class=subMenuLabel>(구)수리청소</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/board/it_service_inquiry.page');"
+						id=menuit_service_inquiry class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>(구)IT서비스문의</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/board/suggestions.page');"
+						id=menusuggestions class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>(구)질의/건의/민원</LABEL></LI>
+					<LI
+						onclick="goMenu('/portal/default/board/university_senate.page');"
+						id=menuuniversity_senate class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>교수평의회</LABEL></LI>
+					<LI onclick="goMenu('/portal/default/board/today_board.page');"
+						id=menutoday_board class="subMenuLink_li hiddenSubMenu"><SPAN
+						class=bul></SPAN><LABEL class=subMenuLabel>오늘의 게시물</LABEL></LI>
+				</UL></LI>
+		</UL>
+	</DIV>
+</body>
+</html>

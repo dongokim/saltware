@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context-2.5.xsd
+							http://www.springframework.org/schema/tx 
+							http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+							http://www.springframework.org/schema/aop 
+							http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+					 	
+	<context:component-scan base-package="com.saltware.enface.portlet">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+	
+	<!-- transaction 설정 -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="EnviewDS"/>
+    </bean>
+    
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="*" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <aop:config>
+        <aop:pointcut id="requiredTx"
+            expression="execution(* com.saltware.enface..impl.*Impl.*(..))"/>
+        <aop:advisor advice-ref="txAdvice"
+            pointcut-ref="requiredTx" />
+    </aop:config>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
+	
+	<bean id="passwordEncoder" class="com.saltware.enface.security.passcodec.ShaPasswordEncoder"/>
+	<!--bean id="passwordEncoder" class="com.saltware.enface.security.passcodec.PlainTextPasswordEncoder"/-->
+	<!--bean id="passwordEncoder" class="com.saltware.enface.security.passcodec.Md5PasswordEncoder"/-->
+
+	<!-- 사용하는 adaptor의 종류에 따른 값을 할당해주어, Interceptor가 올바른 View로 redirect할 수 있게 한다. -->
+	<bean id="securityInterceptor" class="com.saltware.enface.security.SecurityInterceptor"/>
+	
+	<bean id="com.saltware.enface.security.EnviewSSOHandler" class="com.saltware.enface.security.EnviewSSOHandler"></bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="EnviewDS" />
+	</bean>
+	
+	<!-- 메일샌더 구현부 -->
+    <bean id="sender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    	<property name="protocol" value="smtps"/>		<!-- SSL 보안 프로토콜: ex)smtps -->
+        <property name="host" value="smtp.naver.com"/>	<!-- host server: ex)smtp.naver.com -->
+        <property name="port" value="465"/>				<!-- port(SSL:465, Normal:25) -->
+        <property name="username" value=""/>			<!-- id -->
+        <property name="password" value=""/>			<!-- password -->
+        <property name="javaMailProperties">			<!-- 설정 -->
+            <props>
+                <prop key="mail.smtps.auth">true</prop>
+                <prop key="mail.smtps.startls.enable">true</prop>
+                <prop key="mail.smtps.debug">true</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="userValidator" class="com.saltware.enface.user.web.UserValidator"/>
+
+    <bean id="com.saltware.enface.sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="configLocation" value="/WEB-INF/classes/sqlmap/face/sqlmap-config-${enview.db.type}.xml"/>
+        <property name="dataSource" ref="EnviewDS"/>
+    </bean>
+	
+	<bean id="com.saltware.enface.security.UserInfomationHandler" class="com.saltware.enface.security.UserInfomationHandler"/>
+	
+	<!-- Service Layer -->
+	<!-- 
+	<bean id="com.saltware.enface.user.service.UserManagerImpl" class="com.saltware.enface.user.service.impl.SiteUserManagerImpl">
+		<property name="passwordEncoder" ref="passwordEncoder" />
+		<property name="tempPasswordMailSender" ref="tempPasswordMailSender"/>
+		<property name="siteUserManagerDAO" ref="com.saltware.enface.user.service.impl.SiteUserManagerDAO"/>
+		<property name="userMenuDAO" ref="com.saltware.enface.userMenu.service.impl.UserMenuDAO"/>
+	</bean>
+	 -->
+	<bean id="com.saltware.enface.user.service.UserManagerImpl" class="com.saltware.enface.sns.service.impl.SiteUserManagerImpl">
+		<property name="passwordEncoder" ref="passwordEncoder" />
+		<property name="tempPasswordMailSender" ref="tempPasswordMailSender"/>
+		<property name="siteUserManagerDAO" ref="com.saltware.enface.user.service.impl.SiteUserManagerDAO"/>
+		<property name="userMenuDAO" ref="com.saltware.enface.userMenu.service.impl.UserMenuDAO"/>
+	</bean>
+	<!-- 한전 사용자관리
+	<bean id="com.saltware.enface.user.service.UserManagerImpl" class="com.saltware.enface.sns.service.impl.KepidSiteUserManagerImpl">
+		<property name="passwordEncoder" ref="passwordEncoder" />
+		<property name="tempPasswordMailSender" ref="tempPasswordMailSender"/>
+		<property name="siteUserManagerDAO" ref="com.saltware.enface.user.service.impl.SiteUserManagerDAO"/>
+		<property name="userMenuDAO" ref="com.saltware.enface.userMenu.service.impl.UserMenuDAO"/>
+	</bean>
+	-->
+	<!-- 금오공대 사용자관리
+	<bean id="com.saltware.enface.user.service.UserManagerImpl" class="com.saltware.enface.sns.service.impl.IacfSiteUserManagerImpl">
+		<property name="passwordEncoder" ref="passwordEncoder" />
+		<property name="tempPasswordMailSender" ref="tempPasswordMailSender"/>
+		<property name="siteUserManagerDAO" ref="com.saltware.enface.user.service.impl.SiteUserManagerDAO"/>
+		<property name="userMenuDAO" ref="com.saltware.enface.userMenu.service.impl.UserMenuDAO"/>
+	</bean>
+    -->
+	<bean id="com.saltware.enface.user.service.UserManager" name="UserManager" parent="baseTransactionProxy">
+        <property name="proxyInterfaces"><value>com.saltware.enface.user.service.SiteUserManager</value></property>
+        <property name="target"><ref bean="com.saltware.enface.user.service.UserManagerImpl" /></property>
+        <property name="transactionAttributes"><props><prop key="*">PROPAGATION_REQUIRED,-Exception</prop></props></property>
+    </bean>
+	
+	
+	<bean id="toolManager" class="com.saltware.enface.tool.service.impl.ToolManagerImpl"/>
+	
+	<bean id="tempPasswordMailSender" class="com.saltware.enface.tool.service.impl.TempPasswordMailSender">
+		<property name="sender" ref="sender"/>	<!-- 메일샌더 -->
+		<property name="from" value="secrain@naver.com"/>	<!-- 보내는 사람 email 주소 -->
+	</bean>
+
+	<bean id="com.saltware.enface.userMenu.service.UserMenuService" class="com.saltware.enface.userMenu.service.impl.UserMenuServiceImpl"> 	
+		<property name="userMenuDAO" ref="com.saltware.enface.userMenu.service.impl.UserMenuDAO"/>
+	</bean>
+
+	<!-- 		
+	<bean id="com.saltware.enface.userMenu.service.UserMenuServiceImpl" class="com.saltware.enface.userMenu.service.impl.UserMenuServiceImpl"> 	
+		<property name="userMenuDAO" ref="com.saltware.enface.userMenu.service.impl.UserMenuDAO"/>
+	</bean>
+	<bean id="com.saltware.enface.userMenu.service.UserMenuService" name="UserMenuService" parent="baseTransactionProxy">
+        <property name="proxyInterfaces"><value>com.saltware.enface.userMenu.service.UserMenuService</value></property>
+        <property name="target"><ref bean="com.saltware.enface.userMenu.service.UserMenuServiceImpl" /></property>
+        <property name="transactionAttributes"><props><prop key="*">PROPAGATION_REQUIRED,-Exception</prop></props></property>
+    </bean>
+     -->
+    
+	<bean id="com.saltware.enface.openapi.service.OpenApiService" class="com.saltware.enface.openapi.service.impl.OpenApiServiceImpl">
+		 <property name="openApiDAO" ref="com.saltware.enface.openapi.service.impl.OpenApiDAO"/>
+	</bean>
+
+	<bean id="com.saltware.enface.portlet.board.service.MiniBoardService" class="com.saltware.enface.portlet.board.service.impl.MiniBoardCachedServiceImpl">
+		 <property name="miniBoardDAO" ref="com.saltware.enface.portlet.board.service.MiniBoardDAO"/>
+		 <property name="maxCacheSize" value="100"/>
+		 <property name="maxCacheTime" value="60"/>
+	</bean>
+	
+	
+	<!-- Exception Resolver -->
+	 <bean id="exceptionMapping" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	     <property name="exceptionMappings">
+	        <props>
+	            <prop key="Exception">
+	                 ErrorMessage
+	            </prop>
+	        </props>
+	     </property>
+	     <property name="mappedHandlerClasses" value="com.saltware.enface.exception.EnfaceException">
+	     </property>
+	     <property name="defaultErrorView" value="friendlyError" />
+	</bean>
+	
+	<bean id="enfaceException" class="com.saltware.enface.exception.EnfaceException" />
+
+	<!-- DAO Layer -->
+	<!-- 
+	<bean id="com.saltware.enface.user.service.impl.SiteUserManagerDAO" class="com.saltware.enface.user.service.impl.SiteUserManagerDAO"> 	
+	 	<property name="sqlMapClient" ref="com.saltware.enface.sqlMapClient"/>
+	</bean>
+	 -->
+	<bean id="com.saltware.enface.user.service.impl.SiteUserManagerDAO" class="com.saltware.enface.sns.service.impl.SiteUserManagerDAO"> 	
+	 	<property name="sqlMapClient" ref="com.saltware.enface.sqlMapClient"/>
+	</bean>
+	 
+	<bean id="com.saltware.enface.userMenu.service.impl.UserMenuDAO" class="com.saltware.enface.userMenu.service.impl.UserMenuDAO"> 	
+		<property name="sqlMapClient" ref="com.saltware.enface.sqlMapClient"/>
+	</bean>
+	<bean id="com.saltware.enface.openapi.service.impl.OpenApiDAO" class="com.saltware.enface.openapi.service.impl.OpenApiDAO"> 	
+	 	<property name="sqlMapClient" ref="com.saltware.enface.sqlMapClient"/>
+	</bean>
+	<bean id="com.saltware.enface.portlet.board.service.MiniBoardDAO" class="com.saltware.enface.portlet.board.service.impl.MiniBoardDAO"> 	
+	 	<property name="sqlMapClient" ref="com.saltware.enface.sqlMapClient"/>
+	</bean>
+</beans>

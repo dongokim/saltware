@@ -1,0 +1,33 @@
+#touchSlider1 {
+	OVERFLOW: hidden; HEIGHT: 175px; POSITION: relative; MARGIN: 0px auto; WIDTH: 100%
+}
+#touchSlider2 {
+	OVERFLOW: hidden; HEIGHT: 175px; POSITION: relative; MARGIN: 0px auto; WIDTH: 100%
+}
+#touchSlider3 {
+	OVERFLOW: hidden; HEIGHT: 175px; POSITION: relative; MARGIN: 0px auto; WIDTH: 100%
+}
+#touchSlider4 {
+	OVERFLOW: hidden; HEIGHT: 117px; POSITION: relative; MARGIN: 0px auto; WIDTH: 100%
+}
+#touchSlider5 {
+	OVERFLOW: hidden; HEIGHT: 420px; POSITION: relative; MARGIN: 0px auto; WIDTH: 100%
+}
+.btn_area {
+	OVERFLOW: hidden; BACKGROUND: #f5f5f5
+}
+.btn_area BUTTON {
+	FONT-SIZE: 16px; HEIGHT: 36px; BACKGROUND: #000; FONT-WEIGHT: bold; COLOR: #fff; DISPLAY: block; WIDTH: 100px
+}
+.btn_area BUTTON.btn_prev {
+	FLOAT: left
+}
+.btn_area BUTTON.btn_next {
+	FLOAT: right
+}
+.btn_area .btn_page {
+	FONT-SIZE: 0px; HEIGHT: 10px; BACKGROUND: #3399cc; MARGIN: 3px; DISPLAY: inline-block; LINE-HEIGHT: 0; WIDTH: 10px; TEXT-INDENT: -9999px
+}
+.btn_area .on.btn_page {
+	BACKGROUND: #ff0000
+}

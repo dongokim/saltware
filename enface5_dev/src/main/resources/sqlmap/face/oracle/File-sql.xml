@@ -1,0 +1,40 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="FileDAO">
+	
+	<update id="FileDAO.save" parameterClass="com.saltware.enface.file.FileVO">
+		INSERT INTO	FILE_UPLOAD
+		(
+			FILE_NO,
+			FILE_NAME,
+			FILE_MASK,
+			FILE_LOC
+		)
+		VALUES
+		(
+			#fileNo#,
+			#fileName#,
+			#fileMask#,
+			#fileLoc#
+		)
+	</update>
+	
+	<resultMap id="map.FileDAO.list" class="com.saltware.enface.file.FileVO">
+		<result property="fileNo"	column="FILE_NO"/>
+		<result property="fileName"	column="FILE_NAME"/>
+		<result property="fileMask"	column="FILE_MASK"/>
+		<result property="fileLoc"	column="FILE_LOC"/>
+	</resultMap>
+	<select id="FileDAO.list" resultMap="map.FileDAO.list">
+		SELECT
+			FILE_NO,
+			FILE_NAME,
+			FILE_MASK,
+			FILE_LOC
+		FROM
+			FILE_UPLOAD
+		ORDER BY
+			FILE_NO DESC
+	</select>
+	
+</sqlMap>

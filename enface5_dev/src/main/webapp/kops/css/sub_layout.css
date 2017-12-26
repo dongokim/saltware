@@ -1,0 +1,16 @@
+#sub_container {width:100%; padding:170px 0 70px 0; background-color:#f8f8f8; background-repeat:no-repeat; background-position:center top }
+#sub_container.sub_con_2 {background-image:url('../images/sub/body_bg_2.gif');  }
+#sub_container.sub_con_3 {background-image:url('../images/sub/body_bg_3.gif');  }
+#sub_container.sub_con_4 {background-image:url('../images/sub/body_bg_4.gif');  }
+#sub_container.sub_con_5 {background-image:url('../images/sub/body_bg_5.gif');  }
+#sub_container.sub_con_6 {background-image:url('../images/sub/body_bg_6.gif');  }
+#tab_menu {width:100%;  position:relative; text-align:center; margin:-30px 0 65px}
+#tab_menu ul li {position:relative; border-left:1px solid #e6e6e6; border-top:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; display:inline-block;  background:#ffffff}
+#tab_menu ul li.last {border-right:1px solid #e6e6e6; border-radius:0 7px 7px 0}
+#tab_menu ul li.first {border-radius:7px 0  0  7px}
+#tab_menu ul li a {padding:10px 50px; color:#000; display:inline-block; font-size:18px;}
+#tab_menu ul li.on {background:#40444c; }
+#tab_menu ul li.on:after { position:absolute; bottom:-6px; left:0px; content:""; display:inline-block; width:100%; height:6px; background:url('../images/sub/tab_on_bl.gif') no-repeat center top }
+#tab_menu ul li.on a {color:#fff;}
+
+.layout {width:1000px; position:relative; margin:0 auto}	

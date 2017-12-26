@@ -1,0 +1,66 @@
+@CHARSET "EUC-KR";
+
+.list_label {
+	width:  230px;
+	height:	30px;
+	text-align: center;
+}
+
+.list_select {
+	width:  230px;
+	height: 200px;
+}
+
+/* search form */
+.user_search{
+	float: center;
+	width:530px;
+	height: 30px;
+	margin: auto;
+}
+	
+/* select Box & control Buttons : add, delete*/
+.user_list {
+	float: center;
+	width:530px;
+	height: 230px;
+	margin: auto;
+}
+
+.user_list .group_list { 
+	float:  left;
+	width:  230px;
+	height: 220px;
+	margin: 0px auto;
+}
+	
+.user_list .select_control {
+	float:  left;
+	width:  48px;
+	height: auto;
+	margin: 75px auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+	
+.user_list .receiver_list {	
+	float:  left;
+	width:  230px;
+	height: 220px;
+	margin: 0px auto;
+}
+
+
+/* search Control Buttons: submit, cancel */
+.search_control {
+	float:  center;
+	width:  100px;
+	height: 30px;
+	margin: auto;
+	vertical-align: middle;
+}
+
+
+
+
+

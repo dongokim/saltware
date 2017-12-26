@@ -1,0 +1,505 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="face">
+	<!-- 1. 처리내용: 게시판 목록 조회 ResultMap 2. 관련 DAO: BoardManageDao.selectList 3. 
+		작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<resultMap class="com.saltware.enface.enboard.vo.BoardManageVo" id="boardManageVo.selectList">
+		<result property="rnum" column="RNUM" />
+		<result property="boardId" column="BOARD_ID" />
+		<result property="boardNm" column="BOARD_NM" />
+		<result property="linkYns" column="LINK_YNS" />
+		<result property="boardOrder" column="BOARD_ORDER" />
+		<result property="cateId1" column="CATE_ID1" />
+		<result property="cateNm1" column="CATE_NM1" />
+		<result property="bltnCnt" column="BLTN_CNT" />
+		<result property="orgId" column="ORG_ID" />
+		<result property="orgNm" column="ORG_NM" />
+	</resultMap>
+
+	<!-- 1. 처리내용: 게시판 상세조회 ResultMap 2. 관련 DAO: BoardManageDao.selectList 3. 
+		작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<resultMap class="com.saltware.enface.enboard.vo.BoardManageVo" id="boardManageVo.select">
+		<result property="rnum" column="RNUM" />
+		<result property="boardId" column="BOARD_ID" />
+		<result property="cateId1" column="CATE_ID1" />
+		<result property="cateId2" column="CATE_ID2" />
+		<result property="bltnCnt" column="BLTN_CNT" />
+		<result property="boardNmKo" column="BOARD_NM_KO" />
+		<result property="boardDescKo" column="BOARD_DESC_KO" />
+		<result property="boardNoticeKo" column="BOARD_NOTICE_KO" />
+		<result property="boardNmEn" column="BOARD_NM_EN" />
+		<result property="boardDescEn" column="BOARD_DESC_EN" />
+		<result property="boardNoticeEn" column="BOARD_NOTICE_EN" />
+		<result property="orgId" column="ORG_ID" />
+		<result property="orgNm" column="ORG_NM" />
+	</resultMap>
+
+
+	<!-- 1. 처리내용: 대분류 조회 ResultMap 2. 관련 DAO: BoardManageDao.selectList 3. 작성자 
+		: 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<resultMap class="com.saltware.enface.enboard.vo.BoardManageVo" id="boardManageVo.selectCateList1">
+		<result property="cateId1" column="CATE_ID1" />
+		<result property="cateNm1" column="CATE_NM1" />
+	</resultMap>
+
+	<!-- 1. 처리내용: 게시판 분류 조회 ResultMap 2. 관련 DAO: BoardManageDao.selectBoardCate 
+		3. 작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<resultMap class="com.saltware.enface.enboard.vo.BoardManageVo" id="boardManageVo.selectBoardCate">
+		<result property="cateId1" column="CATE_ID1" />
+		<result property="cateId2" column="CATE_ID2" />
+	</resultMap>
+
+
+	<!-- 1. 처리내용: 중분류 조회 ResultMap 2. 관련 DAO: BoardManageDao.selectList 3. 작성자 
+		: 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<resultMap class="com.saltware.enface.enboard.vo.BoardManageVo" id="boardManageVo.selectCateList2">
+		<result property="cateId1" column="CATE_ID1" />
+		<result property="cateNm1" column="CATE_NM1" />
+	</resultMap>
+
+	<!-- 1. 처리내용: 게시판 목록조회 SQL 2. 관련 DAO: BoardManageDao.selectList 3. 작성자 : 
+		나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<select id="boardManage.selectList" resultMap="boardManageVo.selectList">
+		/* boardManage.selectList */
+		SELECT *
+		FROM
+		(
+		SELECT ROW_NUMBER() Over( ORDER BY D.CATE_ORDER, D.CATE_ID, C.BOARD_ORDER,
+		A.BOARD_ID ) RNUM
+		, A.BOARD_ID, B.BOARD_NM, E.CATE_NM CATE_NM1, D.CATE_ID CATE_ID1,
+		A.LINK_YNS
+		, CASE WHEN SUBSTR( LIST_YNS, 3, 1) = 'Y' THEN ( SELECT COUNT(*) FROM
+		BULLETIN WHERE BOARD_ID=A.BOARD_ID AND BLTN_GQ=0 AND DEL_FLAG != 'Y')
+		ELSE ( SELECT COUNT(*) FROM BULLETIN WHERE BOARD_ID=A.BOARD_ID AND
+		DEL_FLAG != 'Y') END BLTN_CNT
+		, NVL(A.ORG_ID, 0) ORG_ID
+		, C.BOARD_ORDER
+		, ( SELECT ( CASE WHEN #langKnd# = 'ko' THEN PRINCIPAL_NAME ELSE
+		PRINCIPAL_INFO03 END ) FROM SECURITY_PRINCIPAL WHERE
+		PRINCIPAL_ID=A.ORG_ID) ORG_NM
+		FROM BOARD A
+		JOIN BOARD_LANG B ON A.BOARD_ID = B.BOARD_ID AND B.LANG_KND=#langKnd#
+		JOIN CATE_BOARD C ON A.BOARD_ID = C.BOARD_ID
+		JOIN CATEBASE D ON C.CATE_ID = D.CATE_ID
+		JOIN CATEBASE_LANG E ON D.CATE_ID = E.CATE_ID AND E.LANG_KND=#langKnd#
+		<isNotEmpty property="userAuthIdList">
+			JOIN SECURITY_PERMISSION P ON A.BOARD_ID = P.RES_URL
+			AND FLOOR(MOD(ACTION_MASK , 4096) / 2048) > 0
+			AND (RES_TYPE=50
+			OR RES_TYPE=51
+			OR ( RES_TYPE=5 AND PRINCIPAL_ID IN
+			<iterate property="userAuthIdList" open="(" conjunction=","
+				close=")">#userAuthIdList[]#</iterate>
+			)
+			)
+		</isNotEmpty>
+
+		WHERE D.PARENT_CATE_ID=11
+		<isNotEmpty property="cateId1">
+			AND D.CATE_ID = #cateId1#
+		</isNotEmpty>
+		<isNotEmpty property="searchValue">
+			<isEqual property="searchType" compareValue="boardNm">
+				AND B.BOARD_NM LIKE '%' || #searchValue# || '%'
+			</isEqual>
+		</isNotEmpty>
+
+		) t1 WHERE t1.rnum BETWEEN #startRow# AND #endRow#
+	</select>
+
+	<!-- 1. 처리내용: 게시판 건수 조회 SQL 2. 관련 DAO: BoardManageDao.selectCount 3. 작성자 
+		: 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<select id="boardManage.selectCount" resultClass="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM BOARD A
+		JOIN BOARD_LANG B ON A.BOARD_ID = B.BOARD_ID AND B.LANG_KND=#langKnd#
+		JOIN CATE_BOARD C ON A.BOARD_ID = C.BOARD_ID
+		JOIN CATEBASE D ON C.CATE_ID = D.CATE_ID
+		JOIN CATEBASE_LANG E ON D.CATE_ID = E.CATE_ID AND E.LANG_KND=#langKnd#
+		<isNotEmpty property="userAuthIdList">
+			JOIN SECURITY_PERMISSION P ON A.BOARD_ID = P.RES_URL
+			AND FLOOR(MOD(ACTION_MASK , 4096) / 2048) > 0
+			AND (RES_TYPE=50
+			OR RES_TYPE=51
+			OR ( RES_TYPE=5 AND PRINCIPAL_ID IN
+			<iterate property="userAuthIdList" open="(" conjunction=","
+				close=")">#userAuthIdList[]#</iterate>
+			)
+			)
+		</isNotEmpty>
+
+		WHERE D.PARENT_CATE_ID=11
+		<isNotEmpty property="cateId1">
+			AND D.CATE_ID = #cateId1#
+		</isNotEmpty>
+		<isNotEmpty property="searchValue">
+			<isEqual property="searchType" compareValue="boardNm">
+				AND B.BOARD_NM LIKE '%' || #searchValue# || '%'
+			</isEqual>
+		</isNotEmpty>
+	</select>
+
+
+	<!-- 1. 처리내용: 게시판 목록조회 SQL 2. 관련 DAO: BoardManageDao.selectList 3. 작성자 : 
+		나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<select id="boardManage.select" resultMap="boardManageVo.selectList">
+		/* boardManage.selectList */
+		SELECT *
+		FROM
+		(
+		SELECT ROW_NUMBER() Over( ORDER BY F.CATE_ORDER, F.CATE_ID, D.CATE_ORDER,
+		D.CATE_ID, A.BOARD_ORDER, A.BOARD_ID ) RNUM
+		, A.BOARD_ID, B.BOARD_NM, E.CATE_NM CATE_NM2, G.CATE_NM CATE_NM1,
+		D.CATE_ID CATE_ID2, F.CATE_ID CATE_ID1, A.LINK_YNS
+		, ( SELECT COUNT(*) FROM BULLETIN WHERE BOARD_ID=A.BOARD_ID AND
+		DEL_FLAG != 'Y') BLTN_CNT
+		, NVL(A.ORG_ID, 0) ORG_ID
+		, ( SELECT ( CASE WHEN 'ko' = 'ko' THEN PRINCIPAL_NAME ELSE
+		PRINCIPAL_INFO03 END ) FROM SECURITY_PRINCIPAL WHERE
+		PRINCIPAL_ID=A.ORG_ID) ORG_NM
+		FROM BOARD A
+		JOIN BOARD_LANG B ON A.BOARD_ID = B.BOARD_ID AND B.LANG_KND=#langKnd#
+		JOIN CATE_BOARD C ON A.BOARD_ID = C.BOARD_ID
+		JOIN CATEBASE D ON C.CATE_ID = D.CATE_ID
+		JOIN CATEBASE_LANG E ON D.CATE_ID = E.CATE_ID AND E.LANG_KND=#langKnd#
+		JOIN CATEBASE F ON D.PARENT_CATE_ID = F.CATE_ID
+		JOIN CATEBASE_LANG G ON G.CATE_ID = F.CATE_ID AND G.LANG_KND=#langKnd#
+		<isNotEmpty property="userAuthIdList">
+			JOIN SECURITY_PERMISSION P ON A.BOARD_ID = P.RES_URL
+			AND FLOOR(MOD(ACTION_MASK , 4096) / 2048) > 0
+			AND (RES_TYPE=50
+			OR RES_TYPE=51
+			OR ( RES_TYPE=5 AND PRINCIPAL_ID IN
+			<iterate property="userAuthIdList" open="(" conjunction=","
+				close=")">#userAuthIdList[]#</iterate>
+			)
+			)
+		</isNotEmpty>
+
+		WHERE D.PARENT_CATE_ID=11
+		<isNotEmpty property="cateId1">
+			AND F.CATE_ID = #cateId1#
+		</isNotEmpty>
+		<isNotEmpty property="cateId2">
+			AND D.CATE_ID = #cateId2#
+		</isNotEmpty>
+		<isNotEmpty property="searchValue">
+			<isEqual property="searchType" compareValue="boardNm">
+				AND B.BOARD_NM LIKE '%' || #searchValue# || '%'
+			</isEqual>
+		</isNotEmpty>
+
+		) t1 WHERE t1.rnum BETWEEN #startRow# AND #endRow#
+	</select>
+
+	<!-- 1. 처리내용: 대분류 조회 SQL 2. 관련 DAO: BoardManageDao.selectCateList1 3. 작성자 
+		: 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<select id="boardManage.selectCateList1" resultMap="boardManageVo.selectCateList1">
+		/* boardManage.selectCateList1 */
+		SELECT DISTINCT D.CATE_ORDER
+		CATE_ORDER1, D.CATE_ID CATE_ID1, E.CATE_NM CATE_NM1
+		FROM BOARD A
+		JOIN BOARD_LANG B ON A.BOARD_ID = B.BOARD_ID AND
+		B.LANG_KND=#langKnd#
+		JOIN CATE_BOARD C ON A.BOARD_ID = C.BOARD_ID
+		JOIN
+		CATEBASE D ON C.CATE_ID = D.CATE_ID
+		JOIN CATEBASE_LANG E ON D.CATE_ID =
+		E.CATE_ID AND E.LANG_KND=#langKnd#
+		<isNotEmpty property="userAuthIdList">
+			JOIN SECURITY_PERMISSION P ON A.BOARD_ID = P.RES_URL
+			AND FLOOR(MOD(ACTION_MASK , 4096) / 2048) > 0
+			AND (RES_TYPE=50
+			OR RES_TYPE=51
+			OR ( RES_TYPE=5 AND PRINCIPAL_ID IN
+			<iterate property="userAuthIdList" open="(" conjunction=","
+				close=")">#userAuthIdList[]#</iterate>
+			)
+			)
+		</isNotEmpty>
+		WHERE D.PARENT_CATE_ID=11
+		ORDER BY 1, 2
+	</select>
+
+	<!-- 1. 처리내용: 대분류 전체 조회 SQL 2. 관련 DAO: BoardManageDao.selectCateList1 3. 
+		작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<select id="boardManage.selectAllCateList1" resultMap="boardManageVo.selectCateList1">
+		/* boardManage.selectAllCateList1 */
+		SELECT DISTINCT D.CATE_ORDER
+		CATE_ORDER1, D.CATE_ID CATE_ID1, E.CATE_NM CATE_NM1
+		FROM CATEBASE D
+		JOIN CATEBASE_LANG E ON D.CATE_ID = E.CATE_ID AND
+		E.LANG_KND=#langKnd#
+		WHERE D.PARENT_CATE_ID=11
+		ORDER BY 1, 2
+	</select>
+
+	<!-- 1. 처리내용: 중분류 조회 SQL 2. 관련 DAO: BoardManageDao.selectCateList1 3. 작성자 
+		: 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<select id="boardManage.selectCateList2" resultMap="boardManageVo.selectCateList2">
+		/* boardManage.selectCateList2 */
+		SELECT DISTINCT F.CATE_ORDER
+		CATE_ORDER1, F.CATE_ID CATE_ID1, D.CATE_ORDER CATE_ORDER2, D.CATE_ID
+		CATE_ID2, G.CATE_NM CATE_NM1, E.CATE_NM CATE_NM2
+		FROM BOARD A
+		JOIN BOARD_LANG B ON A.BOARD_ID = B.BOARD_ID AND
+		B.LANG_KND=#langKnd#
+		JOIN CATE_BOARD C ON A.BOARD_ID = C.BOARD_ID
+		JOIN
+		CATEBASE D ON C.CATE_ID = D.CATE_ID
+		JOIN CATEBASE_LANG E ON D.CATE_ID =
+		E.CATE_ID AND E.LANG_KND=#langKnd#
+		JOIN CATEBASE F ON D.PARENT_CATE_ID
+		= F.CATE_ID
+		JOIN CATEBASE_LANG G ON G.CATE_ID = F.CATE_ID AND G.LANG_KND=#langKnd#
+		<isNotEmpty property="userAuthIdList">
+			JOIN SECURITY_PERMISSION P ON A.BOARD_ID = P.RES_URL
+			AND FLOOR(MOD(ACTION_MASK , 4096) / 2048) > 0
+			AND (RES_TYPE=50
+			OR RES_TYPE=51
+			OR ( RES_TYPE=5 AND PRINCIPAL_ID IN
+			<iterate property="userAuthIdList" open="(" conjunction=","
+				close=")">#userAuthIdList[]#</iterate>
+			)
+			)
+		</isNotEmpty>
+		WHERE D.PARENT_CATE_ID=11
+		ORDER BY 1, 2, 3, 4
+	</select>
+
+	<!-- 1. 처리내용: 중분류 전체조회 SQL 2. 관련 DAO: BoardManageDao.selectAllCateList1 
+		3. 작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<select id="boardManage.selectAllCateList2" resultMap="boardManageVo.selectCateList2">
+		/* boardManage.selectCateList2 */
+		SELECT DISTINCT F.CATE_ORDER
+		CATE_ORDER1, F.CATE_ID CATE_ID1, D.CATE_ORDER CATE_ORDER2, D.CATE_ID
+		CATE_ID2, G.CATE_NM CATE_NM1, E.CATE_NM CATE_NM2
+		FROM CATEBASE D
+		JOIN CATEBASE_LANG E ON D.CATE_ID = E.CATE_ID AND E.LANG_KND=#langKnd#
+		JOIN CATEBASE F ON D.PARENT_CATE_ID = F.CATE_ID
+		JOIN CATEBASE_LANG G ON G.CATE_ID = F.CATE_ID AND G.LANG_KND=#langKnd#
+		WHERE D.PARENT_CATE_ID=11
+		ORDER BY 1, 2, 3, 4
+	</select>
+
+
+	<!-- 1. 처리내용: 게시판 목록조회 SQL 2. 관련 DAO: BoardManageDao.selectList 3. 작성자 : 
+		나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<select id="boardManage.selectBoardCate" resultMap="boardManageVo.selectCateList2">
+		/* boardManage.selectBoardCate */
+		SELECT D.CATE_ID CATE_ID1, E.CATE_NM CATE_NM1 
+		FROM BOARD A
+		JOIN CATE_BOARD C ON A.BOARD_ID = C.BOARD_ID
+		JOIN CATEBASE D ON C.CATE_ID = D.CATE_ID
+		JOIN CATEBASE_LANG E ON E.CATE_ID = D.CATE_ID AND E.LANG_KND=#langKnd#
+		WHERE A.BOARD_ID=#boardId#
+	</select>
+
+	<!-- 1. 처리내용: 게시판 분류삭제 SQL 2. 관련 DAO: BoardManageDao.deleteBoardCate 3. 
+		작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<update id="boardManage.deleteBoardCate">
+		/* boardManage.deleteBoardCate */
+		DELETE FROM CATE_BOARD
+		WHERE A.BOARD_ID=#boardId#
+	</update>
+
+	<!-- 1. 처리내용: 게시판 분류추가 SQL 2. 관련 DAO: BoardManageDao.insertBoardCate 3. 
+		작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<update id="boardManage.insertCateBoard">
+		/* boardManage.insertCateBoard */
+		INSERT INTO CATE_BOARD ( CATE_ID, BOARD_ID, BOARD_ORDER)
+		VALUES( #cateId2#, #boardId#, NVL( (SELECT MAX(BOARD_ORDER) FROM CATE_BOARD
+		WHERE CATE_ID=#cateId2#), 0) + 1)
+	</update>
+
+	<!-- 1. 처리내용: 게시판 분류수정 SQL 2. 관련 DAO: BoardManageDao.updateBoardCate 3. 
+		작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<update id="boardManage.updateCateBoard">
+		/* boardManage.updateCateBoard */
+		UPDATE CATE_BOARD SET BOARD_ORDER=#boardOrder#
+		WHERE CATE_ID=#cateId#
+		AND BOARD_ID=#boardId#
+	</update>
+
+	<!-- 1. 처리내용: 게시판 수정 SQL 2. 관련 DAO: BoardManageDao.update 3. 작성자 : 나상모 4. 
+		작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<update id="boardManage.update">
+		/* boardManage.update */
+		UPDATE BOARD SET
+		ORG_ID = #orgId#,
+		BOARD_ACTIVE = #boardActive#,
+		BOARD_TYPE = #boardType#,
+		BOARD_SKIN = #boardSkin#,
+		BOARD_BG_PIC = #boardIcon#,
+		FUNC_YNS = SUBSTR(FUNC_YNS, 1, 1) || #memoYn# ||  #memoReplyYn# || SUBSTR( FUNC_YNS, 4, 4) || #cateYn# || SUBSTR( FUNC_YNS, 9, 2) || #bilingualYn# || SUBSTR( FUNC_YNS, 12),
+		TTL_YNS = SUBSTR(TTL_YNS, 1, 2) || #ttlCateYn# || SUBSTR( TTL_YNS, 4, 3) || #ttlMemoYn# || SUBSTR( TTL_YNS, 8),
+		MINI_TRGT_WIN =
+		#targetWin#,
+		MINI_TRGT_URL = #targetUrl#,
+		UPD_USER_ID = #userId#,
+		UPD_DATIM = SYSTIMESTAMP
+		WHERE BOARD_ID=#boardId#
+	</update>
+
+	<!-- 1. 처리내용: 게시판 수정 SQL 2. 관련 DAO: BoardManageDao.update 3. 작성자 : 나상모 4. 
+		작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<update id="boardManage.updateWithTemplate">
+		/* boardManage.updateWithTemplate */
+		UPDATE BOARD SET (
+		MERGE_TYPE,
+		FUNC_YNS,
+		BUGA_YNS,
+		LIST_YNS,
+		READ_YNS,
+		SRCH_YNS,
+		TTL_YNS,
+		TTL_LENS,
+		TERM_FLAG,
+		RAISE_COLOR,
+		RAISE_CNT,
+		NEW_TERM,
+		MAX_FILE_CNT,
+		MAX_FILE_SIZE,
+		MAX_FILE_DOWN,
+		LIST_SET_CNT,
+		BAD_STD_CNT,
+		EXTN_CLASS_NM,
+		BOARD_WIDTH,
+		TOP_HTML,
+		BOTTOM_HTML )
+		= ( SELECT
+		MERGE_TYPE,
+		FUNC_YNS,
+		BUGA_YNS,
+		LIST_YNS,
+		READ_YNS,
+		SRCH_YNS,
+		TTL_YNS,
+		TTL_LENS,
+		TERM_FLAG,
+		RAISE_COLOR,
+		RAISE_CNT,
+		NEW_TERM,
+		MAX_FILE_CNT,
+		MAX_FILE_SIZE,
+		MAX_FILE_DOWN,
+		LIST_SET_CNT,
+		BAD_STD_CNT,
+		EXTN_CLASS_NM,
+		BOARD_WIDTH,
+		TOP_HTML,
+		BOTTOM_HTML
+		FROM BOARD
+		WHERE board_id=(SELECT CODE_NAME2 FROM CODEBASE WHERE CODE_ID='951' AND
+		CODE=#boardType# AND LANG_KND='ko')
+		)
+		WHERE board_id=#boardId#
+		AND (SELECT CODE_NAME2 FROM CODEBASE WHERE CODE_ID='951' AND
+		CODE=#boardType# AND LANG_KND='ko') IS NOT NULL
+	</update>
+
+	<!-- 1. 처리내용: 게시판 로그추가 SQL 2. 관련 DAO: BoardManageDao.insertBoardLog 3. 작성자 
+		: 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<update id="boardManage.insertBoardLog">
+		/*
+		boardManage.insertBoardLog */
+		INSERT INTO BOARD_LOG SELECT * FROM BOARD
+		WHERE BOARD_ID=#boardId#
+	</update>
+
+	<!-- 1. 처리내용: 게시판 분류 로그추가 SQL 2. 관련 DAO: BoardManageDao.insertBoardLog 3. 
+		작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<update id="boardManage.insertCateBoardLog">
+		/*
+		boardManage.insertCateBoardLog */
+		INSERT INTO CATE_BOARD_LOG( CATE_ID,
+		BOARD_ID, BOARD_ORDER, UPD_USER_ID, UPD_DATIM)
+		SELECT CATE_ID, BOARD_ID, BOARD_ORDER, #userId#, SYSTIMESTAMP FROM
+		CATE_BOARD
+		WHERE BOARD_ID=#boardId#
+	</update>
+
+	<!-- 1. 처리내용: 게시판 중복 건수 조회 SQL 2. 관련 DAO: BoardManageDao.selectDupCount 
+		3. 작성자 : 나상모 4. 작성일 : 2015.09.17 5. History : 2015.09.17 최초작성 -->
+	<select id="boardManage.selectDupCount" resultClass="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM BOARD A
+		WHERE BOARD_ID=#boardId#
+	</select>
+
+	<!-- 1. 처리내용: Comment 게시물 조회 SQL 2. 관련 DAO: BoardAuthDao.selectList 3. 작성자 
+		: 나상모 4. 작성일 : 2015.10.12 5. History : 2015.10.12 최초작성 -->
+
+	<resultMap class="org.apache.commons.collections.map.CaseInsensitiveMap"
+		id="boardManageVo.selectComment">
+		<result property="id" column="ID" />
+		<result property="text" column="TEXT" javaType="java.lang.String" />
+		<result property="code" column="CODE" />
+	</resultMap>
+
+	<select id="boardManage.selectComment" resultMap="boardManageVo.selectComment">
+		/* boardManage.selectComment */
+		SELECT #code# CODE, BLTN_NO ID, BLTN_CNTT
+		TEXT
+		from bulletin_lang
+		WHERE BOARD_ID='commentManager'
+		AND BLTN_SUBJ LIKE '[' || #code# || ']%'
+		AND
+		LANG_KND=#langKnd#
+		AND ROWNUM=1
+	</select>
+
+	<update id="boardManage.updateBoardLinkYns">
+		/* boardManage.updateLinkYns */
+		UPDATE BOARD SET
+		LINK_YNS = #linkYns#,
+		UPD_USER_ID = #userId#,
+		UPD_DATIM = SYSTIMESTAMP
+		WHERE BOARD_ID=#boardId# AND LINK_YNS != #linkYns#
+	</update>
+
+	<update id="boardManage.updateCatebaseLinkYns">
+		/* boardManage.updateLinkYns */
+		UPDATE CATEBASE SET
+		CATE_INFO03 = #linkYns#,
+		UPD_USER_ID = #userId#,
+		UPD_DATIM = SYSTIMESTAMP
+		WHERE CATE_ID=#cateId# AND CATE_INFO03 != #linkYns#
+	</update>
+
+	<select id="boardManage.selectLinkYnsTree"
+		resultClass="org.apache.commons.collections.map.CaseInsensitiveMap">
+		/* boardManage.selectLinkYnsTree */
+		SELECT 'C' || A.CATE_ID ID, '##'
+		PARENT, B.CATE_NM TEXT, A.CATE_INFO03 LINK_YNS, A.CATE_ORDER ORDR
+		FROM CATEBASE A
+		JOIN CATEBASE_LANG B ON B.CATE_ID = A.CATE_ID AND B.LANG_KND=#langKnd#
+		WHERE A.PARENT_CATE_ID=11
+		UNION
+		SELECT 'C' || A.CATE_ID ID, 'C' || A.PARENT_CATE_ID PARENT, B.CATE_NM
+		AS TEXT, A.CATE_INFO03 LINK_YN, A.CATE_ORDER ORDR
+		FROM CATEBASE A
+		JOIN CATEBASE_LANG B ON B.CATE_ID = A.CATE_ID AND B.LANG_KND=#langKnd#
+		JOIN CATEBASE C ON C.CATE_ID = A.PARENT_CATE_ID
+		WHERE
+		C.PARENT_CATE_ID=11
+		UNION
+		SELECT 'B' || A.BOARD_ID ID, 'C' || C.CATE_ID PARENT, B.BOARD_NM TEXT,
+		LINK_YNS, C.BOARD_ORDER ORDR
+		FROM BOARD A
+		JOIN BOARD_LANG B ON
+		A.BOARD_ID = B.BOARD_ID AND B.LANG_KND=#langKnd#
+		JOIN CATE_BOARD C ON
+		A.BOARD_ID = C.BOARD_ID
+		JOIN CATEBASE D ON C.CATE_ID = D.CATE_ID
+		JOIN
+		CATEBASE_LANG E ON D.CATE_ID = E.CATE_ID AND E.LANG_KND=#langKnd#
+		JOIN
+		CATEBASE F ON D.PARENT_CATE_ID = F.CATE_ID
+		JOIN CATEBASE_LANG G ON G.CATE_ID = F.CATE_ID AND G.LANG_KND=#langKnd#
+		WHERE D.PARENT_CATE_ID=11
+		ORDER BY PARENT, ORDR
+	</select>
+
+</sqlMap>
+

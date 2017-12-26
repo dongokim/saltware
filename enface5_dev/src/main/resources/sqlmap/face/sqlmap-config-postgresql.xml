@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+	
+<sqlMapConfig>
+
+	<sqlMap resource="sqlmap/face/postgresql/User-sql.xml"/>
+	<sqlMap resource="sqlmap/face/postgresql/Tool-sql.xml"/>
+	<sqlMap resource="sqlmap/face/postgresql/UserMenu-sql.xml"/>
+  	<sqlMap resource="sqlmap/face/postgresql/OpenApi-sql.xml"/>
+	<sqlMap resource="sqlmap/face/postgresql/Portlet-sql.xml"/>
+</sqlMapConfig>
+

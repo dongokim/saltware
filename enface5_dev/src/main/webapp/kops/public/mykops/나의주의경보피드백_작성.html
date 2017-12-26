@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>환자안전포탈</title>
+<meta name="author" content="환자안전포탈"/>
+<meta name="description" content="환자안전포탈"/>
+<meta name="keywords" content="환자안전포탈"/>
+<meta name="Resource-type" content="Document"/>
+<link rel="stylesheet" type="text/css" href="../css/default.css"/>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/sub.js"></script>
+</head>
+
+<body>
+<!-- Header -->
+<div id="header">
+	<div class="gnb_wrap">
+		<div class="depth1_cont">
+			<p class="logo"><a href="#"><img src="../images/common/logo.png" alt="환자안전보고학습시스템 로고" /></a></p>
+			<!-- 우측메뉴 -->
+			<div class="login">
+				<ul>
+					<li><a href="#">회원가입</a></li>
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">My KOPS</a></li>
+					<li>
+						<div class="search">
+							<a href="javascript:setVisible(true);">검색</a>
+							<p class="sch_box" id="layer1"><input type="text" name="" />
+								<a href="#" class="s_btn">검색</a>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //우측메뉴 -->
+			<!-- GNB -->
+			<div class="gnb" id="top1menu">
+				<ul id="top1m2">
+					<li><a href="#">보고하기</a></li>
+					<li><a href="#">신고하기</a></li>
+					<li><a href="#">학습하기</a></li>
+					<li><a href="#">문의하기</a></li>
+					<li><a href="#">KOPS</a></li>
+				</ul>
+			</div>
+			<!-- Quick_menu -->
+			<div class="quick_menu">
+				<div class="ac-container">
+					<input id="ac-1" name="accordion-1" type="checkbox" />
+					<label for="ac-1">Quick menu</label>
+					<article class="ac-small">
+						<ul class="quick_cont">
+							<li class="m1"><a href="#">주의경보</a></li>
+							<li class="m2"><a href="#">보고하기</a></li>
+							<li class="m3"><a href="#">신고하기</a></li>
+							<li class="m4"><a href="#">환자안전보고란</a></li>
+							<li class="m5"><a href="#">홍보영상</a></li>
+						</ul>
+					</article>
+				</div>
+			</div>
+			<!-- //Quick_menu -->
+		</div>
+		<div id="top2m2" class="top2m">
+			<div class="depth2_cont">
+				<div class="left_cont">
+					<p>최근 주의 경보 <strong class="">약물투여</strong></p>
+					<p class="pdt10"><img src="../images/common/img_live_icon1.png" alt="심각" /></p>
+				</div>
+				<div class="menu_wrap">
+					<ul>
+						<li><a href="#">보고 가이드</a></li>
+						<li><a href="#">환자/보호자용</a></li>
+						<li><a href="#">보건의료인용</a></li>
+						<li><a href="#">전담인력용</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">신고 가이드</a></li>
+						<li><a href="#">전담인력 신고</a></li>
+						<li><a href="#">환자안전 기준/지표</a></li>
+						<li><a href="#">환자안전위원회</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">자료실</a></li>
+						<li><a href="#">주의 경보</a></li>
+						<li><a href="#">교육일정</a></li>
+						<li><a href="#">교육안내/신청</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">문의 및 상담</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">인사말</a></li>
+						<li><a href="#">제도안내</a></li>
+						<li><a href="#">KOPS소개</a></li>
+						<li><a href="#">보도자료</a></li>
+						<li><a href="#">홍보자료</a></li>
+					</ul>
+				</div>
+				<div class="right_cont">
+					<p>환자안전사고 누적 보고 <span class="">230,454건</span></p>
+					<p>환자안전 전담인력 <span class="">20,454건</span></p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Sub_2depth -->
+		<div class="sub_menu">
+			<div class="top_depth2">
+				<ul class="menu6">
+					<li class="m1"><a href="#"><span>나의 보고내역</span></a></li>
+					<li class="m2"><a href="#"><span>나의 사실증명</span></a></li>
+					<li class="m3"><a href="#"><span>나의 신고내역</span></a></li>
+					<li class="m4"><a href="#" class="on"><span>나의 주의정보 <br />피드백</span></a></li>
+					<li class="m5"><a href="#"><span>나의 교육내역</span></a></li>
+					<li class="m6"><a href="#"><span>지표측정조사</span></a></li>
+					<li class="m7"><a href="#"><span>환자안전위원회 현황</span></a></li>
+					<li class="m8"><a href="#"><span>나의 문의 및 상담</span></a></li>
+					<li class="m9"><a href="#"><span>나의 정보</span></a></li>
+					<li class="m10"><a href="#"><span>회원탈퇴</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //Sub_2depth -->
+		<!-- //GNB -->
+	</div>
+	<script type="text/javascript">initTopMenu();</script>
+</div>
+<!-- //Header -->
+
+<!-- Contents -->
+<div id="container">
+	<!-- Navigation -->
+	<div class="navigation">
+		<a href="#">HOME</a><a href="#">My KOPS</a><a href="#">나의 주의경보 피드백</a>
+	</div>
+	<!-- //Navigation -->
+
+	<!-- iframe -->
+	<div class="contents">
+		<!-- contents -->
+		<h2 class="sub_title">나의 주의경보 피드백</h2>
+
+		<h3>주의 경보</h3>
+		<div class="board_list mgt10">
+			<table summary="주의 경보 정보입니다" class="table_t1">
+				<caption>주의 경보 정보</caption>
+				<colgroup>
+					<col width="30%">
+					<col width="70%">
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="col">주의경보명</th>
+						<td>투약주의</td>
+					</tr>
+					<tr>
+						<th scope="col">주의경보 발령일</th>
+						<td>2017-09-28</td>
+					</tr>
+					<tr>
+						<th scope="col">주의경보 수준</th>
+						<td>심각</td>
+					</tr>
+					<tr>
+						<th scope="col">주의경보 내용</th>
+						<td>**** 병증에 사용하는 ****에 대한 투약 사고....</td>
+					</tr>
+					<tr>
+						<th scope="col">URL</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="col">비고</th>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="board_box">
+			<h3>주의경보 피드백</h3>
+			<ul class="tab_table p3 mgt10" id="tabTable">
+				<li><a href="#tab1" class="tab">1차</a></li>
+				<li><a href="#tab2" class="tab">2차</a></li>
+				<li><a href="#tab3" class="tab">3차</a></li>
+			</ul>
+				
+			<div id="tab1">
+				<div class="board_list">
+					<table class="table_t2" summary="번호, 제목, 등록자, 등록일의 정보를 제공합니다.">
+						<caption>게시판 리스트</caption>
+						<colgroup>
+							<col width="50%">
+							<col width="50%">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col">피드백 제목</th>
+							<th scope="col">피드백 완료 기한</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>병원 주의 현황</td>
+							<td>2017.0608 ~ 2017.09.31</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="view_cont">
+								<ul class="response">
+									<li>
+										<p class="tit">1. 투약기구에 소독이 잘 되어 있나</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response1_1"><input type="radio" title="" name="response1" id="response1_1"><span>전혀 그렇지 않다</span></label></li>
+												<li><label for="response1_2"><input type="radio" title="" name="response1" id="response1_2"><span>그렇지 않다</span></label></li>
+												<li><label for="response1_3"><input type="radio" title="" name="response1" id="response1_3"><span>그렇다</span></label></li>
+												<li><label for="response1_4"><input type="radio" title="" name="response1" id="response1_4"><span>매우 그렇다</span></label></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<p class="tit">2. 약물을 투약하지 않았나</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response1_1"><input type="radio" title="" name="response1" id="response1_1"><span>전혀 그렇지 않다</span></label></li>
+												<li><label for="response1_2"><input type="radio" title="" name="response1" id="response1_2"><span>그렇지 않다</span></label></li>
+												<li><label for="response1_3"><input type="radio" title="" name="response1" id="response1_3"><span>그렇다</span></label></li>
+												<li><label for="response1_4"><input type="radio" title="" name="response1" id="response1_4"><span>매우 그렇다</span></label></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<p class="tit">3. 메뉴얼대로 설명 하였는가?</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response2_1"><input type="radio" title="" name="response2" id="response2_1"><span>전혀 그렇지 않다</span></label></li>
+												<li><label for="response2_2"><input type="radio" title="" name="response2" id="response2_2"><span>그렇지 않다</span></label></li>
+												<li><label for="response2_3"><input type="radio" title="" name="response2" id="response2_3"><span>그렇다</span></label></li>
+												<li><label for="response2_4"><input type="radio" title="" name="response2" id="response2_4"><span>매우 그렇다</span></label></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<p class="tit">4. 투약 부의</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response4_1"><input type="radio" title="" name="response4" id="response4_1"><span>복부</span></label></li>
+												<li><label for="response4_2"><input type="radio" title="" name="response4" id="response4_2"><span>팔</span></label></li>
+												<li><label for="response4_3"><input type="radio" title="" name="response4" id="response4_3"><span>머리</span></label></li>
+												<li><label for="response4_4"><input type="radio" title="" name="response4" id="response4_4"><span>엉덩이</span></label></li>
+												<li><label for="response4_4"><input type="radio" title="" name="response4" id="response4_4"><span>다리</span></label></li>
+												<li><label for="response4_4"><input type="radio" title="" name="response4" id="response4_4"><span>가슴</span></label></li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+								<div class="file_area over_h"><span class="f_left">첨부파일</span>
+									<p class="file_form">
+										<input type="text" class="text" id="file1" name="file1" style="width:500px"><a class="search_btn">찾아보기<input type="file" id="" name=""></a>
+									</p>
+								</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="btn_box mgt40">
+					<a href="#n" class="btn_pre">취 소</a>
+					<a href="#n" class="btn_next mgl20">제출하기</a>
+				</div>
+			</div>
+				
+			<div id="tab2" style="display:none;">
+				<div class="board_list">
+					<table class="table_t2" summary="번호, 제목, 등록자, 등록일의 정보를 제공합니다.">
+						<caption>게시판 리스트</caption>
+						<colgroup>
+							<col width="50%">
+							<col width="50%">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col">피드백 제목</th>
+							<th scope="col">피드백 완료 기한</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>병원 주의 현황</td>
+							<td>2014.0608 ~ 2016.09.31</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="view_cont">
+								<ul class="response">
+									<li>
+										<p class="tit">1. 투약기구에 소독이 잘 되어 있나</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response1_1"><input type="radio" title="" name="response1" id="response1_1"><span>전혀 그렇지 않다</span></label></li>
+												<li><label for="response1_2"><input type="radio" title="" name="response1" id="response1_2"><span>그렇지 않다</span></label></li>
+												<li><label for="response1_3"><input type="radio" title="" name="response1" id="response1_3"><span>그렇다</span></label></li>
+												<li><label for="response1_4"><input type="radio" title="" name="response1" id="response1_4"><span>매우 그렇다</span></label></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<p class="tit">2. 약물을 투약하지 않았나</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response1_1"><input type="radio" title="" name="response1" id="response1_1"><span>전혀 그렇지 않다</span></label></li>
+												<li><label for="response1_2"><input type="radio" title="" name="response1" id="response1_2"><span>그렇지 않다</span></label></li>
+												<li><label for="response1_3"><input type="radio" title="" name="response1" id="response1_3"><span>그렇다</span></label></li>
+												<li><label for="response1_4"><input type="radio" title="" name="response1" id="response1_4"><span>매우 그렇다</span></label></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<p class="tit">3. 메뉴얼대로 설명 하였는가?</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response2_1"><input type="radio" title="" name="response2" id="response2_1"><span>전혀 그렇지 않다</span></label></li>
+												<li><label for="response2_2"><input type="radio" title="" name="response2" id="response2_2"><span>그렇지 않다</span></label></li>
+												<li><label for="response2_3"><input type="radio" title="" name="response2" id="response2_3"><span>그렇다</span></label></li>
+												<li><label for="response2_4"><input type="radio" title="" name="response2" id="response2_4"><span>매우 그렇다</span></label></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<p class="tit">4. 투약 부의</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response4_1"><input type="radio" title="" name="response4" id="response4_1"><span>복부</span></label></li>
+												<li><label for="response4_2"><input type="radio" title="" name="response4" id="response4_2"><span>팔</span></label></li>
+												<li><label for="response4_3"><input type="radio" title="" name="response4" id="response4_3"><span>머리</span></label></li>
+												<li><label for="response4_4"><input type="radio" title="" name="response4" id="response4_4"><span>엉덩이</span></label></li>
+												<li><label for="response4_4"><input type="radio" title="" name="response4" id="response4_4"><span>다리</span></label></li>
+												<li><label for="response4_4"><input type="radio" title="" name="response4" id="response4_4"><span>가슴</span></label></li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+								<div class="file_area over_h"><span class="f_left">첨부파일</span>
+									<p class="file_form">
+										<input type="text" class="text" id="file1" name="file1" style="width:500px"><a class="search_btn">찾아보기<input type="file" id="" name=""></a>
+									</p>
+								</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="btn_box mgt40">
+					<a href="#n" class="btn_pre">취 소</a>
+					<a href="#n" class="btn_next mgl20">제출하기</a>
+				</div>
+			</div>
+				
+			<div id="tab3" style="display:none;">
+				<div class="board_list">
+					<table class="table_t2" summary="번호, 제목, 등록자, 등록일의 정보를 제공합니다.">
+						<caption>게시판 리스트</caption>
+						<colgroup>
+							<col width="50%">
+							<col width="50%">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col">피드백 제목</th>
+							<th scope="col">피드백 완료 기한</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>병원 주의 현황</td>
+							<td>2012.0608 ~ 2013.09.31</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="view_cont">
+								<ul class="response">
+									<li>
+										<p class="tit">1. 투약기구에 소독이 잘 되어 있나</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response1_1"><input type="radio" title="" name="response1" id="response1_1"><span>전혀 그렇지 않다</span></label></li>
+												<li><label for="response1_2"><input type="radio" title="" name="response1" id="response1_2"><span>그렇지 않다</span></label></li>
+												<li><label for="response1_3"><input type="radio" title="" name="response1" id="response1_3"><span>그렇다</span></label></li>
+												<li><label for="response1_4"><input type="radio" title="" name="response1" id="response1_4"><span>매우 그렇다</span></label></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<p class="tit">2. 약물을 투약하지 않았나</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response1_1"><input type="radio" title="" name="response1" id="response1_1"><span>전혀 그렇지 않다</span></label></li>
+												<li><label for="response1_2"><input type="radio" title="" name="response1" id="response1_2"><span>그렇지 않다</span></label></li>
+												<li><label for="response1_3"><input type="radio" title="" name="response1" id="response1_3"><span>그렇다</span></label></li>
+												<li><label for="response1_4"><input type="radio" title="" name="response1" id="response1_4"><span>매우 그렇다</span></label></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<p class="tit">3. 메뉴얼대로 설명 하였는가?</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response2_1"><input type="radio" title="" name="response2" id="response2_1"><span>전혀 그렇지 않다</span></label></li>
+												<li><label for="response2_2"><input type="radio" title="" name="response2" id="response2_2"><span>그렇지 않다</span></label></li>
+												<li><label for="response2_3"><input type="radio" title="" name="response2" id="response2_3"><span>그렇다</span></label></li>
+												<li><label for="response2_4"><input type="radio" title="" name="response2" id="response2_4"><span>매우 그렇다</span></label></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<p class="tit">4. 투약 부의</p>
+										<div class="radio_design radio_4">
+											<ul>
+												<li><label for="response4_1"><input type="radio" title="" name="response4" id="response4_1"><span>복부</span></label></li>
+												<li><label for="response4_2"><input type="radio" title="" name="response4" id="response4_2"><span>팔</span></label></li>
+												<li><label for="response4_3"><input type="radio" title="" name="response4" id="response4_3"><span>머리</span></label></li>
+												<li><label for="response4_4"><input type="radio" title="" name="response4" id="response4_4"><span>엉덩이</span></label></li>
+												<li><label for="response4_4"><input type="radio" title="" name="response4" id="response4_4"><span>다리</span></label></li>
+												<li><label for="response4_4"><input type="radio" title="" name="response4" id="response4_4"><span>가슴</span></label></li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+								<div class="file_area over_h"><span class="f_left">첨부파일</span>
+									<p class="file_form">
+										<input type="text" class="text" id="file1" name="file1" style="width:500px"><a class="search_btn">찾아보기<input type="file" id="" name=""></a>
+									</p>
+								</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="btn_box mgt40">
+					<a href="#n" class="btn_pre">취 소</a>
+					<a href="#n" class="btn_next mgl20">제출하기</a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">initTabMenu('tabTable');</script>
+		<!-- //contents -->
+	</div>
+	<!-- //iframe -->
+
+</div>
+<!-- Contents -->
+
+<!-- Footer -->
+<div id="footer">
+	<!-- Link_Area -->
+	<div class="foot_link">
+		<div class="menu_wrap">
+			<ul>
+				<li>보고하기</li>
+				<li><a href="#">보고 가이드</a></li>
+				<li><a href="#">환자/보호자용</a></li>
+				<li><a href="#">보건의료인용</a></li>
+				<li><a href="#">전담인력용</a></li>
+			</ul>
+			<ul>
+				<li>신고하기</li>
+				<li><a href="#">신고 가이드</a></li>
+				<li><a href="#">전담인력 신고</a></li>
+				<li><a href="#">환자안전 기준/지표</a></li>
+				<li><a href="#">환자안전위원회</a></li>
+			</ul>
+			<ul>
+				<li>학습하기</li>
+				<li><a href="#">자료실</a></li>
+				<li><a href="#">주의 경보</a></li>
+				<li><a href="#">교육일정</a></li>
+				<li><a href="#">교육안내/신청</a></li>
+			</ul>
+			<ul>
+				<li>문의하기</li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">문의 및 상담</a></li>
+			</ul>
+			<ul>
+				<li>KOPS</li>
+				<li><a href="#">인사말</a></li>
+				<li><a href="#">제도안내</a></li>
+				<li><a href="#">KOPS소개</a></li>
+				<li><a href="#">보도자료</a></li>
+				<li><a href="#">홍보자료</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- //Link_Area -->
+	<div class="foot_info">
+		<p class="f_logo"><a href="#"><img src="../images/common/f_logo.png" alt="환자안전보고학습시스템 로고" /></a></p>
+		<div class="link2">
+			<ul>
+				<li><a href="#">개인정보 보호 방침</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li class="ico"><a href="#">저작권정책안내</a></li>
+				<li class="ico"><a href="#">이메일주소무단수집거부</a></li>
+				<li class="ico"><a href="#">찾아오시는길</a></li>
+			</ul>
+			<p class="copyrighter">
+				<span>서울시 영등포구 국회대로76길 10(여의도동) 10층 우편번호07283 TEL:02-2076-0600 FAX:02-2076-0666</span>
+				<span>Copyright © 2013 <em>KOIHA</em>. All rights reserved.</span>
+			</p>
+		</div>
+		<div class="site_link">
+			<select id="" style="width:185px;">
+				<option>관련사이트 바로가기</option>
+			</select>
+			<p class="pdt10"><a href="#"><img src="../images/common/f_logo2.png" alt="의료기관평가인증원 로고" /></a></p>
+		</div>
+	</div>
+</div>
+<!-- //Footer -->
+</body>
+</html>

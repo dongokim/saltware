@@ -1,0 +1,349 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="face">
+
+	
+	
+	<!-- Query for [ USER : 사용자 ] Table -->
+	
+	<select id="user.exist" resultClass="int">
+			SELECT COUNT(*) cnt
+			FROM SECURITY_PRINCIPAL
+			WHERE PRINCIPAL_TYPE='U' AND SHORT_PATH=#userId#
+	</select>
+	
+	<resultMap class="com.saltware.enface.user.service.UserVO" id="UserVO.findUser">
+	    <result property="principalId" column="PRINCIPAL_ID"/>
+	    <result property="columnValue" column="COLUMN_VALUE"/>
+	    <result property="updateRequired" column="UPDATE_REQUIRED"/>
+	    <result property="authFailures" column="AUTH_FAILURES"/>
+	    <result property="isEnabled" column="IS_ENABLED"/>
+	    <result property="principalInfo01" column="PRINCIPAL_INFO01"/>		
+	    <result property="principalInfo02" column="PRINCIPAL_INFO02"/>		
+	    <result property="principalInfo03" column="PRINCIPAL_INFO03"/>		
+	</resultMap>
+	<select id="user.findUser" resultMap="UserVO.findUser">
+		SELECT a.principal_id, a.column_value, a.update_required, a.auth_failures, b.is_enabled, c.domain_id, b.principal_info01, b.principal_info02, b.principal_info03 
+    		FROM SECURITY_CREDENTIAL a, SECURITY_PRINCIPAL b, DOMAIN_PRINCIPAL c
+    		WHERE a.PRINCIPAL_ID=b.PRINCIPAL_ID 
+    		AND a.PRINCIPAL_ID = c.PRINCIPAL_ID
+    		AND b.PRINCIPAL_TYPE='U' AND b.SHORT_PATH=#userId#
+    		AND c.DOMAIN_ID=#domainId#
+	</select>
+	
+	<update id="user.updateAuthFailure">
+			UPDATE SECURITY_CREDENTIAL 
+			SET AUTH_FAILURES=(AUTH_FAILURES+1), MODIFIED_DATE=SYSDATE 
+			WHERE PRINCIPAL_ID=(SELECT principal_id FROM security_principal WHERE principal_type='U' AND short_path=#userId#)
+	</update>
+	
+	<update id="user.initAuthFailure">
+			UPDATE SECURITY_CREDENTIAL 
+			SET AUTH_FAILURES=0, MODIFIED_DATE=SYSDATE 
+			WHERE PRINCIPAL_ID=(SELECT principal_id FROM security_principal WHERE principal_type='U' AND short_path=#userId#)
+	</update>
+	
+	<resultMap class="com.saltware.enface.user.service.UserVO" id="UserVO.detail">
+	    <result property="userId" column="USER_ID" columnIndex="1"/>
+	    <result property="regNo" column="REG_NO" columnIndex="2"/>
+	    <result property="orgCd" column="ORG_CD" columnIndex="3"/>
+	    <result property="empNo" column="EMP_NO" columnIndex="4"/>
+	    <result property="kindCd" column="KIND_CD" columnIndex="5"/>
+	    <result property="typeCd" column="TYPE_CD" columnIndex="6"/>
+	    <result property="nmKor" column="NM_KOR" columnIndex="7"/>
+	    <result property="nmEng" column="NM_ENG" columnIndex="8"/>
+	    <result property="mobileTel" column="MOBILE_TEL" columnIndex="9"/>
+	    <result property="emailAddr" column="EMAIL_ADDR" columnIndex="10"/>
+	    <result property="userInfo04" column="USER_INFO04" columnIndex="11"/>
+	    <result property="langKnd" column="LANG_KND" columnIndex="12"/>
+	    <result property="regDatim" column="REG_DATIM" columnIndex="13"/>
+	    <result property="homeZip" column="HOME_ZIP" columnIndex="14"/>
+	    <result property="homeAddr1" column="HOME_ADDR1" columnIndex="15"/>
+	    <result property="homeAddr2" column="HOME_ADDR2" columnIndex="16"/>
+	    <result property="lastLogon" column="LAST_LOGON" columnIndex="17"/>
+	    <result property="modifyMenu" column="MODIFY_MENU" columnIndex="18"/>
+	    <result property="principalId" column="PRINCIPAL_ID" columnIndex="19"/>
+	    <result property="principalName" column="PRINCIPAL_NAME" columnIndex="20"/>
+	    <result property="authMethod" column="AUth_METHOD" columnIndex="21"/>
+	    <result property="defaultPage" column="DEFAULT_PAGE" columnIndex="22"/>
+	    <result property="theme" column="THEME" columnIndex="23"/>
+	    <result property="updateRequired" column="UPDATE_REQUIRED" columnIndex="24"/>
+	    <result property="domainId" column="DOMAIN_ID" columnIndex="25"/>
+	    <result property="domainNm" column="DOMAIN_Nm" columnIndex="26"/>
+	</resultMap>
+	<select id="user.detail" resultMap="UserVO.detail">
+			SELECT A.USER_ID, A.REG_NO, A.ORG_CD, A.EMP_NO, A.KIND_CD, A.TYPE_CD, A.NM_KOR, A.NM_ENG, A.MOBILE_TEL, A.EMAIL_ADDR, 
+				   A.USER_INFO04, 
+				   <isNotNull property="lang_knd">#lang_knd# AS LANG_KND, </isNotNull>
+	  			<isNull property="lang_knd">A.LANG_KND, </isNull>
+				   A.REG_DATIM, A.HOME_ZIP, A.HOME_ADDR1, A.HOME_ADDR2, A.LAST_LOGON, D.MODIFY_MENU,
+				   B.PRINCIPAL_ID, B.PRINCIPAL_NAME, B.AUTH_METHOD, D.DEFAULT_PAGE, D.THEME, 
+				   C.UPDATE_REQUIRED, D.DOMAIN_ID, E.DOMAIN_NM
+    		FROM USERPASS A 
+    		INNER JOIN SECURITY_PRINCIPAL B ON A.USER_ID=B.SHORT_PATH
+		  	INNER JOIN SECURITY_CREDENTIAL C ON B.PRINCIPAL_ID=C.PRINCIPAL_ID
+		  	INNER JOIN DOMAIN_PRINCIPAL D ON B.PRINCIPAL_ID = D.PRINCIPAL_ID
+		  	LEFT OUTER JOIN DOMAIN_LANG E ON E.DOMAIN_ID = D.DOMAIN_ID 
+	  		<isNotNull prepend=" AND " property="lang_knd">E.LANG_KND = #lang_knd#</isNotNull>
+	  		<isNull prepend=" AND " property="lang_knd">E.LANG_KND = A.LANG_KND</isNull>
+    		WHERE B.PRINCIPAL_TYPE='U' AND A.USER_ID=#userId# AND D.DOMAIN_ID=#domainId#
+	</select>
+	
+	<select id="user.findGroupRole" resultClass="org.apache.commons.collections.map.CaseInsensitiveMap">
+		/* user.findGroupRole */
+		SELECT principal_id, short_path, parent_id, principal_type, theme, default_page, site_name, principal_name
+		FROM security_principal
+		WHERE (domain_id=0 or domain_id=#domainId#) AND principal_id in (
+			SELECT role_id FROM security_user_role 
+		    WHERE user_id =#principal_id#
+		    UNION
+		    SELECT role_id FROM security_group_role WHERE group_id=(
+				SELECT group_id FROM (
+					SELECT group_id, ROW_NUMBER() OVER(order by sort_order) rn 
+					FROM security_user_group a
+					JOIN security_principal b on b.principal_id=a.group_id
+					WHERE a.user_id=#principal_id# AND (b.domain_id=0 OR b.domain_id=#domainId#)
+				) where rn = 1
+			)  
+			UNION
+			SELECT group_id FROM (
+				SELECT group_id, ROW_NUMBER() OVER(order by sort_order) rn 
+				FROM security_user_group a
+				JOIN security_principal b on b.principal_id=a.group_id
+				WHERE a.user_id=#principal_id# AND (b.domain_id=0 OR b.domain_id=#domainId#)
+			) where rn = 1
+		)
+	</select>
+	
+	<select id="user.findGroup" resultClass="org.apache.commons.collections.map.CaseInsensitiveMap">
+		/* user.findGroup */
+		SELECT principal_id, short_path, parent_id, principal_type, theme, default_page, site_name, principal_name
+		FROM security_principal
+		WHERE (domain_id=0 or domain_id=#domainId#) AND principal_type='G' AND principal_id in (
+			SELECT group_id FROM (
+				SELECT group_id, ROW_NUMBER() OVER(order by sort_order) rn 
+				FROM security_user_group a
+				JOIN security_principal b on b.principal_id=a.group_id
+				WHERE a.user_id=#principal_id# AND (b.domain_id=0 OR b.domain_id=#domainId#)
+			) where rn = 1
+		)
+	</select>
+	
+	<select id="user.findRole" resultClass="org.apache.commons.collections.map.CaseInsensitiveMap">
+		/* user.findRole */
+		SELECT principal_id, short_path, parent_id, principal_name
+		FROM security_principal
+		WHERE (domain_id=0 or domain_id=#domainId#) AND principal_type='R' AND principal_id in (
+			SELECT role_id FROM security_user_role 
+		    WHERE user_id =#principal_id#
+		    UNION
+		    SELECT role_id FROM security_group_role WHERE group_id=(
+				SELECT group_id FROM (
+					SELECT group_id, ROW_NUMBER() OVER(order by sort_order) rn 
+					FROM security_user_group a
+					JOIN security_principal b on b.principal_id=a.group_id
+					WHERE a.user_id=#principal_id# AND (b.domain_id=0 OR b.domain_id=#domainId#)
+				) where rn = 1
+			)
+		)
+	</select>
+	
+	<select id="user.findParentRole" resultClass="org.apache.commons.collections.map.CaseInsensitiveMap">
+			SELECT principal_id, short_path, parent_id, principal_name
+			FROM security_principal
+			WHERE principal_type='R' AND principal_id=#parentId#
+	</select>
+	
+	<select id="user.findParentGroupRole" resultClass="org.apache.commons.collections.map.CaseInsensitiveMap">
+			SELECT principal_id, short_path, parent_id, principal_type, theme, default_page, site_name, principal_name 
+			FROM security_principal
+			WHERE principal_id=#parent_id# 
+			   OR principal_id in ( SELECT role_id FROM security_group_role WHERE group_id=#parent_id# ) 
+	</select>
+	
+	<select id="user.getPermission" resultClass="org.apache.commons.collections.map.CaseInsensitiveMap">
+	/* user.getPermission */
+			SELECT * FROM ( 
+				SELECT a.permission_id,a.title,a.res_url,a.res_type,a.action_mask,a.is_allow, '1' AS row_num 
+				FROM security_permission a 
+				WHERE a.principal_id=$principal_id$ AND a.RES_TYPE IN (0,1,2,3,4)
+				<isGreaterEqual prepend=" AND " property="domainId" compareValue="0">(a.DOMAIN_ID = 0 OR a.DOMAIN_ID=#domainId#)</isGreaterEqual>
+				<iterate prepend="UNION" property="roleIdList" open="" close="" conjunction="UNION">
+				SELECT a.permission_id,a.title,a.res_url,a.res_type,a.action_mask,a.is_allow, '2'||#roleIdList[].index# AS row_num 
+		        FROM security_permission a
+		        WHERE a.principal_id=#roleIdList[].id# AND a.RES_TYPE IN (0,1,2,3,4)
+		        <isGreaterEqual prepend=" AND " property="domainId" compareValue="0">(a.DOMAIN_ID = 0 OR a.DOMAIN_ID=#domainId#)</isGreaterEqual>
+				</iterate>
+	       
+				<!-- iterate prepend="UNION" property="groupIdList" open="" close="" conjunction="UNION">
+				SELECT a.permission_id,a.title,a.res_url,a.res_type,a.action_mask,a.is_allow, '3'||#groupIdList[].index# AS row_num 
+		        FROM security_permission a
+		        WHERE a.principal_id=#groupIdList[].id# AND a.RES_TYPE IN (0,1,2,3,4)
+				</iterate-->
+	        ) ORDER BY ROW_NUM, RES_TYPE, IS_ALLOW ASC
+	</select>
+	
+	<update id="user.changePassword">
+			UPDATE SECURITY_CREDENTIAL SET COLUMN_VALUE=#password#, UPDATE_REQUIRED=0, AUTH_FAILURES=0, MODIFIED_DATE=SYSDATE
+    		WHERE PRINCIPAL_ID=(
+    			SELECT PRINCIPAL_ID
+    			FROM SECURITY_PRINCIPAL
+    			WHERE PRINCIPAL_TYPE='U' AND SHORT_PATH=#userId#
+    		)
+	</update>
+	
+	<select id="user.detailExtraInfo" resultClass="org.apache.commons.collections.map.CaseInsensitiveMap">
+	/* user.detailExtraInfo */
+			SELECT a.principal_id AS principal_id, b.nm_kor AS userName, b.org_cd AS orgCd, 
+				   (SELECT short_path FROM SECURITY_PRINCIPAL WHERE principal_id=c.group_id) AS groupId,
+				   (SELECT principal_name FROM SECURITY_PRINCIPAL WHERE principal_id=c.group_id) AS groupName
+    		FROM SECURITY_PRINCIPAL a INNER JOIN USERPASS b ON a.SHORT_PATH=b.USER_ID
+    								  INNER JOIN SECURITY_USER_GROUP c ON a.PRINCIPAL_ID=c.USER_ID
+    		WHERE a.PRINCIPAL_TYPE='U' AND a.SHORT_PATH=#userId# AND c.SORT_ORDER=0
+	</select>
+	
+	<insert id="user.writeLog">
+			INSERT INTO USER_STATISTICS 
+				(DOMAIN_ID,IPADDRESS,PRINCIPAL_ID,USER_ID,USER_NAME,ORG_CD,ORG_NAME,TIME_STAMP,STATUS,ELAPSED_TIME,ACCESS_BROWSER) 
+			VALUES(#domainId#,#remoteAddress#,#principal_id#,#userId#,#userName#,#orgCd#,#orgName#,SYSDATE,#status#,0,#userAgent#)
+	</insert>
+	
+	<update id="user.updateLastLogin">
+    		UPDATE USERPASS SET LAST_IP=#userId#, LAST_LOGON=SYSDATE, LANG_KND=#langKnd# WHERE USER_ID=#userId#
+    </update>
+    
+    <insert id="user.insertSecurityPrincipal">
+		<![CDATA[
+			INSERT INTO SECURITY_PRINCIPAL
+				( PRINCIPAL_ID,SHORT_PATH,FULL_PATH,PRINCIPAL_NAME,CLASSNAME,IS_MAPPING_ONLY,IS_ENABLED,PRINCIPAL_TYPE,CREATION_DATE,MODIFIED_DATE )
+			VALUES ( #principal_id#,#userId#,'/user/'||#userId#,#nmKor#,'org.tok.view.security.InternalUserPrincipalImpl',0,1,'U',SYSDATE,SYSDATE )
+		]]>
+	</insert>
+	
+	<insert id="user.insertSecurityCredential">
+		<![CDATA[
+			INSERT INTO SECURITY_CREDENTIAL
+				( CREDENTIAL_ID,PRINCIPAL_ID,COLUMN_VALUE,CLASSNAME,"TYPE",UPDATE_REQUIRED,IS_ENCODED,IS_ENABLED,AUTH_FAILURES,IS_EXPIRED,CREATION_DATE,MODIFIED_DATE )
+			VALUES ( #credentialId#,#principal_id#,#columnValue#,'com.saltware.enview.security.spi.impl.DefaultPasswordCredentialImpl',0,0,1,1,0,0,SYSDATE,SYSDATE )
+		]]>
+	</insert>
+	
+	<insert id="user.insertUserRole">
+		<![CDATA[
+			INSERT INTO SECURITY_USER_ROLE (user_id, role_id) VALUES(
+	    		#principal_id#, 
+	    		(SELECT principal_id FROM security_principal WHERE principal_type='R' AND short_path=#roleId#)
+	    	)
+		]]>
+	</insert>
+	
+	<insert id="user.insertUserGroup">
+		<![CDATA[
+			INSERT INTO SECURITY_USER_GROUP (user_id, group_id) VALUES(
+	    		#principal_id#, 
+	    		(SELECT principal_id FROM security_principal WHERE principal_type='G' AND short_path=#groupId#)
+	    	)
+		]]>
+	</insert>
+	
+	<insert id="user.insert">
+		<![CDATA[
+			INSERT INTO USERPASS
+				( NM_KOR,NM_NIC,USER_ID,GRADE_CD,EMAIL_ADDR,HOME_TEL,MOBILE_TEL,HOME_ZIP,HOME_ADDR1,HOME_ADDR2,BIRTH_YMD,INTRO,SEX_FLAG,REG_DATIM )
+			VALUES ( #nmKor#,#nmNic#,#userId#,#gradeCd#,#emailAddr#,#homeTel#,#mobileTel#,#homeZip#,#homeAddr1#,#homeAddr2#,#birthYmd#,#intro#,#sexFlag#,SYSDATE )
+		]]>
+	</insert>
+	
+	<insert id="user.insertPushConfig">
+		<![CDATA[
+			INSERT INTO PUSH_CONFIG
+				( CONFIG_ID,PUSH_NOTICE,RSV_COMMENT,RSV_FRIEND,RSV_GROUP,PUSH_EVENT,PUSH_CHAT )
+			VALUES ( #shortPath#,1,1,0,1,1,1 )
+		]]>
+	</insert>
+	
+	<update id="user.updateSecurityPrincipal">
+		<![CDATA[
+			UPDATE SECURITY_PRINCIPAL
+			SET PRINCIPAL_NAME=#nm_kor#, IS_ENABLED=#enabled#, MODIFIED_DATE=SYSDATE
+			WHERE 1=1 AND PRINCIPAL_TYPE='U' AND SHORT_PATH=#userId#
+		]]>
+	</update>
+	
+	<update id="user.update">
+		<![CDATA[
+			UPDATE USERPASS
+			SET NM_KOR=#nmKor#,NM_NIC=#nmNic#,USER_ID=#userId#,GRADE_CD=#gradeCd#,EMAIL_ADDR=#emailAddr#,MOBILE_TEL=#mobileTel#,HOME_TEL=#homeTel#,HOME_ZIP=#homeZip#,HOME_ADDR1=#homeAddr1#,HOME_ADDR2=#homeAddr2#,BIRTH_YMD=#birthYmd#,INTRO=#intro#,SEX_FLAG=#sexFlag#
+			WHERE 1=1 
+				AND USER_ID=#userId#
+		]]>
+	</update>
+	
+	<update id="user.updateModifyMenu">
+		<![CDATA[
+			UPDATE DOMAIN_PRINCIPAL
+			SET MODIFY_MENU=#modifyMenu#
+			WHERE PRINCIPAL_ID=#principal_id# AND DOMAIN_ID=#domainId#
+		]]>
+	</update>
+	
+	<update id="user.updateModifyMenuByRole">
+		<![CDATA[
+			UPDATE DOMAIN_PRINCIPAL
+			SET MODIFY_MENU=#modifyMenu#
+			WHERE DOMAIN_ID=#domainId# AND PRINCIPAL_ID IN (
+				SELECT USER_ID FROM SECURITY_USER_ROLE WHERE ROLE_ID=#roleId#
+			)
+		]]>
+	</update>
+	
+	<update id="user.updateModifyMenuByGroup">
+		<![CDATA[
+			UPDATE DOMAIN_PRINCIPAL
+			SET MODIFY_MENU=#modifyMenu#
+			WHERE DOMAIN_ID=#domainId# AND PRINCIPAL_ID IN (
+				SELECT USER_ID FROM SECURITY_USER_GROUP WHERE GROUP_ID=#groupId#
+			)
+		]]>
+	</update>
+	
+	<update id="user.updateModifyMenuByGroupRole">
+		<![CDATA[
+			UPDATE DOMAIN_PRINCIPAL
+			SET MODIFY_MENU=#modifyMenu#
+			WHERE DOMAIN_ID=#domainId# AND PRINCIPAL_ID IN (
+			    SELECT USER_ID FROM SECURITY_USER_GROUP WHERE GROUP_ID IN (
+			    	SELECT GROUP_ID FROM SECURITY_GROUP_ROLE WHERE ROLE_ID=#roleId#
+			    )
+			)
+		]]>
+	</update>
+
+	<select id="user.domainIds" resultClass="java.lang.String">
+			select a.domain_id from DOMAIN_PRINCIPAL a 
+			join SECURITY_PRINCIPAL b on a.PRINCIPAL_ID = b.PRINCIPAL_ID
+			where b.PRINCIPAL_TYPE = 'U' and b.SHORT_PATH = #userId#
+	</select>
+	
+	<select id="user.now" resultClass="java.lang.String">
+	/* user.now */	
+		SELECT TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') FROM DUAL
+	</select>
+
+	<select id="user.loginIps" resultClass="java.lang.String"> /* user.loginIps */
+		SELECT ipaddress FROM (
+			SELECT ROW_NUMBER() OVER ( ORDER BY time_stamp DESC) RNUM , ipaddress FROM user_statistics
+			WHERE user_id=#userId#
+			ORDER BY time_stamp DESC
+		) a
+		WHERE RNUM &lt;= 20
+	</select>
+	
+	<update id="user.updateBlockAbroad"> /* user.updateBlockAbroad */
+			UPDATE SECURITY_PRINCIPAL
+			SET PRINCIPAL_INFO01 = #blockAbroad#
+			WHERE full_path = '/user/' || #userId#
+	</update>
+	
+</sqlMap>
+

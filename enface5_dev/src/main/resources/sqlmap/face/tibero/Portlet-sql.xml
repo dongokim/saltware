@@ -1,0 +1,99 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="face">
+	<resultMap class="com.saltware.enface.portlet.board.service.MiniBoardVO" id="MiniBoardVO.findBltn">
+		<result columnIndex="2" property="boardId" column="BOARD_ID"/>
+		<result columnIndex="3" property="boardNmKo" column="BOARD_NM_KO"/>
+		<result columnIndex="4" property="boardNmEn" column="BOARD_NM_EN"/>
+	    <result columnIndex="5" property="bltnNo" column="BLTN_NO"/>
+	    <result columnIndex="6" property="bltnSubjKo" column="BLTN_SUBJ_KO"/>
+	    <result columnIndex="7" property="bltnSubjEn" column="BLTN_SUBJ_EN"/>
+	    <result columnIndex="8" property="userNickKo" column="user_nick_ko"/>
+	    <result columnIndex="9" property="userNickEn" column="user_nick_en"/>
+	    <result columnIndex="10" property="userOrgNameKo" column="user_org_name_ko"/>
+	    <result columnIndex="11" property="userOrgNameEn" column="user_org_name_en"/>
+		<result columnIndex="12" property="placeKo" column="place_ko"/>
+	    <result columnIndex="13" property="placeEn" column="place_en"/>
+	    <result columnIndex="14" property="bltnBgnYmd" column="bltn_bgn_ymd"/>
+	    <result columnIndex="15" property="bltnEndYmd" column="bltn_end_ymd"/>
+	    <result columnIndex="16" property="regDatim" column="REG_DATIM"/>
+	    <result columnIndex="17" property="updDatim" column="UPD_DATIM"/>
+	</resultMap>
+	<select id="miniBoard.findBltn" resultMap="MiniBoardVO.findBltn">
+	/* miniBoard.findBltn */
+		SELECT * FROM (
+			SELECT
+			  ROW_NUMBER() OVER( ORDER BY d.bltn_gn DESC, d.bltn_gq DESC) AS rnum,
+			  a.board_id,
+			  b.board_nm as board_nm_ko,
+			  c.board_nm as board_nm_en,
+			  d.bltn_no,
+			  e.bltn_subj as bltn_subj_ko,
+			  f.bltn_subj as bltn_subj_en,
+			  e.user_nick as user_nick_ko,
+			  f.user_nick as user_nick_en,
+			  e.user_org_name as user_org_name_ko,
+			  f.user_org_name as user_org_name_en,
+			  e.place as place_ko,			  
+			  f.place as place_en,
+			  d.bltn_bgn_ymd,
+			  d.bltn_end_ymd,
+			  d.reg_datim,
+			  d.upd_datim
+			FROM board a
+			LEFT OUTER JOIN board_lang b on b.board_id = a.board_id AND b.lang_knd = 'ko'
+			LEFT OUTER JOIN board_lang c on c.board_id = a.board_id AND c.lang_knd = 'en'
+			JOIN bulletin d on d.board_id = a.board_id
+			LEFT OUTER JOIN bulletin_lang e on e.bltn_no = d.bltn_no AND e.lang_knd = 'ko'
+			LEFT OUTER JOIN bulletin_lang f on f.bltn_no = d.bltn_no ANd f.lang_knd = 'en'
+			WHERE
+			  a.board_id=#boardId#
+			  AND d.bltn_gid = 'EB' AND d.DEL_FLAG = 'N' 
+			  <isNotNull property="today" prepend=" AND ">TO_CHAR( d.reg_datim /**P*/, 'YYYY-MM-DD') = TO_CHAR( $today$ /**P*/, 'YYYY-MM-DD')</isNotNull>
+			)
+		WHERE rnum between 1 AND <isNotNull property="row">#row#</isNotNull><isNull property="row">10</isNull>
+	</select>
+	
+	<select id="miniBoard.findBltnByCategory" resultMap="MiniBoardVO.findBltn">
+	/* miniBoard.findBltnByCategory */
+		SELECT * FROM (
+			SELECT
+			  ROW_NUMBER() OVER( ORDER BY d.bltn_gn DESC, d.bltn_gq DESC) AS rnum,
+			  a.board_id,
+			  b.board_nm as board_nm_ko,
+			  c.board_nm as board_nm_en,
+			  d.bltn_no,
+			  e.bltn_subj as bltn_subj_ko,
+			  f.bltn_subj as bltn_subj_en,
+			  e.user_nick as user_nick_ko,
+			  f.user_nick as user_nick_en,
+			  e.user_org_name as user_org_name_ko,
+			  f.user_org_name as user_org_name_en,
+			  e.place as place_ko,			  
+			  f.place as place_en,
+			  d.bltn_bgn_ymd,
+			  d.bltn_end_ymd,
+			  d.reg_datim,
+			  d.upd_datim
+			FROM board a
+			LEFT OUTER JOIN board_lang b on b.board_id = a.board_id AND b.lang_knd = 'ko'
+			LEFT OUTER JOIN board_lang c on c.board_id = a.board_id AND c.lang_knd = 'en'
+			JOIN bulletin d on d.board_id = a.board_id
+			LEFT OUTER JOIN bulletin_lang e on e.bltn_no = d.bltn_no AND e.lang_knd = 'ko'
+			LEFT OUTER JOIN bulletin_lang f on f.bltn_no = d.bltn_no ANd f.lang_knd = 'en'
+			WHERE
+			  a.board_id in (
+			  SELECT board_id from CATE_BOARD where cate_id = (
+				SELECT t2.cate_id 
+				FROM board t1
+				JOIN cate_board t2 ON t2.board_id = t1.board_id
+				WHERE t1.board_id = #boardId#
+				) AND board_id != #boardId#
+			  )
+			  AND d.bltn_gid = 'EB' AND d.DEL_FLAG = 'N' 
+			  <isNotNull property="today" prepend=" AND ">TO_CHAR( d.reg_datim /**P*/, 'YYYY-MM-DD') = TO_CHAR( $today$ /**P*/, 'YYYY-MM-DD')</isNotNull>
+			)
+		WHERE rnum between 1 AND <isNotNull property="row">$row$</isNotNull><isNull property="row">10</isNull>
+	</select>
+</sqlMap>
+

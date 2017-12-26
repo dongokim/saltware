@@ -1,0 +1,119 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="face">
+
+	
+	
+	<!-- Query for [ SECURITY_PRINCIPAL : 그룹관리 ] Table -->
+	<resultMap id="face_SampleVO_PK" class="com.saltware.enface.sample.service.SamplePK">
+	
+		<result property="principalId" column="PRINCIPAL_ID" columnIndex="1"/>	
+	</resultMap>
+	
+	<resultMap id="face_SampleVO" class="com.saltware.enface.sample.service.SampleVO">
+	 
+		<result property="principalId" column="PRINCIPAL_ID" columnIndex="1"/>	 
+		<result property="parentId" column="PARENT_ID" columnIndex="2"/>	 
+		<result property="shortPath" column="SHORT_PATH" columnIndex="3"/>	 
+		<result property="principalName" column="PRINCIPAL_NAME" columnIndex="4"/>	 
+		<result property="theme" column="THEME" columnIndex="5"/>	 
+		<result property="siteName" column="SITE_NAME" columnIndex="6"/>	 
+		<result property="defaultPage" column="DEFAULT_PAGE" columnIndex="7"/>	 
+		<result property="principalType" column="PRINCIPAL_TYPE" columnIndex="8"/>	 
+		<result property="principalOrder" column="PRINCIPAL_ORDER" columnIndex="9"/>	 
+		<result property="creationDate" column="CREATION_DATE" columnIndex="10"/>	 
+		<result property="modifiedDate" column="MODIFIED_DATE" columnIndex="11"/>	 
+		<result property="principalInfo01" column="PRINCIPAL_INFO01" columnIndex="12"/>	 
+		<result property="principalInfo02" column="PRINCIPAL_INFO02" columnIndex="13"/>	 
+		<result property="principalInfo03" column="PRINCIPAL_INFO03" columnIndex="14"/>	 
+		<result property="principalDesc" column="PRINCIPAL_DESC" columnIndex="15"/>	
+	</resultMap>
+	
+	<select id="sample.totalCount" resultClass="int">
+
+			SELECT COUNT(*) totcnt
+			FROM SECURITY_PRINCIPAL
+			WHERE 1=1 AND PRINCIPAL_TYPE='G' 
+				<isNotEqual prepend=" AND " property="parentId" compareValue="0">PARENT_ID=#parentId#</isNotEqual>
+					<isNotNull  prepend=" AND " property="shortPathCond">SHORT_PATH LIKE #shortPathCond#||'%'</isNotNull>
+					<isNotNull  prepend=" AND " property="principalNameCond">PRINCIPAL_NAME LIKE #principalNameCond#||'%'</isNotNull>
+	</select>
+	
+	<select id="sample.exist" resultClass="int">
+			SELECT COUNT(*) cnt
+			FROM SECURITY_PRINCIPAL
+			WHERE PRINCIPAL_TYPE='G' AND SHORT_PATH=#shortPath#
+	</select>
+	
+	<select id="sample.findByPage" resultMap="face_SampleVO_PK">
+			SELECT tb2.* FROM (
+				SELECT tb1.*, rownum rnum FROM (
+					SELECT PRINCIPAL_ID
+					FROM SECURITY_PRINCIPAL
+					WHERE 1=1 AND PRINCIPAL_TYPE='G'
+					<isNotEqual prepend=" AND " property="parentId" compareValue="0">PARENT_ID=#parentId#</isNotEqual>
+					<isNotNull  prepend=" AND " property="shortPathCond">SHORT_PATH LIKE #shortPathCond#||'%'</isNotNull>
+					<isNotNull  prepend=" AND " property="principalNameCond">PRINCIPAL_NAME LIKE #principalNameCond#||'%'</isNotNull>
+					<isNotNull property="sortColumn"> ORDER BY $sortColumn$ $sortMethod$ </isNotNull>
+				) tb1
+			) tb2 WHERE tb2.rnum BETWEEN #startRow# AND #endRow#
+			
+	</select>
+
+	<select id="sample.findAll" resultMap="face_SampleVO_PK">
+			SELECT PRINCIPAL_ID
+			FROM SECURITY_PRINCIPAL
+			WHERE PRINCIPAL_TYPE='G' 
+	</select>
+	
+	<select id="sample.findByCondition" resultClass="java.util.HashMap">
+			SELECT PRINCIPAL_ID, SHORT_PATH, PRINCIPAL_NAME
+	        FROM SECURITY_PRINCIPAL
+	        WHERE PRINCIPAL_TYPE='G' AND SHORT_PATH IN ($samples$)
+	</select>
+	
+	<select id="sample.findByMaster" resultMap="face_SampleVO_PK">
+			SELECT PRINCIPAL_ID
+			FROM SECURITY_PRINCIPAL
+			WHERE 1=1 AND PRINCIPAL_TYPE='G' 
+				<isNotEqual prepend=" AND " property="parentId" compareValue="0">=#parentId#</isNotEqual>
+	</select>
+	
+
+	<select id="sample.detail" resultMap="face_SampleVO">
+		<![CDATA[
+			SELECT PRINCIPAL_ID,PARENT_ID,SHORT_PATH,PRINCIPAL_NAME,THEME,SITE_NAME,DEFAULT_PAGE,PRINCIPAL_TYPE,PRINCIPAL_ORDER,CREATION_DATE,MODIFIED_DATE,PRINCIPAL_INFO01,PRINCIPAL_INFO02,PRINCIPAL_INFO03,PRINCIPAL_DESC
+			FROM SECURITY_PRINCIPAL
+			WHERE 1=1 
+				AND PRINCIPAL_ID=#principalId#
+		]]>
+	</select>
+	
+	<insert id="sample.insert">
+		<![CDATA[
+			INSERT INTO SECURITY_PRINCIPAL
+				( PRINCIPAL_ID,PARENT_ID,SHORT_PATH,FULL_PATH,PRINCIPAL_NAME,CLASSNAME,IS_MAPPING_ONLY,IS_ENABLED,THEME,SITE_NAME,DEFAULT_PAGE,PRINCIPAL_TYPE,PRINCIPAL_ORDER,CREATION_DATE,MODIFIED_DATE,PRINCIPAL_INFO01,PRINCIPAL_INFO02,PRINCIPAL_INFO03,PRINCIPAL_DESC )
+			VALUES ( #principalId#,#parentId#,#shortPath#,'/sample/'||#shortPath#,#principalName#,'com.saltware.enview.security.InternalSamplePrincipalImpl',0,1,#theme#,#siteName#,#defaultPage#,'G',(SELECT count(PRINCIPAL_ID) FROM SECURITY_PRINCIPAL WHERE PARENT_ID=#parentId#),#creationDate#,#modifiedDate#,#principalInfo01#,#principalInfo02#,#principalInfo03#,#principalDesc# )
+		]]>
+	</insert>
+	
+	<update id="sample.update">
+		<![CDATA[
+			UPDATE SECURITY_PRINCIPAL
+			SET PRINCIPAL_ID=#principalId#,PARENT_ID=#parentId#,SHORT_PATH=#shortPath#,PRINCIPAL_NAME=#principalName#,THEME=#theme#,SITE_NAME=#siteName#,DEFAULT_PAGE=#defaultPage#,PRINCIPAL_ORDER=#principalOrder#,MODIFIED_DATE=#modifiedDate#,PRINCIPAL_INFO01=#principalInfo01#,PRINCIPAL_INFO02=#principalInfo02#,PRINCIPAL_INFO03=#principalInfo03#,PRINCIPAL_DESC=#principalDesc#
+			WHERE 1=1 
+				AND PRINCIPAL_ID=#principalId#
+		]]>
+	</update>
+	
+	<delete id="sample.delete">
+		<![CDATA[
+			DELETE FROM SECURITY_PRINCIPAL
+			WHERE 1=1 
+				AND PRINCIPAL_ID=#principalId#
+		]]>
+	</delete>
+	
+	
+</sqlMap>
+

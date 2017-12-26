@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:mvc="http://www.springframework.org/schema/mvc" 
+        xmlns:p="http://www.springframework.org/schema/p" 
+		xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/mvc
+							http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+							http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<context:component-scan base-package="com.saltware.enface.portlet">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+ 
+	<!-- View Resolver for JSPs -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/apps/enface/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+ 
+	<bean id="methodNameResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName">
+			<value>method</value>
+		</property>
+		<property name="defaultMethodName">
+			<value>list</value>
+		</property>
+	</bean>
+	
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">friendlyError</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Multipart Resolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="EUC-KR"/>
+	</bean>
+
+	<!-- SSO 로그인 핸들러 -->
+	<bean id="enpassSSOLoginHandler" class="com.saltware.enface.sso.EnpassSSOLoginHandler">
+	</bean>
+
+	<!-- 포털 로그인 처리기 -->
+	<!-- 
+	<bean id="loginController" class="com.saltware.enface.user.web.LoginController">
+		<property name="userManager" ref="com.saltware.enface.user.service.UserManager" />
+		<property name="ssoLoginHandler" ref="enpassSSOLoginHandler" />
+	</bean>
+	 -->
+	<!-- SNS 로그인 처리기 -->
+	<bean id="loginController" class="com.saltware.enface.sns.web.LoginController">
+		<property name="userManager" ref="com.saltware.enface.user.service.UserManager" />
+		<!-- 
+		<property name="ssoLoginHandler" ref="enpassSSOLoginHandler" />
+		 -->
+	</bean>
+	
+	
+	
+	<!-- 포털 사용자 변경 처리기 -->
+	<bean id="userChangeController" class="com.saltware.enface.user.web.UserChangeController">
+		<property name="userManager" ref="com.saltware.enface.user.service.UserManager" />
+		<!-- 
+		<property name="ssoLoginHandler" ref="enpassSSOLoginHandler" />
+		 -->
+	</bean>
+	
+	<!-- 포털 사용자 비밀번호 변경 처리기 -->
+	<bean id="userPasswordChangeController" class="com.saltware.enface.user.web.UserPasswordChangeController">
+		<property name="userManager" ref="com.saltware.enface.user.service.UserManager" />
+	</bean>
+	
+	<!-- 우편번호 검색 처리기 -->
+	<bean id="zipUtilityController" class="com.saltware.enface.tool.web.ZipUtilityController" >
+		<property name="toolManager" ref="toolManager" />
+	</bean>
+	
+	<!-- Multi-part file upload 처리기 -->
+	<bean id="fileUploadController" class="com.saltware.enface.tool.web.MultipartUploadController">
+		<property name="toolManager" ref="toolManager"/>
+	</bean>
+	
+	<bean id="userMenuController" class="com.saltware.enface.userMenu.web.UserMenuController">	
+		<property name="userMenuService" ref="com.saltware.enface.userMenu.service.UserMenuService"/>
+	</bean>
+	
+	<!-- 페이지관련 처리기 -->
+	<bean id="pageController" class="com.saltware.enface.page.web.PageController"/>
+
+     <!-- 오픈API 인증화면샘플 -->
+	 <bean id="openapiController" class="com.saltware.enface.openapi.web.OpenApiController">
+         <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>                   
+                                       
+	 <!-- 페이스북 -->
+	 <bean id="facebookController" class="com.saltware.enface.openapi.web.FacebookController">
+         <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+         <!-- <property name="openApiHeander" ref="FacebookHandler"/> -->
+	 </bean>
+	 <!-- 페이스북 핸들러 -->
+	 <bean id="facebookHandler" class="com.saltware.enface.openapi.web.FacebookHandler">
+         <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+
+	 <!-- 트위터 -->
+	 <bean id="twitterController"  class="com.saltware.enface.openapi.web.TwitterController">
+         <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+	 <!-- 트위터 핸들러-->
+	 <bean id="twitterHandler"  class="com.saltware.enface.openapi.web.TwitterHandler">
+         <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+	 
+	 <!-- 요즘 -->
+	 <bean id="yozmController" class="com.saltware.enface.openapi.web.YozmController">
+          <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+	 <!-- 요즘 핸들러-->
+	 <bean id="yozmHandler"  class="com.saltware.enface.openapi.web.YozmHandler">
+         <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+	 
+	 <!-- 미투데이 -->
+	 <bean id="me2dayController" class="com.saltware.enface.openapi.web.Me2dayController">
+         <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+	  <!-- 미투데이 핸들러-->
+	 <bean id="me2dayHandler"  class="com.saltware.enface.openapi.web.Me2dayHandler">
+         <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+	 
+	 
+	 <!-- 구글 -->
+	 <bean id="googleController" class="com.saltware.enface.openapi.web.GooglepulsController">
+          <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+	 <!-- 구글 핸들러-->
+	 <bean id="googleHandler"  class="com.saltware.enface.openapi.web.GooglepulsHandler">
+         <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+	
+    <!-- 구글 캘린더-->
+     <bean id="googleCalendar" class="com.saltware.enface.openapi.web.GoogleCalendar">
+          <property name="openApiService" ref="com.saltware.enface.openapi.service.OpenApiService"/>
+	 </bean>
+	 
+	<!--// 회원 URL 메핑 //-->
+    <bean id="memberUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="securityInterceptor"/>
+			</list>
+		</property>
+        <property name="mappings">
+            <props>
+				<prop key="/user/changeUser.face">userChangeController</prop>
+				<prop key="/user/changeUserMobile.face">userChangeController</prop>
+				<prop key="/user/changeWebOrMobile.face">userChangeController</prop>
+				<prop key="/user/changePassword.face">userPasswordChangeController</prop>
+				<prop key="/user/changePasswordProcess.face">userPasswordChangeController</prop>
+				<prop key="/user/myPage.face">loginController</prop>
+				
+				<prop key="/tool/fileUpload.face">fileUploadController</prop>
+				
+				<prop key="/userMenu/list.face">userMenuController</prop>
+				<prop key="/userMenu/listForAjax.face">userMenuController</prop>
+				<prop key="/userMenu/listForChooser.face">userMenuController</prop>
+				<prop key="/userMenu/retrieveTreeForAjax.face">userMenuController</prop>
+				<prop key="/userMenu/listMenuForAjax.face">userMenuController</prop>
+				<prop key="/userMenu/addMenuForAjax.face">userMenuController</prop>
+				<prop key="/userMenu/changeMenuOrderForAjax.face">userMenuController</prop>
+				<prop key="/userMenu/changeMyPageOrderForAjax.face">userMenuController</prop>
+				<prop key="/userMenu/removeMenuForAjax.face">userMenuController</prop>
+				
+				<prop key="/page/listForPortletSelector.face">pageController</prop>
+				<prop key="/page/listForPortletEditor.face">pageController</prop>
+				<prop key="/page/getPagePortletsForAjax.face">pageController</prop>
+				<prop key="/page/getPortletInfoForAjax.face">pageController</prop>
+				<prop key="/page/getLayoutPortletInfoForAjax.face">pageController</prop>
+				<prop key="/page/saveSelectPortletForAjax.face">pageController</prop>
+				<prop key="/page/saveSelectPortletForAjaxKaist.face">pageController</prop>
+				<prop key="/page/saveFragmentInfoForAjax.face">pageController</prop>
+				<prop key="/page/getMyPageTemplateListForAjax.face">pageController</prop>
+				<prop key="/page/addMyPageForAjax.face">pageController</prop>
+				<prop key="/page/updateMyPageForAjax.face">pageController</prop>
+				<prop key="/page/removeMyPageForAjax.face">pageController</prop>
+				<prop key="/page/removeAllMyPageForAjax.face">pageController</prop>
+				<prop key="/page/setMyPageToHomeForAjax.face">pageController</prop>
+				<prop key="/page/setDefaultPageToHomeForAjax.face">pageController</prop>
+				<prop key="/page/reorderMyPagePortletForAjax.face">pageController</prop>
+				<prop key="/page/removeMyPagePortletForAjax.face">pageController</prop>
+				<prop key="/page/getGroupPageTemplateListForAjax.face">pageController</prop>
+				<prop key="/page/addGroupPageForAjax.face">pageController</prop>
+				<prop key="/page/updateGroupPageForAjax.face">pageController</prop>
+				<prop key="/page/removeGroupPageForAjax.face">pageController</prop>
+				<prop key="/page/setGroupPageToHomeForAjax.face">pageController</prop>
+				<prop key="/page/setGroupDefaultPageToHomeForAjax.face">pageController</prop>
+				<prop key="/page/listPortletForAjax.face">pageController</prop>
+				<prop key="/page/saveUserPageForAjax.face">pageController</prop>
+				<prop key="/page/removeUserPageForAjax.face">pageController</prop>
+				<prop key="/page/createMyPageForAjax.face">pageController</prop>
+				
+				<!-- openApi 샘플 -->
+				<prop key="/openapi/openapisample.face">openapiController</prop>
+				
+                <!-- 페이스북 -->
+				<prop key="/openapi/facebook.face">facebookController</prop>
+				<prop key="/openapi/facebookUser.face">facebookController</prop>
+				<prop key="/openapi/facebookFriend.face">facebookController</prop>
+			    <prop key="/openapi/facebookHandlerOauth.face">facebookHandler</prop>
+			    <prop key="/openapi/facebookAccessToken.face">facebookHandler</prop>
+			    
+				<!-- 트위터 -->
+				<prop key="/openapi/twitterUser.face">twitterController</prop>
+				<prop key="/openapi/twitterFriend.face">twitterController</prop>
+				<prop key="/openapi/twitterHandlerOauth.face">twitterHandler</prop>
+			    <prop key="/openapi/twitterAccessToken.face">twitterHandler</prop>
+				
+			    <!--  요즘 --> 
+				<prop key="/openapi/yozmUser.face">yozmController</prop>
+				<prop key="/openapi/yozmFriend.face">yozmController</prop>
+				<prop key="/openapi/yozmHandlerOauth.face">yozmHandler</prop>
+				<prop key="/openapi/yozmAccessToken.face">yozmHandler</prop>
+				
+			    <!-- 미투데이 -->
+				<prop key="/openapi/me2dayUser.face">me2dayController</prop>
+				<prop key="/openapi/me2dayFriend.face">me2dayController</prop>
+			    <prop key="/openapi/me2dayHandlerOauth.face">me2dayHandler</prop>
+			    <prop key="/openapi/me2dayAccessToken.face">me2dayHandler</prop>
+				
+			    <!-- 구글 -->
+				<prop key="/openapi/googleplusUser.face">googleController</prop>
+				<prop key="/openapi/googleplusFriend.face">googleController</prop> 
+			    <prop key="/openapi/googleplusHandlerOauth.face">googleHandler</prop>
+		        <prop key="/openapi/googleplusAccessToken.face">googleHandler</prop>
+		        <prop key="/openapi/googleCalendar.face">googleCalendar</prop>
+				
+				<!-- 구글 캘린더 액세스 토큰 가져오는 URL -->
+				<prop key="/openapi/googleCalendarAccessToken.face">googleHandler</prop>
+								
+				<!-- Change 2013.11.19.-->
+				<prop key="/user/changeLang.face">loginController</prop>
+				<prop key="/user/changeMobile.face">loginController</prop>
+				<prop key="/user/changeUser.face">loginController</prop>
+				<prop key="/user/changeGroup.face">loginController</prop>
+            	<prop key="/user/relogin.face">loginController</prop>
+            	<prop key="/user/snsSyncUsers.face">loginController</prop>
+			    
+			</props>
+        </property> 
+    </bean>
+	
+	<!--// 비회원 URL 메핑 //-->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+            	<!-->prop key="/user/login.face">loginEnpassController</prop-->
+            	<prop key="/user/login.face">loginController</prop>
+            	<prop key="/user/logout.face">loginController</prop>
+            	<prop key="/user/loginProcess.face">loginController</prop> 
+            	<prop key="/user/enpassLoginProcess.face">loginController</prop>
+				<prop key="/tool/searchZip.face">zipUtilityController</prop>
+				<prop key="/page/testForAjax.face">pageController</prop>
+				<!-- SNS -->
+            	<prop key="/user/snsLoginProcessForAjax.face">loginController</prop> 
+            	<prop key="/user/snsLogoutProcessForAjax.face">loginController</prop>
+            	<prop key="/user/snsChangePasswordProcessForAjax.face">loginController</prop>
+			</props>
+        </property> 
+    </bean>
+</beans>

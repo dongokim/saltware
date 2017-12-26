@@ -1,0 +1,72 @@
+// 동영상 플레이
+var player;
+
+function onYouTubeIframeAPIReady() {
+	player = new YT.Player('youtubePlayer', {
+	height: '480',
+	width: '853',
+	videoId: '5AGaAVXrBx4'
+	});
+}
+$(document).ready(function(){
+	// init
+	resizeContent();
+
+	// event binding
+	$(window).resize(function() {
+		resizeContent();
+	});
+});
+function resizeContent(){
+	setBackground();
+}
+function setBackground() {
+	/*var height = $().height();*/
+	var height = $(window).height();
+	var width = $(window).width();
+
+		$('#modal').each(function() {
+		$(this).css("height", $(window).height()-0);
+		$(this).css("width", $(window).width()-0);
+
+	});
+	
+	$("#floating a").hover(function(e){
+		e.preventDefault();
+		$('#modal').addClass('box_on');
+		$('#modal').slideDown('slow');
+		$(this).addClass('on_btn');
+		player.playVideo(); // 팝업 뜰때 자동 시작
+	});
+	$("#floating a.on").hover(function(e){
+		e.preventDefault();
+		$('#modal').removeClass('box_on');
+		$('#modal').slideUp('slow');
+		$(this).removeclass('on_btn');
+	});
+
+}
+	//영상 닫기
+	(function($) {
+		$(function() {
+			$('#closeModalPopup').click(function() {
+				player.stopVideo();
+				$('#modal').hide();
+			});
+		});
+	})(jQuery);
+	
+
+// 좌측하단 슬라이드
+	$(document).ready(function() {
+		$("#slider_wrapper").muslider({
+			"animation_type": "horizontal",
+			"animation_duration": 600,
+			"animation_start": "auto"
+		});
+	});
+
+// number count 
+$(function() {
+  $(".num > em").countimator();
+});

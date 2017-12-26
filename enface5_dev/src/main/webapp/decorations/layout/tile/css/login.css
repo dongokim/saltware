@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	min-width:386px;
+	min-height:186px;
+	background:url(../images/login/body_BG.gif) center top fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+#wrap { width: 100%; float: left; margin-top: 340px; text-align: center;}
+/* layout */
+#loginArea{width:344px; height:186px; background:url(../images/login/BG.png) no-repeat center top; margin:0 auto; padding:0 39px 0 0; text-align: left}
+#loginArea:after{clear:both; display:block; content:"";}
+#loginArea h1{display:block; margin:0 0 0 39px; padding:20px 0 9px 90px; background:url(../images/login/login_line.gif) repeat-x center bottom; }
+/*loginArea*/
+#loginArea fieldset {display:inline-block; clear:both;  position:relative; width:289px; padding:16px 0 0 0; *padding-top:16px; margin:0 0 0 48px;}
+#loginArea label{display:inline-block;margin:0; padding:0;}
+#loginArea label span.user{vertical-align:middle; display:inline-block;  height:29px; line-height:27px;  width:30px; background:url(../images/login/user_icon.gif) no-repeat left top #acacac;  }
+#loginArea label span.password{vertical-align:middle; display:inline-block;  height:29px; line-height:27px;  width:30px; background:url(../images/login/password_icon.gif) no-repeat left top #acacac;  }
+#loginArea label span img{vertical-align:middle; display:inline; margin:9px 0 0 9px;  }
+#loginArea .uid {margin:0 0 7px 0; *margin:0 0 4px 0;}
+#loginArea .ubtn {position:absolute; right:0; top:16px;  }
+#loginArea input.userid {width:182px; height:29px; *height:29px; line-height:27px; background:#ffffff; background:url(../images/login/input_btn_right.gif) no-repeat right top !important; color:#757575; margin:0; padding:0 0 0 3px;  border:none; }
+#loginArea input.userpw {width:182px; height:29px; *height:29px; line-height:27px;   background:#ffffff; background:url(../images/login/input_btn_right.gif) no-repeat right top !important; color:#757575; margin:0; padding:0 0 0 3px; border:none;}
+#loginArea input.saveLoginID {padding: 8px; margin-left: 20px;}

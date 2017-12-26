@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>환자안전포탈</title>
+<meta name="author" content="환자안전포탈"/>
+<meta name="description" content="환자안전포탈"/>
+<meta name="keywords" content="환자안전포탈"/>
+<meta name="Resource-type" content="Document"/>
+<link rel="stylesheet" type="text/css" href="../css/default.css"/>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/sub.js"></script>
+</head>
+
+<body>
+<!-- Header -->
+<div id="header">
+	<div class="gnb_wrap">
+		<div class="depth1_cont">
+			<p class="logo"><a href="#"><img src="../images/common/logo.png" alt="환자안전보고학습시스템 로고" /></a></p>
+			<!-- 우측메뉴 -->
+			<div class="login">
+				<ul>
+					<li><a href="#">회원가입</a></li>
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">My KOPS</a></li>
+					<li>
+						<div class="search">
+							<a href="javascript:setVisible(true);">검색</a>
+							<p class="sch_box" id="layer1"><input type="text" name="" />
+								<a href="#" class="s_btn">검색</a>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //우측메뉴 -->
+			<!-- GNB -->
+			<div class="gnb" id="top1menu">
+				<ul id="top1m2">
+					<li><a href="#">보고하기</a></li>
+					<li><a href="#">신고하기</a></li>
+					<li><a href="#">학습하기</a></li>
+					<li><a href="#">문의하기</a></li>
+					<li><a href="#">KOPS</a></li>
+				</ul>
+			</div>
+			<!-- Quick_menu -->
+			<div class="quick_menu">
+				<div class="ac-container">
+					<input id="ac-1" name="accordion-1" type="checkbox" />
+					<label for="ac-1">Quick menu</label>
+					<article class="ac-small">
+						<ul class="quick_cont">
+							<li class="m1"><a href="#">주의경보</a></li>
+							<li class="m2"><a href="#">보고하기</a></li>
+							<li class="m3"><a href="#">신고하기</a></li>
+							<li class="m4"><a href="#">환자안전보고란</a></li>
+							<li class="m5"><a href="#">홍보영상</a></li>
+						</ul>
+					</article>
+				</div>
+			</div>
+			<!-- //Quick_menu -->
+		</div>
+		<div id="top2m2" class="top2m">
+			<div class="depth2_cont">
+				<div class="left_cont">
+					<p>최근 주의 경보 <strong class="">약물투여</strong></p>
+					<p class="pdt10"><img src="../images/common/img_live_icon1.png" alt="심각" /></p>
+				</div>
+				<div class="menu_wrap">
+					<ul>
+						<li><a href="#">보고 가이드</a></li>
+						<li><a href="#">환자/보호자용</a></li>
+						<li><a href="#">보건의료인용</a></li>
+						<li><a href="#">전담인력용</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">신고 가이드</a></li>
+						<li><a href="#">전담인력 신고</a></li>
+						<li><a href="#">환자안전 기준/지표</a></li>
+						<li><a href="#">환자안전위원회</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">자료실</a></li>
+						<li><a href="#">주의 경보</a></li>
+						<li><a href="#">교육일정</a></li>
+						<li><a href="#">교육안내/신청</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">문의 및 상담</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">인사말</a></li>
+						<li><a href="#">제도안내</a></li>
+						<li><a href="#">KOPS소개</a></li>
+						<li><a href="#">보도자료</a></li>
+						<li><a href="#">홍보자료</a></li>
+					</ul>
+				</div>
+				<div class="right_cont">
+					<p>환자안전사고 누적 보고 <span class="">230,454건</span></p>
+					<p>환자안전 전담인력 <span class="">20,454건</span></p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Sub_2depth -->
+		<div class="sub_menu">
+			<div class="top_depth2">
+				<ul class="menu1">
+					<li class="m1"><a href="#"><span>보고 가이드</span></a></li>
+					<li class="m2"><a href="#"><span>환자/보호자용</span></a></li>
+					<li class="m3"><a href="#" class="on"><span>보건의료인용</span></a></li>
+					<li class="m4"><a href="#"><span>전담인력용</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //Sub_2depth -->
+		<!-- //GNB -->
+	</div>
+	<script type="text/javascript">initTopMenu();</script>
+</div>
+<!-- //Header -->
+
+<!-- Contents -->
+<div id="container">
+	<!-- Navigation -->
+	<div class="navigation">
+		<a href="#">HOME</a><a href="#">보고하기</a><a href="#">보건의료인용</a>
+	</div>
+	<!-- //Navigation -->
+	
+	<!-- iframe -->
+	<div class="contents">
+		<!-- contents -->
+		<h2 class="sub_title">보건의료인용</h2>
+
+		<ul class="step_wrap">
+			<li>STEP 01. 자율보고 안내사항</li>
+			<li>STEP 02. 개인정보 취급 동의 및 인증</li>
+			<li class="on">STEP 03. 보고서 작성</li>
+			<li>STEP 04. 작성 완료</li>
+		</ul>
+		
+		<form action="" name="" id="">
+			<fieldset>
+				<div class="sub_ri_title">
+					<h3>사고 정보</h3>
+					<p class="sub_ri_title_p"><em>*</em> 표시는 필수 입력사항입니다.</p>
+				</div>
+				<div class="board_list">
+					<table summary="" class="table_t1">
+						<caption></caption>
+						<colgroup>
+							<col width="20%">
+							<col width="80%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="col">
+									<label for="date" class="must">사고 발생 일시</label>
+								</th>
+								<td>
+									<p class="w_100 info_text">
+										<input type="text" class="text mgr5" name="date" id="date"><a href="#" class="mgr10"><img src="../images/common/cal_btn.gif" /></a>
+										<select id="time_1" name="time_1">
+											<option>00</option>
+											<option>24</option>
+										</select>
+										 :
+										<select id="time_2" name="time_2">
+											<option>00</option>
+											<option>60</option>
+										</select>
+									</p>
+									<p class="w_100 mgt10">환자안전사고가 발생한 날짜와 시간을 기재하여 주십시오.<br />(발생시간에 대한 정확한 정보가 없거나 모르는 경우 일자(연/월/일)까지만 기재)</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="date2" class="must">사고 발견 일</label>
+								</th>
+								<td>
+									<p class="w_100 info_text">
+										<input type="text" class="text mgr5" name="date2" id="date2"><a href="#" class="mgr10"><img src="../images/common/cal_btn.gif" /></a>
+										<select id="time_3" name="time_3">
+											<option>00</option>
+											<option>24</option>
+										</select>
+										 :
+										<select id="time_4" name="time_4">
+											<option>00</option>
+											<option>60</option>
+										</select>
+									</p>
+									<p class="w_100 mgt10">환자안전사고가 발생한 사실을 처음으로 알게 되었거나 원보고자로부터 보고받은 일자를 기재하여 주십시오.<br />(발생시간에 대한 정확한 정보가 없거나 모르는 경우 일자(연/월/일)까지만 기재)</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="where_1" class="must">의료기관 소재지</label>
+								</th>
+								<td>
+									<div class="radio_design radio_1">
+										<ul>
+											<li><label for="where_1"><input type="radio" title="" name="where_1" id="where_1"><span>서울</span></label></li>
+											<li><label for="where_2"><input type="radio" title="" name="where_1" id="where_2"><span>부산</span></label></li>
+											<li><label for="where_3"><input type="radio" title="" name="where_1" id="where_3"><span>대구</span></label></li>
+											<li><label for="where_4"><input type="radio" title="" name="where_1" id="where_4"><span>인천</span></label></li>
+											<li><label for="where_5"><input type="radio" title="" name="where_1" id="where_5"><span>광주</span></label></li>
+											<li><label for="where_6"><input type="radio" title="" name="where_1" id="where_6"><span>대전</span></label></li>
+											<li><label for="where_7"><input type="radio" title="" name="where_1" id="where_7"><span>울산</span></label></li>
+											<li><label for="where_8"><input type="radio" title="" name="where_1" id="where_8"><span>세종</span></label></li>
+											<li><label for="where_9"><input type="radio" title="" name="where_1" id="where_9"><span>제주</span></label></li>
+											<li><label for="where_10"><input type="radio" title="" name="where_1" id="where_10"><span>경기</span></label></li>
+											<li><label for="where_11"><input type="radio" title="" name="where_1" id="where_11"><span>강원</span></label></li>
+											<li><label for="where_12"><input type="radio" title="" name="where_1" id="where_12"><span>충북</span></label></li>
+											<li><label for="where_13"><input type="radio" title="" name="where_1" id="where_13"><span>충남</span></label></li>
+											<li><label for="where_14"><input type="radio" title="" name="where_1" id="where_14"><span>전북</span></label></li>
+											<li><label for="where_15"><input type="radio" title="" name="where_1" id="where_15"><span>전남</span></label></li>
+											<li><label for="where_16"><input type="radio" title="" name="where_1" id="where_16"><span>경북</span></label></li>
+											<li><label for="where_17"><input type="radio" title="" name="where_1" id="where_17"><span>경남</span></label></li>
+											<li><label for="where_18"><input type="radio" title="" name="where_1" id="where_18"><span>무응답</span></label></li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="hosp_1" class="must">의료기관 구분</label>
+								</th>
+								<td>
+									<div class="radio_design radio_1">
+										<ul>
+											<li><label for="hosp_1"><input type="radio" title="" name="hosp_1" id="hosp_1"><span>상급병원</span></label></li>
+											<li><label for="hosp_2"><input type="radio" title="" name="hosp_1" id="hosp_2"><span>종합병원</span></label></li>
+											<li><label for="hosp_3"><input type="radio" title="" name="hosp_1" id="hosp_3"><span>병원</span></label></li>
+											<li><label for="hosp_4"><input type="radio" title="" name="hosp_1" id="hosp_4"><span>치과병원</span></label></li>
+											<li><label for="hosp_5"><input type="radio" title="" name="hosp_1" id="hosp_5"><span>한방병원</span></label></li>
+											<li><label for="hosp_6"><input type="radio" title="" name="hosp_1" id="hosp_6"><span>요양병원</span></label></li>
+											<li><label for="hosp_7"><input type="radio" title="" name="hosp_1" id="hosp_7"><span>정신병원</span></label></li>
+											<li><label for="hosp_8"><input type="radio" title="" name="hosp_1" id="hosp_8"><span>의원</span></label></li>
+											<li><label for="hosp_9"><input type="radio" title="" name="hosp_1" id="hosp_9"><span>치과의원</span></label></li>
+											<li><label for="hosp_10"><input type="radio" title="" name="hosp_1" id="hosp_10"><span>한의원</span></label></li>
+											<li><label for="hosp_11"><input type="radio" title="" name="hosp_1" id="hosp_11"><span>조산원</span></label></li>
+											<li><label for="hosp_12"><input type="radio" title="" name="hosp_1" id="hosp_12"><span>약국</span></label></li>
+											<li><label for="hosp_13"><input type="radio" title="" name="hosp_1" id="hosp_13"><span>보건소</span></label></li>
+											<li><label for="hosp_14"><input type="radio" title="" name="hosp_1" id="hosp_14"><span>보건지소</span></label></li>
+											<li class="w_100"><label for="hosp_15" class="read_only"><input type="radio" title="" name="hosp_1" id="hosp_15" class="text_radio"><span>기타 </span><input type="text" readonly="readonly" class="text readonly_input ad_class" name="" id="" style="width:400px"></label></li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="hosp_1" class="must">사고 발생 장소</label>
+								</th>
+								<td>
+									<div class="radio_1 radio_ul radio_design">
+										<ul class="main_radio1">
+											<li><label for="hosp_in_1"><input type="radio" title="" name="hosp_in_1" id="hosp_in_1"><span>외래진료실</span></label></li>
+											<li><label for="hosp_in_2"><input type="radio" title="" name="hosp_in_1" id="hosp_in_2"><span>입원실</span></label></li>
+											<li><label for="hosp_in_3"><input type="radio" title="" name="hosp_in_1" id="hosp_in_3"><span>중환자실</span></label></li>
+											<li><label for="hosp_in_4"><input type="radio" title="" name="hosp_in_1" id="hosp_in_4"><span>응급실</span></label></li>
+											<li><label for="hosp_in_5"><input type="radio" title="" name="hosp_in_1" id="hosp_in_5"><span>검사실</span></label></li>
+											<li><label for="hosp_in_6"><input type="radio" title="" name="hosp_in_1" id="hosp_in_6"><span>주사실</span></label></li>
+											<li><label for="hosp_in_7"><input type="radio" title="" name="hosp_in_1" id="hosp_in_7"><span>처치실</span></label></li>
+											<li><label for="hosp_in_8"><input type="radio" title="" name="hosp_in_1" id="hosp_in_8"><span>수술실</span></label></li>
+											<li><label for="hosp_in_9"><input type="radio" title="" name="hosp_in_1" id="hosp_in_9"><span>회복실</span></label></li>
+											<li class="radio_etc"><label id="hosp_in_11_btn"><span>기타</span></label></li>
+											<li style="margin-left:131px;"><label for="hosp_in_10"><input type="radio" title="" name="hosp_in_1" id="hosp_in_10"><span>무응답</span></label></li>
+										</ul>
+										<div class="radio_ul_box">
+											<span class=" box_on"></span>
+											<ul class="sub_radio1">
+												<li><label for="hosp_in_11"><input type="radio" title="" name="hosp_in_1" id="hosp_in_11"><span>원무과</span></label></li>
+												<li><label for="hosp_in_12"><input type="radio" title="" name="hosp_in_1" id="hosp_in_12"><span>약제실</span></label></li>
+												<li><label for="hosp_in_13"><input type="radio" title="" name="hosp_in_1" id="hosp_in_13"><span>물리치료실</span></label></li>
+												<li><label for="hosp_in_14"><input type="radio" title="" name="hosp_in_1" id="hosp_in_14"><span>재활치료실</span></label></li>
+												<li><label for="hosp_in_15"><input type="radio" title="" name="hosp_in_1" id="hosp_in_15"><span>투석실</span></label></li>
+												<li><label for="hosp_in_16"><input type="radio" title="" name="hosp_in_1" id="hosp_in_16"><span>화장실</span></label></li>
+												<li><label for="hosp_in_17"><input type="radio" title="" name="hosp_in_1" id="hosp_in_17"><span>샤워실</span></label></li>
+												<li><label for="hosp_in_18"><input type="radio" title="" name="hosp_in_1" id="hosp_in_18"><span>배선실</span></label></li>
+												<li><label for="hosp_in_19"><input type="radio" title="" name="hosp_in_1" id="hosp_in_19"><span>병실복도(로비)</span></label></li>
+												<li><label for="hosp_in_20"><input type="radio" title="" name="hosp_in_1" id="hosp_in_20"><span>병원내 식당</span></label></li>
+												<li><label for="hosp_in_21"><input type="radio" title="" name="hosp_in_1" id="hosp_in_21"><span>병원내 휴게실</span></label></li>
+												<li><label for="hosp_in_22"><input type="radio" title="" name="hosp_in_1" id="hosp_in_22"><span>병원내 주차장</span></label></li>
+												<li><label for="hosp_in_23"><input type="radio" title="" name="hosp_in_1" id="hosp_in_23"><span>병원 옥외 정원</span></label></li>
+												<li><label for="hosp_in_24"><input type="radio" title="" name="hosp_in_1" id="hosp_in_24"><span>병원내 공원</span></label></li>
+												<li class="w_auto"><label for="hosp_in_25" class="read_only"><input type="radio" title="" name="hosp_in_1" id="hosp_in_25" class="text_radio"><span>기타 </span><input type="text" readonly="readonly" class="text readonly_input ad_class" name="" id="" style="width:400px"></label></li>
+											</ul>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="hosp_1" class="must">위해 정도</label>
+								</th>
+								<td>
+									<div class="radio_3 radio_design">
+										<ul>
+											<li><label for="dam_1"><input type="radio" title="" name="dam_1" id="dam_1"><span>치료후 후유증 없이 회복</span></label></li>
+											<li><label for="dam_2"><input type="radio" title="" name="dam_1" id="dam_2"><span>일시적인 손상 또는 부작용</span></label></li>
+											<li><label for="dam_3"><input type="radio" title="" name="dam_1" id="dam_3"><span>장기적인 손상 또는 부작용</span></label></li>
+											<li><label for="dam_4"><input type="radio" title="" name="dam_1" id="dam_4"><span>영구적인 손상 또는 부작용</span></label></li>
+											<li><label for="dam_5"><input type="radio" title="" name="dam_1" id="dam_5"><span>사망</span></label></li>
+											<li><label for="dam_6"><input type="radio" title="" name="dam_1" id="dam_6"><span>위해없음</span></label></li>
+											<li><label for="dam_7"><input type="radio" title="" name="dam_1" id="dam_7"><span>무응답</span></label></li>
+										</ul>
+									</div>
+									<ul class="report_offline">
+										<li><span class="bl_pt1">치료 후 후유증 없이 회복</span><p class="mgl10">사고 발생으로 환자가 일시적인 손상을 입었으나 비교적 간단한 치료로 회복된 경우</p></li>
+										<li><span class="bl_pt1">일시적인 손상 또는 부작용</span><p class="mgl10">사고 발생으로 환자가 일시적인 손상을 있었으며, 그 결과 입원기간이 단기간 연장된 경우</p></li>
+										<li><span class="bl_pt1">장기적인 손상 또는 부작용</span><p class="mgl10">사고 발생으로 환자가 장기적인 손상을 입었으며, 그 결과 입원기간이 장기간 연장된 경우로 향후 장애나 장해가 남지 않거나 남지 않을 것으로 예상되는 경우</p></li>
+										<li><span class="bl_pt1">영구적인 손상 또는 부작용</span><p class="mgl10">사고 발생으로 환자가 영구적인 손상을 입은 경우로 향후 장애나 장해가 남거나 남을 것으로 예상되는 경우</p></li>
+										<li><span class="bl_pt1">사망</span><p class="mgl10">사고 발생으로 인해 환자가 사망한 경우</p></li></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="hosp_1"><span class="must pdl0">사고의 종류</span><br /><span class="normal">(중복 선택 가능)</span></label>
+								</th>
+								<td>
+									<p class="mgb10">발생한 환자안전사고의 종류 및 유형을 <span class="c_red">모두 선택</span> 및 기재하여 주십시오(중복선택 가능).</p>
+									<div class="check_design check_1">
+										<ul>
+											<li><label for="act_1"><input type="checkbox" title="" name="act_1" id="act_1"><span>수술</span></label></li>
+											<li><label for="act_2"><input type="checkbox" title="" name="act_2" id="act_2"><span>분만</span></label></li>
+											<li><label for="act_3"><input type="checkbox" title="" name="act_3" id="act_3"><span>처치/시술</span></label></li>
+											<li><label for="act_4"><input type="checkbox" title="" name="act_4" id="act_4"><span>마취</span></label></li>
+											<li><label for="act_5"><input type="checkbox" title="" name="act_5" id="act_5"><span>검사</span></label></li>
+											<li><label for="act_6"><input type="checkbox" title="" name="act_6" id="act_6"><span>수혈</span></label></li>
+											<li><label for="act_7"><input type="checkbox" title="" name="act_7" id="act_7"><span>투약</span></label></li>
+											<li><label for="act_8"><input type="checkbox" title="" name="act_8" id="act_8"><span>감염</span></label></li>
+											<li><label for="act_9"><input type="checkbox" title="" name="act_9" id="act_9"><span>전신장애</span></label></li>
+											<li><label for="act_10"><input type="checkbox" title="" name="act_10" id="act_10"><span>의료장비</span></label></li>
+											<li><label for="act_11"><input type="checkbox" title="" name="act_11" id="act_11"><span>식사</span></label></li>
+											<li><label for="act_12"><input type="checkbox" title="" name="act_12" id="act_12"><span>낙상</span></label></li>
+											<li><label for="act_13"><input type="checkbox" title="" name="act_13" id="act_13"><span>진료재료</span></label></li>
+											<li><label for="act_14"><input type="checkbox" title="" name="act_14" id="act_14"><span>자살/자해</span></label></li>
+										<li class="w_100"><label for="act_15"><input type="checkbox" title="" name="act_15" id="act_15" class="text_check"><span>기타</span> <input type="text" class="text margin_l_10" name="" id="" style="width:400px" readonly="readonly"></label></li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="sub_ri_title">
+					<h3>환자 정보</h3>
+					<p class="sub_ri_title_p"><em>*</em> 근접오류로 인하여 다수의 환자가 발생할 뻔한 안전하지 않은 상황의 경우 환자정보는 반드시 기입하지 않아도 됩니다.</p>
+				</div>
+				<div class="board_list">
+					<table summary="" class="table_t1">
+						<caption></caption>
+						<colgroup>
+							<col width="20%">
+							<col width="80%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="col">
+									<label for="age_1">출생년도</label>
+								</th>
+								<td>
+									<p class="bt_line">
+										<select id="age_1" name="age_1" class="mgr5">
+											<option>선택하세요</option>
+											<option>1900</option>
+										</select>
+										<span>년도 출생 </span><span class="mgl20">또는 만 <input type="text" id="age_2" name="age_2" class="text" style="width:60px;"> 세</span>
+									</p>
+
+									<div class="radio_1 radio_ul radio_design">
+										<p class="main_radio1"><span class="radio_etc">연령대</span><span class="mgl20">정확한 연령 정보가 없는 경우에 선택해 주세요.</span></p>
+										<div class="radio_ul_box">
+											<span class=" box_on"></span>
+											<ul class="sub_radio1">
+												<li><label for="age_3"><input type="radio" title="" name="age_3" id="age_3"><span>0세</span></label></li>
+												<li><label for="age_4"><input type="radio" title="" name="age_3" id="age_4"><span>1~9세</span></label></li>
+												<li><label for="age_5"><input type="radio" title="" name="age_3" id="age_5"><span>10~19세</span></label></li>
+												<li><label for="age_6"><input type="radio" title="" name="age_3" id="age_6"><span>20~29세</span></label></li>
+												<li><label for="age_7"><input type="radio" title="" name="age_3" id="age_7"><span>30~39세</span></label></li>
+												<li><label for="age_8"><input type="radio" title="" name="age_3" id="age_8"><span>40~49세</span></label></li>
+												<li><label for="age_9"><input type="radio" title="" name="age_3" id="age_9"><span>50~59세</span></label></li>
+												<li><label for="age_10"><input type="radio" title="" name="age_3" id="age_10"><span>50~59세</span></label></li>
+												<li><label for="age_11"><input type="radio" title="" name="age_3" id="age_11"><span>60~69세</span></label></li>
+												<li><label for="age_12"><input type="radio" title="" name="age_3" id="age_12"><span>70~79세</span></label></li>
+												<li><label for="age_13"><input type="radio" title="" name="age_3" id="age_13"><span>80세이상</span></label></li>
+												<li><label for="age_14"><input type="radio" title="" name="age_3" id="age_14"><span>무응답</span></label></li>
+											</ul>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="sex_1">성별</label>
+								</th>
+								<td>
+								<div class="radio_design radio_1">
+									<ul>
+										<li><label for="sex_1"><input type="radio" title="" name="sex_1" id="sex_1"><span>남</span></label></li>
+										<li><label for="sex_2"><input type="radio" title="" name="sex_1" id="sex_2"><span>여자</span></label></li>
+										<li><label for="sex_3"><input type="radio" title="" name="sex_1" id="sex_3"><span>무응답</span></label></li>
+									</ul>
+								</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="part_1">환자 진료과목</label>
+								</th>
+								<td>
+									<select id="part_1" name="part_1" style="min-width:200px">
+										<option>선택하세요</option>
+										<option>내과</option>
+										<option>소화기 내과</option>
+									</select>
+									<p class="w_100 mgt10 mgb10">
+										환자안전사고 발생 당시 환자가 <em class="c_red">소속되어 있던 진료과목</em>을 기재하여 주십시오.
+									</p>
+									<div class="selct_choice">
+										<p>
+											<span>내과</span><a href="#n"><img src="../images/common/blue_close.png" alt="삭제"></a>
+										</p>
+										<p>
+											<span>소화기 내과</span><a href="#n"><img src="../images/common/blue_close.png" alt="삭제"></a>
+										</p>
+										<p>
+											<span>기타 <input type="text" class="text" id="etc_part"></span><a href="#n"><img src="../images/common/blue_close.png" alt="삭제"></a>
+										</p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="part_2">사고발생 진료과목<br><span class="normal">(중복 선택 가능)</span></label>
+								</th>
+								<td>
+									<select id="part_2" name="part_2" style="min-width:200px">
+										<option>선택하세요</option>
+										<option>내과</option>
+										<option>소화기 내과</option>
+									</select>
+									<p class="w_100 mgt10 mgb10">
+										환자안전사고가 실재 발생한 진료과목으로 환자안전사고 발생과 <em class="c_red">가장 관련이 있는 진료과목</em>을 기재하여 주십시오.
+									</p>
+									<div class="selct_choice">
+										<p>
+											<span>내과</span><a href="#n"><img src="../images/common/blue_close.png" alt="삭제"></a>
+										</p>
+										<p>
+											<span>소화기 내과</span><a href="#n"><img src="../images/common/blue_close.png" alt="삭제"></a>
+										</p>
+										<p>
+											<span>기타 <input type="text" class="text" id="etc_part"></span><a href="#n"><img src="../images/common/blue_close.png" alt="삭제"></a>
+										</p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="diagnosis">진단명</label>
+								</th>
+								<td>
+									<input type="" class="text" id="diagnosis" name="diagnosis"><a href="#n" class="search_btn">검색</a>
+									<p class="w_100 mgt10 mgb10">입원 또는 내원하게 된 주원인이 되는 질병명으로서 <em class="c_red">검사 후 최종적으로 확인된 진단명(주진단)</em>을 기재하여 주십시오.</p>
+									<p class="w_100 mgt10 mgb10">질병이 확실하지 않을 때에는 주된 증상을 입력해 주십시오.<br>수기 진단명 또는 “한국표준질병-사인분류(KCD-7, 2016년)”에 따라 분류한 것을 말합니다.
+									</p>
+									<div class="selct_choice">
+										<p>
+											<span>내과</span><a href="#n"><img src="../images/common/blue_close.png" alt="삭제"></a>
+										</p>
+										<p>
+											<span>소화기 내과</span><a href="#n"><img src="../images/common/blue_close.png" alt="삭제"></a>
+										</p>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="sub_ri_title">
+					<h3>보고자 정보</h3>
+					<p class="sub_ri_title_p">보고자 정보를 기재하지 않을 경우 분석에 제한적으로 활용됩니다.</p>
+				</div>
+				<div class="board_list">
+					<table summary="" class="table_t1">
+						<caption></caption>
+						<colgroup>
+							<col width="20%">
+							<col width="80%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="col">
+									보고자
+								</th>
+								<td>
+									<div class="radio_design radio_1">
+										<ul>
+											<li><label for="care_1"><input type="radio" title="" name="care_1" id="care_1"><span>보건의료인</span></label></li>
+											<li><label for="care_2"><input type="radio" title="" name="care_1" id="care_2"><span>보건의료인장</span></label></li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="phone_1">연락처</label>
+								</th>
+								<td><input type="text" class="text" id="phone_1" name="phone_1">
+									<!--select id="phone_1" name="phone_1">
+										<option>010</option>
+										<option>010</option>
+										<option>010</option>
+									</select>
+									 - <input type="text" class="text" id="phone_2" name="phone_2" maxlength="4" style="width:50px"> - <input type="text" class="text" id="phone_3" name="phone_3" maxlength="4" style="width:50px"-->
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="email_1">이메일</label>
+								</th>
+								<td>
+									<input type="text" class="text" id="email_1" name="email_1"> @ <input type="text" class="text" id="email_2" name="email_2">
+									<select id="email_3" name="email_3">
+										<option>직접입력</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="hosp_1" class="must">사고내용</label>
+								</th>
+								<td>
+									<p class="over_h mgb10"><span class="f_left">사고발생 당시의 상황, 사고 발생 경위 및 내용 등을 육하원칙에 따라 구체적으로 적어 주십시오.</span><span class="f_right">1 / 10000 byte</span></p>
+									<textarea id="" name="" cols="" rows="" style="width:100%; height:200px"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">
+									<label for="hosp_1" class="must">개선방안</label>
+								</th>
+								<td>
+									<p class="over_h mgb10"><span class="f_left">재발방지를 위한 개선방안을 구체적으로 적어 주십시오.</span><span class="f_right">1 / 10000 byte</span></p>
+									<textarea id="" name="" cols="" rows="" style="width:100%; height:200px"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th scope="col"><label for="date2">환자안전사고 보고일자</label></th>
+								<td><input type="text" class="text" name="date2" id="date2"> <a href="#n"><img src="../images/common/cal_btn.gif" /></a></td>
+							</tr>
+							<tr>
+								<th scope="col"><label for="bogo">환자안전사고 보고경로</label></th>
+								<td>
+									<select name="bogo" id="bogo" style="width:300px;">
+										<option>자율신고 포탈</option>
+									</select>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<p class="ft_16 t_center mgt30 f_bold c_black">검증 이후 (보고 접수일로부터 14일 이내 ) 보고자 연락처 및 이메일을 포함한 개인식별 정보는 모두 삭제되며,<br>검증 이외의 목적으로 활용하지 않습니다.</p>
+
+				<div class="btn_box mgt50">
+					<a href="#n" class="btn_pre">이 전</a>
+					<a href="#n" class="btn_next mgl20">다 음</a>
+				</div>
+			</fieldset>
+		</form>
+		<!-- //contents -->
+	</div>
+	<!-- //iframe -->
+</div>
+<!-- Contents -->
+
+<!-- Footer -->
+<div id="footer">
+	<!-- Link_Area -->
+	<div class="foot_link">
+		<div class="menu_wrap">
+			<ul>
+				<li>보고하기</li>
+				<li><a href="#">보고 가이드</a></li>
+				<li><a href="#">환자/보호자용</a></li>
+				<li><a href="#">보건의료인용</a></li>
+				<li><a href="#">전담인력용</a></li>
+			</ul>
+			<ul>
+				<li>신고하기</li>
+				<li><a href="#">신고 가이드</a></li>
+				<li><a href="#">전담인력 신고</a></li>
+				<li><a href="#">환자안전 기준/지표</a></li>
+				<li><a href="#">환자안전위원회</a></li>
+			</ul>
+			<ul>
+				<li>학습하기</li>
+				<li><a href="#">자료실</a></li>
+				<li><a href="#">주의 경보</a></li>
+				<li><a href="#">교육일정</a></li>
+				<li><a href="#">교육안내/신청</a></li>
+			</ul>
+			<ul>
+				<li>문의하기</li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">문의 및 상담</a></li>
+			</ul>
+			<ul>
+				<li>KOPS</li>
+				<li><a href="#">인사말</a></li>
+				<li><a href="#">제도안내</a></li>
+				<li><a href="#">KOPS소개</a></li>
+				<li><a href="#">보도자료</a></li>
+				<li><a href="#">홍보자료</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- //Link_Area -->
+	<div class="foot_info">
+		<p class="f_logo"><a href="#"><img src="../images/common/f_logo.png" alt="환자안전보고학습시스템 로고" /></a></p>
+		<div class="link2">
+			<ul>
+				<li><a href="#">개인정보 보호 방침</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li class="ico"><a href="#">저작권정책안내</a></li>
+				<li class="ico"><a href="#">이메일주소무단수집거부</a></li>
+				<li class="ico"><a href="#">찾아오시는길</a></li>
+			</ul>
+			<p class="copyrighter">
+				<span>서울시 영등포구 국회대로76길 10(여의도동) 10층 우편번호07283 TEL:02-2076-0600 FAX:02-2076-0666</span>
+				<span>Copyright © 2013 <em>KOIHA</em>. All rights reserved.</span>
+			</p>
+		</div>
+		<div class="site_link">
+			<select id="" style="width:185px;">
+				<option>관련사이트 바로가기</option>
+			</select>
+			<p class="pdt10"><a href="#"><img src="../images/common/f_logo2.png" alt="의료기관평가인증원 로고" /></a></p>
+		</div>
+	</div>
+</div>
+<!-- //Footer -->
+</body>
+</html>

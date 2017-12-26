@@ -1,0 +1,20 @@
+/* 모바일 웹 페이지의 부하를 줄이고 
+핸드폰의 3d 가속 기능을 사용한다 */
+
+/* 주의 - 일부 예상치 못한 오류가 있을 수 있음 */
+
+<style>
+
+-webkit-transform: translateZ(0);
+transform: translateZ(0);
+
+-webkit-transform: translate3d(0,0,0)
+transform: translate3d(0,0,0);
+
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+
+-webkit-perspective: 1000;
+perspective: 1000;
+
+</style>

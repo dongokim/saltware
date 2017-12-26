@@ -1,0 +1,369 @@
+
+/* portlet_layout */
+.p_21{position:relative; float:left; width:532px; height:263px; margin:7px;}
+.p_11{position:relative; float:left; width:258px; height:263px; margin:7px;}
+.p_10{position:relative; float:left; width:258px; height:126px; margin:7px;}
+.p_20{position:relative; float:left; width:528px; height:126px; margin:7px;}
+.p_13{position:relative; float:left; width:258px; height:403px; margin:7px;}
+
+/* common */
+h1{display:inline-block; clear:both;position:absolute; top:66px; left:210px;}
+h2{display:inline-block; height:14px; font:15px/14px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif; font-weight:600; color:#000; padding:22px 0 18px 30px; *padding-top:23px;}
+h3{display:inline-block; height:14px; font:15px/14px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif; font-weight:600; color:#000; padding:17px 0 18px 30px;}
+h4{display:inline-block; height:14px; font:15px/14px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#000; padding:17px 0 14px 30px;}
+span.more{position:absolute; bottom:25px; right:20px; color:#666;}
+span.more a{background:url(../images/main/more_btn.gif) no-repeat right 2px; font-size:12px;padding:0 10px 0 0;}
+span.more a:hover{text-decoration:none; color:#666;}
+/*empty_portlet*/
+.empty_portlet{float:left; width:257px; height:263px; background:url(../images/main/Portmini_BG.png) no-repeat left bottom;  border-top:1px solid #ccc;}
+/*btnArea*/
+.btnArea{ margin:11px 0 0 0;}
+#body .btnArea{ margin:11px 0 0 20px;}
+#body .btnArea a{display:inline-block; width:106px; height:34px; text-align:center; text-decoration:none;font:13px/33px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#fff; margin-right:6px;   }
+
+/* p_21 */
+/* Portlet_tab_normal */
+.Portlet_tab_normal{background:url(../images/main/portNotice_BG.png) no-repeat left bottom;  border-top:1px solid #ccc; height:263px !important;  margin:0; padding:0 37px 0 0;}
+.Portlet_tab_normal:after{display:block;clear:both;content:""}
+/* tab Deco */
+.Portlet_tab_normal ul{position:relative;width:100%;margin:0 0 0 17px;padding:0 0 7px 0;list-style:none;border-bottom:1px solid #0066a9;}
+.Portlet_tab_normal ul:after{display:block;clear:both;content:""}
+.Portlet_tab_normal li{float:left;margin:7px 0 0 0;background:url(../images/main/tap_line.gif) no-repeat left 9px; }
+.Portlet_tab_normal li:after{display:block;clear:both;content:""}
+.Portlet_tab_normal li.m1{background-image:none;}
+.Portlet_tab_normal li a{float:left; color:#666;text-decoration:none; height:32px; line-height:28px; }
+.Portlet_tab_normal li a span{display:inline-block;  letter-spacing:normal;cursor:pointer; display:inline-block; height:17px; font:15px/32px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#aaaaaa; margin:0;  padding:0 12px 0 12px; }
+.Portlet_tab_normal li ul{display:none;position:absolute; top:47px;*top:47px;  left:0;width:100%;height:150px;background:url(../images/main/portlet_BG.gif) no-repeat left top; margin:0;padding:0;border:1px solid #dddddd;list-style:none;*zoom:1;overflow-y:auto;}
+.Portlet_tab_normal li ul:after{display:block;clear:both;content:""; }
+.Portlet_tab_normal li li{float:none;position:relative; height:25px;*height:23px;margin:0; color:#666; padding:0 0 0 17px; background-image:none; }
+.Portlet_tab_normal li li a{float:left;margin:0; border:0 !important;background:transparent;font-weight:normal;color:#666 !important;letter-spacing:normal;}
+.Portlet_tab_normal li li a:hover{color:#000 !important; text-decoration:underline !important;}
+.Portlet_tab_normal.m1 .m1 a,
+.Portlet_tab_normal.m2 .m2 a,
+.Portlet_tab_normal.m3 .m3 a,
+.Portlet_tab_normal.m4 .m4 a,
+.Portlet_tab_normal.m5 .m5 a{margin-top:0; background:transparent; height:28px; line-height:28px; }
+.Portlet_tab_normal.m1 .m1 a span,
+.Portlet_tab_normal.m2 .m2 a span,
+.Portlet_tab_normal.m3 .m3 a span,
+.Portlet_tab_normal.m4 .m4 a span,
+.Portlet_tab_normal.m5 .m5 a span{height:32px; font:15px/32px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#0066a9;  margin:0;padding:0;  display:inline-block;  background:url(../images/main/tab_on.gif) no-repeat left bottom; padding:0 12px 7px 12px;  }
+/* List Deco */
+.Portlet_tab_normal.m1 .m1 ul,
+.Portlet_tab_normal.m2 .m2 ul,
+.Portlet_tab_normal.m3 .m3 ul,
+.Portlet_tab_normal.m4 .m4 ul,
+.Portlet_tab_normal.m5 .m5 ul{display:block; height:190px; margin:0;}
+.Portlet_tab_normal li li span{display:inline-block; overflow:hidden; }
+.Portlet_tab_normal li li span a{background:none !important; padding:0 !important; }
+.Portlet_tab_normal li li span.title{z-index:1;position:absolute;top:20px;width:450px; margin:0; text-overflow:ellipsis; overflow:hidden;white-space:nowrap;}
+.Portlet_tab_normal li li span.date{ float: right; width:60px; line-height:28px; text-align:right; color:#757575; letter-spacing:0; margin:0 !important;  }
+.Portlet_tab_normal li span.more{position:absolute;top:14px;right:10px;color:#666;  }
+.Portlet_tab_normal li span.more a{color:#666; background:url(../images/main/more_btn.gif) no-repeat right 9px !important; padding:0 10px 0 0;}
+.Portlet_tab_normal li span.more a:hover{text-decoration:none; color:#666;}
+.Portlet_tab_normal li li span.month {position:absolute;top:12px;width:430px; padding:0 0 8px 0; border-bottom:1px dashed #cccccc; }
+.Portlet_tab_normal li li span.month strong{ font:12px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#000;}
+.Portlet_tab_normal li li span.month em{height:12px;line-height:12px;color:#5e5e5e;}
+.Portlet_tab_normal li li span.month img{padding:0 5px;}
+
+
+/*p_11*/
+/* Portlet_normal */
+.Portlet_normal{background:url(../images/main/event_BG.png) no-repeat left bottom; border-top:1px solid #ccc;}
+.Portlet_normal ul{padding:0 0 0 32px;}
+.Portlet_normal ul li{width:150px; height:28px;line-height:28px;*line-height:26px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+
+/* schedule */
+.schedule{position:relative; background:url(../images/main/Portmini_BG.png) no-repeat left bottom; border-top:1px solid #bdced9;}
+.schedule ul{padding:0 16px 0 16px;}
+.schedule ul li{width:100%; height:28px;line-height:28px;*line-height:26px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+.schedule p.schedule_date{position:absolute; top:14px; right:18px;}
+.schedule p.schedule_date img{vertical-align:0; padding:0 3px;}
+.schedule p.schedule_date .month{font:14px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#000; }
+.schedule p.schedule_date .month strong{font:22px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#696969; }
+.schedule p.schedule_date .month em{font:12px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600;color:#4f4f4f;}
+
+/*p_13*/
+/* checkschedule */
+.checkschedule{position:relative;border-top:1px solid #ccc; background:url(../images/main/Portmini_BG.png) no-repeat left bottom; } 
+.checkschedule ul{margin:0 0 0 15px;}
+.checkschedule .data{position:relative; margin:0 14px; color:#666;padding:5px 0 0 0;}
+.checkschedule .data a.btn_rgray24{z-index:1;position:absolute; top:0; right:8px;display:inline-block; width:65px; height:28px; line-height:28px !important;color:#474a51; background:url(../images/main/logout_btn.png) no-repeat left top; border-bottom:1px solid #cac9c9;padding:0 0 0 10px;}
+.checkschedule .data a.btn_rgray24 span{display:inline-block; width:65px; height:28px; color:#474a51; line-height:28px !important; letter-spacing:-1px;  background:url(../images/main/logout_btn.png) no-repeat right top;border-bottom:1px solid #cac9c9; padding:0 10px 0 0;  font:14px/24px NanumGothic, ngwoff, ngeot, Helvetica, sans-serif;  font-weight:600; text-align:center; color:#fff;}
+.checkschedule .data p .month{display:inline-block; vertical-align:middle;  margin:0px 15px; color:#000;}
+.checkschedule .data p .month strong{font-size:20px; }
+.checkschedule span.more{position:absolute; bottom:25px; right:20px; background-position:right 3px; }
+
+/*달력*/
+.checkschedule .data table { background-image:none;margin:10px 0 10px 0; border:1px solid #bbb; line-height:22px; }
+.checkschedule .data table td ,#calender .data table th{height:24px; line-height:24px; text-align:center; padding:0 9px; border-top:1px solid #bbb;  border-left:1px solid #bbb !important;}
+.checkschedule .data table td {color:#a7a7a7;}
+.checkschedule .data table td.sun{color:#ee3124; }
+.checkschedule .data table td.sat{color:#2222ec;}
+.checkschedule .data table td.color{color:#000;}
+.checkschedule .data table td.fixed {font-weight:bold; }
+.checkschedule .data table td.today{background:#fedf94;}
+.checkschedule .data table th {background:#f3f3f3; font-weight:bold; color:#000; border-top:0 none; text-align:center;  }
+.checkschedule ul{padding:7px 0; }
+.checkschedule li{height:24px; line-height:24px; background:url(../images/main/dot_gray.gif) no-repeat 0 10px; }
+.checkschedule li span{display:inline-block; overflow:hidden; }
+.checkschedule li span.title{width:200px; margin:0; text-overflow:ellipsis; white-space:nowrap;}
+
+/* Portlet_tab */
+.Portlet_tab{background:url(../images/main/Portmini_BG.png) no-repeat left bottom; border-top:1px solid #ccc;}
+/* Portlet_title_tab_normal */
+/* tab Deco */
+.Portlet_title_tab_normal{position:relative; padding:0 25px 8px 0;}
+.Portlet_title_tab_normal:after{display:block;clear:both;content:""} 
+.Portlet_title_tab_normal ul{ margin:0 0 0 21px; padding:0 0 11px 0;  font-family:dotum; font-size:12px;list-style:none;*zoom:1;border-bottom:1px solid #0066a9;}
+.Portlet_title_tab_normal ul:after{display:block;clear:both;content:""}
+.Portlet_title_tab_normal li{float:left; margin-bottom:-1px;background:url(../images/main/tap_line.gif) no-repeat left 5px; }
+.Portlet_title_tab_normal li.m1{background-image:none;}
+.Portlet_title_tab_normal li:after{display:block;clear:both;content:""}
+.Portlet_title_tab_normal li a{float:left;color:#666; text-decoration:none; height:28px; padding:0;}
+.Portlet_title_tab_normal li a span{display:inline-block;  letter-spacing:normal; cursor:pointer; display:inline-block; height:28px;  font:14px/28px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#aaaaaa; padding:0 11px; }
+.Portlet_title_tab_normal li ul{display:none;position:absolute; top:52px;left:28px; width:100%; margin:0;padding:0;border:0;list-style:none;*zoom:1; }
+.Portlet_title_tab_normal li ul:after{display:block;clear:both;content:""; }
+.Portlet_title_tab_normal li li{float:none;height:24px; margin:0;font-size:12px;  color:#666; background-image:none; padding:0 0 0 7px; }
+.Portlet_title_tab_normal li li a{float:none;margin:0; border:0 !important;background:transparent;font-weight:normal;color:#666 !important;letter-spacing:normal}
+.Portlet_title_tab_normal li li a:hover{color:#000 !important;text-decoration:underline;}
+.Portlet_title_tab_normal.m1 .m1 a,
+.Portlet_title_tab_normal.m2 .m2 a,
+.Portlet_title_tab_normal.m3 .m3 a{ background:transparent; height:28px; line-height:28px; margin:0;  padding:0;}
+.Portlet_title_tab_normal.m1 .m1 a.first,
+.Portlet_title_tab_normal.m2 .m2 a.first,
+.Portlet_title_tab_normal.m3 .m3 a.first{ margin:0;}
+.Portlet_title_tab_normal.m1 .m1 a span,
+.Portlet_title_tab_normal.m2 .m2 a span,
+.Portlet_title_tab_normal.m3 .m3 a span{ margin:0; font-weight:600;color:#333; display:inline-block; height:28px; font:14px/28px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#0066a9; background:url(../images/main/tab_on.gif) no-repeat left bottom; padding:0 11px 10px 11px; }
+/* List Deco */
+.Portlet_title_tab_normal.m1 .m1 ul,
+.Portlet_title_tab_normal.m2 .m2 ul,
+.Portlet_title_tab_normal.m3 .m3 ul{float:fixed; display:block; height:190px; overflow:hidden; margin:0; padding:0; font-size:12px; }
+.Portlet_title_tab_normal li li span {display:inline-block; height:28px; line-height:28px; overflow:hidden;}
+.Portlet_title_tab_normal li li span a{background:none !important; padding:0!important; }
+.Portlet_title_tab_normal li li span.title {width:200px; margin:0; padding:0; text-overflow:ellipsis; white-space:nowrap;}
+.Portlet_title_tab_normal span.more{position:absolute;bottom:0;right:20px;color:#666;}
+.Portlet_title_tab_normal span.more a{color:#666;important; line-height:12px !important;background:url(../images/main/more_btn.gif) no-repeat right 1px !important; padding:0 10px 0 0 !important; border:0 !}
+.Portlet_title_tab_normal span.more a:hover{text-decoration:none; color:#666;}
+
+/* Portlet_tab_mini */
+/* tab Deco */
+.Portlet_tab_mini{float:left; padding:0 40px 0 0 ;}
+.Portlet_tab_mini:after{display:block;clear:both;content:""}
+.Portlet_tab_mini .overflow{height:190px; width:215px;top:47px;  overflow:hidden !important; overflow-y:scroll !important; }
+.Portlet_tab_mini ul{position:relative; width:100%; margin:0 0 0 20px;padding:8px 0 7px 0;list-style:none;*zoom:1;border-bottom:1px solid #0066a9;}
+.Portlet_tab_mini ul:after{display:block;clear:both;content:""}
+.Portlet_tab_mini li{float:left;margin-bottom:-1px; background:url(../images/main/tap_line.gif) no-repeat left 10px;}
+.Portlet_tab_mini li.m1{background-image:none;}
+.Portlet_tab_mini li.first{padding-top:10px;}
+.Portlet_tab_mini li:after{display:block;clear:both;content:""}
+.Portlet_tab_mini a.first{margin:0;}
+.Portlet_tab_mini li a{float:left;position:relative; color:#666;text-decoration:none; height:32px; line-height:28px; padding:0;margin:0;}
+.Portlet_tab_mini li a span{display:inline-block;  letter-spacing:normal;cursor:pointer; display:inline-block; height:32px; font:15px/32px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; color:#aaaaaa; margin:0; ;  padding:0 13px; }
+.Portlet_tab_mini li ul:after{display:block;clear:both;content:""; }
+.Portlet_tab_mini li ul{display:none;position:absolute; top:0;left:0; height:200px; background:url(../images/main/portlet_BG.gif) no-repeat left top; margin:0;padding:0;list-style:none;*zoom:1;border-top:1px solid #aeaca9; border-right:1px solid #dddddd; border-bottom:1px solid #dddddd; border-left:1px solid #aeaca9; }
+.Portlet_tab_mini li li{float:none;position:relative; line-height:0; margin:0; color:#666;padding: 0 0 0 22px;background-image:none;}
+.Portlet_tab_mini li li a{float:none;margin:0;padding:0;background:transparent;font-weight:normal;color:#666 !important;letter-spacing:normal}
+.Portlet_tab_mini li li a:hover{color:#000 !important;text-decoration:underline}
+.Portlet_tab_mini.m1 .m1 a, 
+.Portlet_tab_mini.m2 .m2 a{background:transparent; height:28px; line-height:28px; margin:0;padding:0;}
+.Portlet_tab_mini.m1 .m1 a.first,
+.Portlet_tab_mini.m2 .m2 a.first{margin:0;border-left:0px solid #ccc;}
+.Portlet_tab_mini.m1 .m1 a span,
+.Portlet_tab_mini.m2 .m2 a span{margin:0; font-weight:600;color:#0066a9; display:inline-block; height:32px; font:15px/32px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600;  background:url(../images/main/tab_on.gif) repeat-x left bottom; padding:0 13px 6px 13px;  }
+/* List Deco */
+.Portlet_tab_mini.m1 .m1 ul,
+.Portlet_tab_mini.m2 .m2 ul{display:block; margin:0;}
+.Portlet_tab_mini li li span {display:inline-block; height:28px;  line-height:28px;  overflow:hidden;}
+.Portlet_tab_mini li li span a{background:none !important; padding:0 !important;}
+.Portlet_tab_mini li li span.title {margin:0;padding:0;text-overflow:ellipsis; white-space:nowrap;}
+.Portlet_tab_mini li li span.subtitle {padding:0 0 0 80px;}
+.Portlet_tab_mini li form {position:absolute; top:0; left:0; width:270px; }
+.Portlet_tab_mini li form input[type="text"]{border:1px solid #b2b2b2;}
+/* table Deco */
+.Portlet_tab_mini .lecture_table{border:1px solid #bdced9;}
+.Portlet_tab_mini .lecture_table th{background-color:#aeaca9; height:30px; border:1px solid #cccccc; color:#fff; text-align:center;font-weight:bold;}
+.Portlet_tab_mini .lecture_table td{border:1px solid #cccccc; text-align:center !important;}
+.Portlet_tab_mini .lecture_table a{display:inline; padding:0 2px;float:none}
+
+
+/* portlet */
+/* main_icon */
+.main_icon .view {float:left; margin:20px 0 0 3px;}
+.main_icon .view:after{display: block; clear: both; content: " "}  
+.main_icon .view li {float:left; position:relative;  width:80px; height:80px; text-align:center; padding:0 2px; margin:0 0 28px 0;  }
+.main_icon .view ul li span{ width:100%; text-align:center;  }
+.main_icon .view ul li span.icon{display:block; position:absolute; top:10px; left:11px;  width:64px; height:45px; overflow:hidden; }
+.main_icon .view ul li span.txt{display:block; position:absolute; left:0; bottom:0; height:14px;  font:13px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:400; }
+.main_icon .view ul li a.icon_01:hover{position:absolute;right:0;}
+.main_icon .view ul li a.icon_02:hover{position:absolute;right:0;}
+.main_icon .view ul li a.icon_03:hover{position:absolute;right:0;}
+.main_icon .view ul li a.icon_04:hover{position:absolute;right:0;}
+.main_icon .view ul li a.icon_05:hover{position:absolute;right:0;}
+.main_icon .view ul li a.icon_06:hover{position:absolute;right:0;}
+
+/* main_icon_02 */
+.main_icon_02 .view {float:left; margin:20px 0 0 3px;}
+.main_icon_02 .view:after{display: block; clear: both; content: " "}  
+.main_icon_02 .view li {float:left; position:relative;  width:80px; height:80px; text-align:center; padding:0 2px; margin:0 0 28px 28px;  }
+.main_icon_02 .view ul li span{ width:100%; text-align:center;  }
+.main_icon_02 .view ul li span.icon{display:block; position:absolute; top:10px; left:11px;  width:64px; height:45px; overflow:hidden; }
+.main_icon_02 .view ul li span.txt{display:block; position:absolute; left:0; bottom:0; height:14px;  font:13px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:400; }
+.main_icon_02 .view ul li a.icon_01:hover{position:absolute; right:0; }
+.main_icon_02 .view ul li a.icon_02:hover{position:absolute; right:0; }
+.main_icon_02 .view ul li a.icon_03:hover{position:absolute; right:0; }
+
+/* personal */
+.personal{background:url(../images/main/Portmini_BG.png) no-repeat left bottom;  border-top:1px solid #ccc;  }
+/* personal_info */
+.personal .personal_info{margin-top:5px;*margin-top:23px;}
+.personal p.identity{display:inline-block;float:fixed; width:217px;*width:214px; height:30px; line-height:15px; margin:18px 0 0 20px; overflow:hidden; }
+.personal span.name{display:inline-block; width:40%;vertical-align:middle;}
+.personal span.name strong{ font-size:15px; }
+.personal span.major{ display:inline-block; width:60%; text-align:right;  vertical-align:middle;g}
+/* myinfo */
+.personal .myinfo{width:215px; height:130px; margin:7px 0 0 20px;background-color:#f7f7f7;border-top:1px solid #b7b7b7;border-right:1px solid #dddddd;border-bottom:1px solid #dddddd;border-left:1px solid #b7b7b7;}
+.personal ul{padding:0 0 0 0; margin:8px 0 0 15px;*margin-top:13px;}
+.personal ul li{width:100%;display:inline; color:#333333; height:11px; line-height:30px;*line-height:21px; }
+.personal ul li.list{display:block; margin:0 0 0 0;padding: 0 0 0 0;}
+.personal ul li span.message{margin:0 0 0 23px;padding: 0 0 0 0;}
+.personal ul li em{display:inline-block;width:55px; text-align:right; font-weight:bold; color:#e21300;  }
+.personal p.adjust{margin:20px 0 0 9px;*margin-top:13px;}
+.personal p.adjust a{width:94px; height:25px; display:inline-block; text-align:center; font-size:11px; text-decoration:none; color:#fff; line-height:26px; background:url(../images/main/login_btn_mini.png) no-repeat left top; margin:0 8px 0 0; }
+.personal p.account{position:relative; width:195px; height:19px;*height:14px; background-color:#fff; margin:6px 0 0 9px; border:1px solid #cfcfcf; *border:0 none; }
+.personal .account select{position:absolute;  left:4px; *left:0; top:2px;  width:188px; *width:199px; height:15px;*height:17px;font-size:11px; color:#989898; background-image:url(../images/main/login_more_btn.gif) no-repeat right center;border:0 none;}
+.personal .btnArea a.logout{background:url(../images/main/logout_btn.png) no-repeat left top; }
+.personal .btnArea a.mypage{background:url(../images/main/mypage_btn.png) no-repeat left top; }
+
+/* survey */
+.survey{background:url(../images/main/survey_BG.png) no-repeat left bottom; border-top:1px solid #e7cca9;}
+.survey:after{clear:both;display:block; content:"";}
+.survey form, .radio p.question, .listtype ul{padding:0; }
+.survey p.question{width:205px; line-height:18px; margin: 0 0 0 29px; }
+.survey form{margin:8px 0 13px 31px; *margin-left:28px;}
+.survey form input{height:25px; margin:-2px 0 0 0;}
+.survey .btnArea a{background:url(../images/main/servey_btn.png) no-repeat left top;}
+
+/* bookmark */
+.bookmark{background:url(../images/main/Portmini_BG.png) no-repeat left bottom;  border-top:1px solid #ccc;}
+.bookmark ul{position:absolute; top:47px;width:215px; height:170px; background:url(../images/main/portlet_BG.gif) no-repeat left top; margin:0 0 0 20px; padding:20px 0 0 0;border-top:1px solid #aeaca9;border-right:1px solid #dddddd;border-bottom:1px solid #dddddd;border-left:1px solid #aeaca9; overflow-y:scroll;}
+.bookmark ul li{padding:0 0 0 14px; height:26px; line-height:26px;}
+.bookmark ul li a{color:#333333;}
+
+
+
+/* p_10 */
+/* menubanner */
+.menubanner{position:relative; background:url(../images/main/menuimage.png) no-repeat left bottom; border-top:1px solid #ccc;}
+.menubanner .menu_title{position:absolute; top:40px; right:34px; padding:0 11px 5px 0;display:inline; font:15px/15px NanumGothic, 나눔고딕, ngeot, Helvetica, sans-serif;  font-weight:600; border-bottom:1px solid #d0d1d4;}
+.menubanner .txt{position:absolute; top:68px; right:57px; font-size:11px; padding:0 19px 0 0; background:url(../images/main/more_btn.gif) no-repeat right 1px;}
+.menubanner .txt a{text-decoration:none;}
+
+/* bannerzone */
+.bannerzone{position:relative; background:url(../images/main/Portmini_BG.png) no-repeat left bottom;  border-top:1px solid #ccc; }
+.bannerzone p.num{position:absolute; bottom:17px; right:15px; }
+.bannerzone .bannerimage{margin:10px 15px 0 15px; }
+
+/* additional */
+.additional{position:relative; background:url(../images/main/Portmini_BG.png) no-repeat left bottom;  border-top:1px solid #ccc; }
+.additional .app_mail{width:215px; height:55px; background-color:#f7f7f7; margin:0 0 0 20px;  border-top:1px solid #b7b7b7;border-right:1px solid #dddddd;border-bottom:1px solid #dddddd;border-left:1px solid #b7b7b7;}
+.additional ul{display:inline-block;width:100%; text-align:center;}
+.additional ul li{float:left; margin:23px 0 0 14px;}
+.additional ul li.first{height:12px; line-height:12px; margin: 23px 0 0 20px;}
+.additional ul li.return{padding:0;}
+.additional ul li a{color:#333333; text-decoration:none;}
+.additional ul li em{font-weight:bold; color:#e21300; padding:0 6px 0 6px; text-align:center;}
+
+
+/* 2014. 04. 02 SWKim 占쌩곤옙 */
+.Portlet_tab_normal li li { height: auto; }
+.Portlet_tab_normal li li a{float:left;margin:0; border:0 !important;background:transparent;font-weight:normal;color:#666 !important;letter-spacing:normal;}
+.Portlet_tab_normal li li img{float: left; position: relative; top: 6px; }
+.Portlet_tab_normal li li span.date { position:relative; top: 0px; float: right; width: 20%; min-width: 75px; margin-right: 5px !important; }
+.Portlet_tab_normal li ul { padding-top: 10px; }
+
+.Portlet_tab_mini { float: none; padding-right: 0px; }
+.Portlet_tab_mini.m1 { margin: 0 15px; }
+.Portlet_tab_mini.m2 { margin: 0 15px; }
+.Portlet_tab_mini.m1 .m1 { width: auto;}
+.Portlet_tab_mini ul { margin-left: 0px; width: auto; }
+.Portlet_tab_mini li li { padding-left: 0px; }
+.Portlet_tab_mini .overflow { width: 100%; }
+
+.Portlet_title_tab_normal.m1, 
+.Portlet_title_tab_normal.m2, 
+.Portlet_title_tab_normal.m3 { padding-right: 0px;}
+
+
+.Portlet_title_tab_normal.m1 { margin-left: 27px; }
+.Portlet_title_tab_normal.m2 { margin-left: 27px; }
+.Portlet_title_tab_normal.m3 { margin-left: 27px; }
+
+.Portlet_title_tab_normal.m1 > ul,
+.Portlet_title_tab_normal.m2 > ul,
+.Portlet_title_tab_normal.m3 > ul { height: 190px; margin-left: 0px; }
+.Portlet_title_tab_normal.m1 > ul > li,
+.Portlet_title_tab_normal.m2 > ul > li,
+.Portlet_title_tab_normal.m3 > ul > li { padding: 0 5px; width: auto; max-width: 32%; }
+
+.Portlet_title_tab_normal.m1 .m1 a span, 
+.Portlet_title_tab_normal.m2 .m2 a span, 
+.Portlet_title_tab_normal.m3 .m3 a span { padding:0 8px; }
+.Portlet_title_tab_normal li a span { padding:0; }
+.Portlet_title_tab_normal li ul { left: 0px; top: 47px; height: 170px; }
+
+.Portlet_title_tab_normal.m1 .m1 ul, 
+.Portlet_title_tab_normal.m2 .m2 ul, 
+.Portlet_title_tab_normal.m3 .m3 ul { height: 150px; }
+
+.ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	word-break: break-all;
+	word-wrap: normal;
+	text-overflow: ellipsis;
+}
+
+.schedule_date span.month { width: 100%; text-indent: 29px; }
+.schedule_date span.month strong { float: left; margin-right: 10px; }
+.schedule_date span.month em { float: left; text-indent: 0; margin-left: 5px; margin-right: 5px; }
+.schedule_date span.month .toDoCalendar { margin-left: 5px; position:relative; top: 4px; }
+.schedule_date span.title { width: 100%; text-indent: 29px; }
+
+.personal .myinfo { margin-left: 15px; margin-right: 15px; }
+.personal p.adjust a { margin-right: 0px; }
+.personal p.adjust a.left { margin-right: 4px; }
+
+.schedule p.schedule_date { line-height: 30px; top: 12px; }
+.schedule p.schedule_date span.month em { line-height: 26px; }
+
+/*
+* 2014. 04. 29.
+* Mini Calendar Portlet
+*/
+.schedule .data table td ,#calender .data table th { padding: 0; }
+
+.fc-day div { float: left; width: 100%; }
+.fc-sat .fc-day-number { color: #2222ec; }
+.fc-sun .fc-day-number { color: #ee3124; }
+.fc-other-month { 	
+	-ms-filter:alpha(opacity=50);
+	filter:alpha(opacity=50);
+ 	-moz-opacity:0.5;
+ 	opacity:0.5;
+}
+.fc-day-exists-schedule { cursor: pointer; font-weight: bold; color: #333; }
+.fc-sat.fc-day-exists-schedule { color: #2222ec; } 
+.fc-sun.fc-day-exists-schedule { color: #ee3124; }
+.fc-day-selected { background:#fedf94; }
+
+/*
+* 2014. 05. 8.
+* Banner Portlet
+*/
+.bannerzone .bannerimage a{text-decoration: none;}
+
+.Portlet_tab_normal{background: none; background-color: #fff; border:1px solid #ccc; height:263px !important;  margin:0; padding:0 37px 0 0; 
+box-shadow : 3px 3px 3px #ddd; 
+}

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>환자안전포탈</title>
+<meta name="author" content="환자안전포탈"/>
+<meta name="description" content="환자안전포탈"/>
+<meta name="keywords" content="환자안전포탈"/>
+<meta name="Resource-type" content="Document"/>
+<link rel="stylesheet" type="text/css" href="/kops/css/default.css"/>
+<link rel="stylesheet" type="text/css" href="/kops/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="/kops/css/ionicons.min.css">
+<script type="text/javascript" src="/kops/js/jquery.min.js"></script>
+<script type="text/javascript" src="/kops/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/kops/js/jquery.js"></script>
+<script type="text/javascript" src="/kops/js/common.js"></script>
+<script type="text/javascript" src="/kops/js/sub.js"></script>
+<script type="text/javascript" src="/kops/js/jquery.muslider-2.0.min.js"></script>
+<script type="text/javascript" src="/kops/js/simpleBanner.js"></script>
+<script type="text/javascript" src="/kops/js/jquery.countimator.js"></script>
+<script type="text/javascript" src="/kops/js/main.js"></script>
+<script type="text/javascript">
+	// 홍보영상
+	  var tag = document.createElement('script');
+
+	  tag.src = "https://www.youtube.com/iframe_api";
+	  var firstScriptTag = document.getElementsByTagName('script')[0];
+	  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+</script>
+</head>
+<body>
+
+<!-- Header -->
+<div id="header">
+	<div class="gnb_wrap">
+		<div class="depth1_cont">
+			<p class="logo"><a href="#"><img src="/kops/images/common/logo.png" alt="환자안전보고학습시스템 로고" /></a></p>
+			<!-- 우측메뉴 -->
+			<div class="login">
+				<ul>
+					<li><a href="#">회원가입</a></li>
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">My KOPS</a></li>
+					<li>
+						<div class="search">
+							<a href="javascript:setVisible(true);">검색</a>
+							<p class="sch_box" id="layer1"><input type="text" name="" />
+								<a href="#" class="s_btn">검색</a>
+								<a  onclick="layer1.style.visibility='hidden';" class="close"><img src="/kops/images/common/close_btn.gif" alt="닫기" /></a>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //우측메뉴 -->
+			<!-- GNB -->
+			<div class="gnb" id="top1menu">
+				<ul id="top1m2">
+					<li><a href="#">보고하기</a></li>
+					<li><a href="#">신고하기</a></li>
+					<li><a href="#">학습하기</a></li>
+					<li><a href="#">문의하기</a></li>
+					<li><a href="#">KOPS</a></li>
+				</ul>
+			</div>
+			<!-- Quick_menu -->
+			<div class="quick_menu">
+				<p><img src="/kops/images/common/quick_menu.png" alt="Quick menu" /></p>
+				<ul class="quick_cont mgt10">
+					<li class="m1"><a href="#">주의경보</a></li>
+					<li class="m2"><a href="#">보고하기</a></li>
+					<li class="m3"><a href="#">신고하기</a></li>
+				</ul>
+				<p><a href="#top"><img src="/kops/images/common/quick_menu_top.png" alt="위로" /></a></p>
+			</div>
+			<!-- //Quick_menu -->
+		</div>
+		<div id="top2m2" class="top2m">
+			<div class="depth2_cont">
+				<div class="left_cont">
+					<!--
+					<p>최근 주의 경보 <strong>약물투여</strong></p>
+					<p class="pdt10"><img src="images/common/img_live_icon1.png" alt="심각" /></p>
+					-->
+					<p>환자안전사고 누적 보고 <span>230,454건</span><a href="#">자율보고</a></p>
+				</div>
+				<div class="menu_wrap">
+					<ul>
+						<li><a href="#">보고 가이드</a></li>
+						<li><a href="#">환자/보호자용</a></li>
+						<li><a href="#">보건의료인용</a></li>
+						<li><a href="#">전담인력용</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">신고 가이드</a></li>
+						<li><a href="#">전담인력 신고</a></li>
+						<li><a href="#">환자안전 기준/지표</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">자료실</a></li>
+						<li><a href="#">주의 경보</a></li>
+						<li><a href="#">교육일정</a></li>
+						<li><a href="#">교육안내/신청</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">문의 및 상담</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">인사말</a></li>
+						<li><a href="#">제도안내</a></li>
+						<li><a href="#">KOPS소개</a></li>
+						<li><a href="#">보도자료</a></li>
+						<li><a href="#">홍보자료</a></li>
+					</ul>
+				</div>
+				<div class="right_cont">
+					<p>환자안전 전담인력 <span>20,454건</span><a href="#">전담인력 신고</a></p>
+				</div>
+			</div>
+			<div class="m_mykops">
+				<p class="title">My KOPS</p>
+				<div class="mykops_list">
+					<span><a href="#">나의 보고내역</a></span>
+					<span><a href="#">나의 사실증명</a></span>
+					<span><a href="#">나의 신고내역</a></span>
+					<span><a href="#">나의 주의정보 피드백</a></span>
+					<span><a href="#">나의 교육내역</a></span>
+					<span><a href="#">나의 문의/상담</a></span>
+					<span><a href="#">나의 제개정 요청</a></span>
+					<span><a href="#">나의 정보</a></span>
+					<span><a href="#">환자안전위원회 현황</a></span>
+					<span><a href="#">지표측정조사</a></span>
+					<span><a href="#">전담부서관리</a></span>
+					<span><a href="#">회원탈퇴</a></span>
+				</div>
+			</div>
+		</div>
+		<!-- //GNB -->
+	</div>
+</div>
+<!-- //Header -->
+
+<!-- Contents -->
+<div id="container">
+	<div class="contents main">
+		<div id="menu-backdrop"></div>
+		<div class="cont">
+			<div class="left_cont">
+
+				<div class="box_border bg">
+					<p class="text_area">함께 보고하고 함께 보호받는 <span class="mgt5"><em class="c_red">KOPS</em>환자안전 보고란?</span><a href="#">자세히보기</a></p>
+					<img src="/kops/images/main/img_box_gray.png" alt="" />
+				</div>
+
+				<div class="box_color yellow">
+					<div class="data_num">
+						<p class="ft_20 f_bold">환자안전 전담인력수</p>
+						<!--p class="num"><em>5</em><em>2</em><em>1</em> 명</p-->
+						<p  class="num" data-example="example6">
+							<span class="counter" 
+							  data-decimals="0" data-decimal-delimiter="0" 
+							  data-thousand-delimiter=" " data-value="798"
+							  data-template="{{count}} EUR">
+							</span>명
+						</p>
+						<p class="pdt5">환자안전의 파수꾼, <br />환자안전보고학습 시스템이 지원합니다.</p>
+					</div>
+					<ul class="link_area mgt20">
+						<li class="link1"><a href="#">전담인력 신고</a></li>
+						<li class="link2"><a href="#">환자안전위원회</a></li>
+						<li class="link3"><a href="#">교육안내</a></li>
+					</ul>
+				</div>
+				<div class="box_border">
+					<ul class="tab_notice" id="tabNotice">
+						<li><a href="#tab1" class="tab">공지사항</a></li>
+						<li><a href="#tab2" class="tab">자료실</a></li>
+						<li><a href="#tab3" class="tab">홍보자료</a></li>
+					</ul>
+					<div id="tab1">
+						<ul class="list_w">
+							<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+							<li><a href="#">환자안전보고학습시스템 완료</a><span class="f_right">08-06</span></li>
+							<li><a href="#">2017년 7월 통계 자료 업데이트</a><span class="f_right">08-06</span></li>
+							<li><a href="#">환자안전보고학습시스템을 오픈환자안전보고학습시스템을 오픈</a><span class="f_right">08-06</span></li>
+							<li><a href="#">환자안전보고학습시스템 완료</a><span class="f_right">08-06</span></li>
+							<li><a href="#">2017년 7월 통계 자료 업데이트</a><span class="f_right">08-06</span></li>
+						</ul>
+					</div>
+					<div id="tab2">
+						<ul class="list_w">
+							<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+							<li><a href="#">환자안전보고학습시스템 완료</a><span class="f_right">08-06</span></li>
+							<li><a href="#">환자안전보고학습시스템을 오픈환자안전보고학습시스템을 오픈</a><span class="f_right">08-06</span></li>
+						</ul>
+					</div>
+					<div id="tab3">
+						<ul class="list_w">
+							<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+						</ul>
+					</div>
+				</div>
+				<script type="text/javascript">initTabMenu('tabNotice');</script>
+			</div>
+			<div class="center_cont">
+				<div class="box_color red">
+					<p class="warning_sys_txt">주의경보 <a href="#">주의경보 더보기</a></p>
+					<dl class="warning_sys_cont">
+						<dt class="icon2">침상에서 낙상하는사고(보완) <span class="mgt5">입원실(병동)외 2곳</span></dt> <!-- 아이콘변경 클래스 'icon1'~'icon7' -->
+						<dd>응급실에 내원한 환자가 침상에서 커튼을 치고 침대 위에서 환의를 갈아입던 중 균형을 잃고, 침대 난간을 넘어 침대 밖으로 떨어짐응급실에 내원한 환자가 침상에서 커튼을 치고 침대 위에서 환의를 갈아입던 중 균형을 잃고, 침대 난간을 넘어 침대 밖으로 떨어짐</dd>
+					</dl>
+					<!--div class="text_area">
+						<p>환자안전보고학습시스템</p>
+						<p class="pdt15 bold">환자 안전사고가 발생했나요? <br /><span>누구나 보고</span>할 수 있습니다.</p>
+						<p class="pdt10"><a href="#" class="btn_gray_s">환자안전사고 보고 가이드</a></p>
+					</div-->
+				</div>
+
+				<div class="box_color img">
+					<div class="img_slide1">
+						<div class="example-1">
+							<ul>
+								<li><img src="/kops/images/main/img_slide1.png" alt="" /></li>
+								<li><img src="/kops/images/main/img_slide2.png" alt="" /></li>
+								<li><img src="/kops/images/main/img_slide3.png" alt="" /></li>
+								</ul>
+						</div>
+					</div>
+					<script>
+					// 중앙 이미지 슬라이드
+						$('.example-1').simpleBanner( {
+							autoPlayDuration:3000,
+							dots:'dots-1',
+							eventType:'mouseenter',
+							//animation:'slide',
+						});
+					</script>
+				</div>
+
+				<div class="box_color gray">
+					<ul class="link_area pdt10">
+						<li class="link1"><a href="#">보고하기</a></li>
+						<li class="link2"><a href="#">전담인력 신고</a></li>
+						<li class="link3"><a href="#">주의경보</a></li>
+						<li class="link4"><a href="#">교육신청</a></li>
+						<li class="link5"><a href="#">제도안내</a></li>
+						<li class="link6"><a href="#">FAQ</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="right_cont">
+				<div class="box_border">
+					<div class="cont1">
+						<p class="text_area">한번에 이해하기 쉬운 <span>환자안전보고학습시스템<em>홍보영상</em></span><a href="#">자세히보기</a></p>
+					</div>
+					<p id="floating" class="movie_area"><img src="/kops/images/main/img_movie.gif" alt="홍보영상" /><a href="#none" class="mv_go"><img src="/kops/images/main/img_movie_go.png" alt="홍보영상 바로보기" /></a></p>
+					<div id="modal" style="display:none">
+						<div id="movie">
+							<div style="position:absolute; top:15%; left:0px;   width:100%; text-align:center; height:510px;">
+								<div id="closeModalPopup" style="cursor:pointer"><img src="/kops/images/main/close.png" width="30" height="30" border="0" style="margin-left:823px" /></div>
+								<div id="youtubePlayer"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 문구추가&그래프영역 수정 -->
+				<div class="box_color brown">
+					<div class="data_num">
+						<p class="ft_18 f_bold">환자안전사고 보고건수</p>
+						<!--p><em>5</em><em>2</em>,<em>2</em><em>1</em><em>1</em> </p-->
+						<p  class="num" data-example="example6">
+							<span class="counter counter-default badge" 
+							   data-decimals="0" data-decimal-delimiter="0" 
+							  data-thousand-delimiter=" " data-value="743569"
+							  data-template="{{count}} EUR">
+							</span>건
+						</p>
+					</div>
+					<p class="graph_txt">월별 보고건수</p>
+					<!-- 그래프 -->
+					<div class="graph_area">
+						<div id="bar-1"></div>
+						<div id="bar-2"></div>
+						<div id="bar-3"></div>
+						<div id="bar-4"></div>
+					</div>
+					<!-- //그래프 -->
+				</div> 
+   		
+				<div class="box_border">
+					<div id="slider_wrapper">
+						<div class="slide">
+							<div class="cont1">
+								<p class="text_area">환자안전과 의료 질 <br />향상을 선도하는 인증전문기관 <span>의료기관평가인증원</span><a href="#">자세히보기</a></p>
+							</div>
+						</div>
+						<div class="slide">
+							<div class="cont2">
+								<p class="text_area">힘이되는 평생친구 <br />모두가 누리는 포용적복지 <span>보건복지부</span><a href="#">자세히보기</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="navslide">
+						<p>
+							<a href="#none" class="prev"><img src="/kops/images/main/prev02.gif" alt="previous" title="previous" /></a>
+							<a href="#none" class="start"><img src="/kops/images/main/start02.gif" alt="start" title="start" /></a>
+							<a href="#none" class="stop"><img src="/kops/images/main/pause02.gif" alt="stop" title="stop" /></a>
+							<a href="#none" class="next"><img src="/kops/images/main/next02.gif" alt="next" title="next" /></a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="link_wrap">
+			<ul class="">
+				<li class="link1"><a href="#"><span>사실확인증명</span>보고에 대한 사실증명 신청</a></li>
+				<li class="link2"><a href="#"><span>환자안전 기준/지표</span>기준/지표 제개정 요청</a></li>
+				<li class="link3"><a href="#"><span>환자안전위원회 현황</span>환자안전위원회 등록 및 회의 등록</a></li>
+				<li class="link4"><a href="#"><span>신고내역</span>전담인력 신고 내역</a></li>
+				<li class="link5"><a href="#"><span>전담부서 관리</span>전담부서에 대한 정보 관리</a></li>
+				<li class="link6"><a href="#"><span>주의경보 피드백</span>주의경보에 대한 피드백 작성</a></li>
+			</ul>
+		</div>
+		<ul class="board_area">
+			<li>
+				<p class="tit">공지사항<a href="#"><img src="/kops/images/main/ico_more.gif" alt="공지사항 바로가기" /></a></p>
+				<ul class="notice_list">
+					<li><a href="#">시스템 점검이 예정되어 시스템 점검이 예정되어있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+				</ul>
+			</li>
+			<li>
+				<p class="tit">홍보자료<a href="#"><img src="/kops/images/main/ico_more.gif" alt="보도자료 바로가기" /></a></p>
+				<ul class="notice_list">
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+				</ul>
+			</li>
+			<li>
+				<p class="tit">보도자료<a href="#"><img src="/kops/images/main/ico_more.gif" alt="홍보자료 바로가기" /></a></p>
+				<ul class="notice_list">
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+					<li><a href="#">시스템 점검이 예정되어 있습니다.</a><span class="f_right">08-06</span></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- Contents -->
+
+<!-- Footer -->
+<div id="footer">
+	<!-- Link_Area -->
+	<div class="foot_link">
+		<div class="link_go">
+			<div id="scroll-list" class="scroll-list">
+				<p class="btn_banner"><a onclick="slideCateScroll('scroll-list')">유관기관 바로가기 <i class="arr ion-arrow-down-b"></i></a></p>
+				<ul class="banner_wrap">
+					<li><a href="#"><img src="/kops/images/main/img_banner1.gif" alt="" /></a><span>의료기관평가인증원</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner2.gif" alt="" /></a><span>대한병원협회</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner3.gif" alt="" /></a><span>대한의사협회</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner4.gif" alt="" /></a><span>대한간호협회</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner5.gif" alt="" /></a><span>대한치과병원협회</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner6.gif" alt="" /></a><span>대한한방병원협회</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner7.gif" alt="" /></a><span>한국의료질향상학회</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner8.gif" alt="" /></a><span>국민건강보험공단</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner9.gif" alt="" /></a><span>건강보험심사평가원</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner10.gif" alt="" /></a><span>대한의학회</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner11.gif" alt="" /></a><span>바른사회시민회의</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner12.gif" alt="" /></a><span>한국환자단체연합회</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner13.gif" alt="" /></a><span>전국보건의료산업노동조합</span></li>
+					<li><a href="#"><img src="/kops/images/main/img_banner14.gif" alt="" /></a><span>한국의약품안전관리원</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="menu_wrap">
+			<ul>
+				<li>보고하기</li>
+				<li><a href="#">- 보고 가이드</a></li>
+				<li><a href="#">- 환자/보호자용</a></li>
+				<li><a href="#">- 보건의료인용</a></li>
+				<li><a href="#">- 전담인력용</a></li>
+			</ul>
+			<ul>
+				<li>신고하기</li>
+				<li><a href="#">- 신고 가이드</a></li>
+				<li><a href="#">- 전담인력 신고</a></li>
+				<li><a href="#">- 환자안전 기준/지표</a></li>
+				<li><a href="#">- 환자안전위원회</a></li>
+			</ul>
+			<ul>
+				<li>학습하기</li>
+				<li><a href="#">- 자료실</a></li>
+				<li><a href="#">- 주의 경보</a></li>
+				<li><a href="#">- 교육일정</a></li>
+				<li><a href="#">- 교육안내/신청</a></li>
+			</ul>
+			<ul>
+				<li>문의하기</li>
+				<li><a href="#">- 공지사항</a></li>
+				<li><a href="#">- FAQ</a></li>
+				<li><a href="#">- 문의 및 상담</a></li>
+			</ul>
+			<ul>
+				<li>KOPS</li>
+				<li><a href="#">- 인사말</a></li>
+				<li><a href="#">- 제도안내</a></li>
+				<li><a href="#">- KOPS소개</a></li>
+				<li><a href="#">- 보도자료</a></li>
+				<li><a href="#">- 홍보자료</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- //Link_Area -->
+	<div class="foot_info">
+		<p class="f_logo"><a href="#"><img src="/kops/images/common/f_logo.png" alt="환자안전보고학습시스템 로고" /></a></p>
+		<div class="link2">
+			<ul>
+				<li><a href="#">개인정보 보호 방침</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li class="ico"><a href="#">저작권정책안내</a></li>
+				<li class="ico"><a href="#">이메일주소무단수집거부</a></li>
+				<li class="ico"><a href="#">찾아오시는길</a></li>
+			</ul>
+			<p class="copyrighter">
+				<span>서울시 영등포구 국회대로76길 10(여의도동) 10층 우편번호07283 TEL:02-2076-0600 FAX:02-2076-0666</span>
+				<span>Copyright © 2013 <em>KOIHA</em>. All rights reserved.</span>
+			</p>
+		</div>
+		<div class="site_link">
+			<select id="" style="width:185px;">
+				<option>관련사이트 바로가기</option>
+			</select>
+			<p class="pdt10"><a href="#"><img src="/kops/images/common/f_logo2.png" alt="의료기관평가인증원 로고" /></a></p>
+		</div>
+	</div>
+</div>
+<!-- //Footer -->
+
+</body>
+
+</html>

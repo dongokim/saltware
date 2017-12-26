@@ -1,0 +1,11 @@
+.ui-tabs.ui-widget.ui-widget-content {
+	border: none;
+}
+
+.ui-tabs .ui-tabs-nav {
+	border: none;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	display: none;
+}

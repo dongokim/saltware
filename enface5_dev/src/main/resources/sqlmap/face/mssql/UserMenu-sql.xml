@@ -1,0 +1,216 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="face">
+
+	
+	
+	<!-- Query for [ MENU : 사용자메뉴관리 ] Table -->
+	<resultMap id="face_UserMenuVO_PK" class="com.saltware.enface.userMenu.service.UserMenuPK">
+	
+		<result property="principalId" column="PRINCIPAL_ID" columnIndex="1"/>	
+		<result property="pageId" column="PAGE_ID" columnIndex="2"/>	
+	</resultMap>
+	
+	<resultMap id="face_EnviewMenu" class="com.saltware.enface.userMenu.service.EnviewMenuImpl">
+		<result property="pageId" column="PAGE_ID" columnIndex="1"/>	 
+		<result property="parentId" column="PARENT_ID" columnIndex="2"/>	
+		<result property="name" column="NAME" columnIndex="3"/>			
+		<result property="url" column="URL" columnIndex="4"/>		 
+		<result property="path" column="PATH" columnIndex="5"/>	
+		<result property="title" column="TITLE" columnIndex="6"/>	
+		<result property="shortTitle" column="SHORT_TITLE" columnIndex="7"/>	
+		<result property="target" column="TARGET" columnIndex="8"/>	
+		<result property="skin" column="SKIN" columnIndex="9"/>
+		<result property="hidden" column="IS_HIDDEN" columnIndex="10"/>
+		<result property="quick" column="IS_QUICK_MENU" columnIndex="11"/>
+		<result property="parameter" column="PARAMETER" columnIndex="12"/>
+		<result property="defaultPage" column="DEFAULT_PAGE_NAME" columnIndex="13"/>	
+	</resultMap>
+	
+	<select id="userMenu.totalCount" resultClass="int">
+			SELECT COUNT(*) cnt
+			FROM MENU
+			WHERE PRINCIPAL_ID=#principalId# AND MENU_TYPE=#menuType#
+	</select>
+	
+	<select id="userMenu.exist" resultClass="int">
+			SELECT COUNT(*) cnt
+			FROM MENU
+			WHERE PRINCIPAL_ID=#principalId# AND MENU_TYPE=#menuType# AND PAGE_ID=#pageId#
+	</select>
+	
+	<select id="userMenu.findQuick4GuestAndAdmin" resultMap="face_EnviewMenu">
+			SELECT b.PAGE_ID,b.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM PAGE b
+	        WHERE b.IS_QUICK_MENU=1
+	        <isNotNull prepend=" AND " property="guest">IS_PROTECTED=0</isNotNull>
+			ORDER BY b.SORT_ORDER ASC
+	</select>
+	<select id="userMenu.findQuick" resultMap="face_EnviewMenu">
+			SELECT a.PAGE_ID,a.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM MENU a INNER JOIN PAGE b ON a.PAGE_ID=b.PAGE_ID 
+	        WHERE a.PRINCIPAL_ID=#principalId# AND a.MENU_TYPE=1 AND b.IS_QUICK_MENU=1
+			ORDER BY a.MENU_ORDER ASC
+	</select>
+	
+	<select id="userMenu.findAll4GuestAndAdmin" resultMap="face_EnviewMenu">
+			SELECT b.PAGE_ID,b.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM PAGE b
+	        WHERE 1=1 AND PATH NOT LIKE '/user%' AND PATH NOT LIKE '/group%' AND PATH NOT LIKE '/cafe%' AND PATH NOT LIKE '/blog%'
+	        <isNotNull prepend=" AND " property="guest">IS_PROTECTED=0</isNotNull>
+			ORDER BY b.DEPTH,b.SORT_ORDER ASC
+	</select>
+	<select id="userMenu.findAll" resultMap="face_EnviewMenu">
+			SELECT a.PAGE_ID,a.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM MENU a INNER JOIN PAGE b ON a.PAGE_ID=b.PAGE_ID 
+	        WHERE a.PRINCIPAL_ID=#principalId# AND a.MENU_TYPE=#menuType#
+			ORDER BY b.DEPTH,a.MENU_ORDER ASC
+	</select>
+	
+	<select id="userMenu.findById4GuestAndAdmin" resultMap="face_EnviewMenu">
+			SELECT b.PAGE_ID,b.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM PAGE b
+	        WHERE 1=1 AND b.PARENT_ID=#pageId#
+	        <isNotNull prepend=" AND " property="guest">IS_PROTECTED=0</isNotNull>
+			ORDER BY b.SORT_ORDER ASC
+	</select>
+	<select id="userMenu.findById" resultMap="face_EnviewMenu">
+			SELECT a.PAGE_ID,a.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM MENU a INNER JOIN PAGE b ON a.PAGE_ID=b.PAGE_ID 
+	        WHERE a.PRINCIPAL_ID=#principalId# AND a.MENU_TYPE=#menuType# AND a.PARENT_ID=#pageId#
+			ORDER BY a.MENU_ORDER ASC
+	</select>
+	
+	<select id="userMenu.findByPath4GuestAndAdmin" resultMap="face_EnviewMenu">
+			SELECT b.PAGE_ID,b.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM PAGE b
+	        WHERE 1=1 AND b.PARENT_ID=(SELECT PAGE_ID FROM PAGE WHERE PATH=#path#)
+	        <isNotNull prepend=" AND " property="guest">IS_PROTECTED=0</isNotNull>
+			ORDER BY b.SORT_ORDER ASC
+	</select>
+	<select id="userMenu.findByPath" resultMap="face_EnviewMenu">
+			SELECT a.PAGE_ID,a.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM MENU a INNER JOIN PAGE b ON a.PAGE_ID=b.PAGE_ID 
+	        WHERE a.PRINCIPAL_ID=#principalId# AND a.MENU_TYPE=#menuType# AND a.PARENT_ID=(SELECT PAGE_ID FROM PAGE WHERE PATH=#path#)
+			ORDER BY a.MENU_ORDER ASC
+	</select>
+	
+	<select id="userMenu.findByUser" resultMap="face_EnviewMenu">
+			SELECT b.PAGE_ID,b.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM PAGE b
+	        WHERE b.PARENT_ID=(SELECT PAGE_ID FROM PAGE WHERE PATH='/user/'||#userId#)
+			ORDER BY b.SORT_ORDER ASC
+	</select>
+	
+	<select id="userMenu.findByGroup" resultMap="face_EnviewMenu">
+			SELECT b.PAGE_ID,b.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM PAGE b
+	        WHERE b.PARENT_ID=(SELECT PAGE_ID FROM PAGE WHERE PATH='/group/'||#groupId#)
+			ORDER BY b.SORT_ORDER ASC
+	</select>
+	
+	<select id="userMenu.detail4GuestAndAdmin" resultMap="face_EnviewMenu">
+			SELECT b.PAGE_ID,b.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM PAGE b
+	        WHERE 1=1 AND b.PAGE_ID=#pageId# 
+	</select>
+	<select id="userMenu.detail" resultMap="face_EnviewMenu">
+			SELECT a.PAGE_ID,a.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM MENU a INNER JOIN PAGE b ON a.PAGE_ID=b.PAGE_ID 
+	        WHERE a.PRINCIPAL_ID=#principalId# AND a.MENU_TYPE=#menuType# AND a.PAGE_ID=#pageId# 
+	</select>
+	
+	<select id="userMenu.detailByPath4GuestAndAdmin" resultMap="face_EnviewMenu">
+			SELECT b.PAGE_ID,b.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=b.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM PAGE b
+	        WHERE 1=1 AND b.PATH=#path# 
+	</select>
+	<select id="userMenu.detailByPath" resultMap="face_EnviewMenu">
+			SELECT a.PAGE_ID,a.PARENT_ID,b.NAME,b.URL,b.PATH,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='title' AND LOCALE=#langKnd#) AS TITLE,
+				   (SELECT VALUE FROM PAGE_METADATA WHERE PAGE_ID=a.PAGE_ID AND NAME='short-title' AND LOCALE=#langKnd#) AS SHORT_TITLE,
+				   b.TARGET,b.SKIN,b.IS_HIDDEN,b.IS_QUICK_MENU,b.PARAMETER,b.DEFAULT_PAGE_NAME
+	        FROM MENU a INNER JOIN PAGE b ON a.PAGE_ID=b.PAGE_ID 
+	        WHERE a.PRINCIPAL_ID=#principalId# AND a.MENU_TYPE=#menuType# AND b.PATH=#path# 
+	</select>
+	
+	<insert id="userMenu.insert">
+			INSERT INTO MENU
+				( PRINCIPAL_ID,PAGE_ID,PARENT_ID,MENU_TYPE,MENU_ORDER )
+			VALUES ( #principalId#,#pageId#,#parentId#,#menuType#,#menuOrder# )
+	</insert>
+	
+	<insert id="userMenu.insertByPath">
+			INSERT INTO MENU
+				( PRINCIPAL_ID,PAGE_ID,PARENT_ID,MENU_TYPE,MENU_ORDER )
+			(SELECT #principalId#, PAGE_ID, PARENT_ID, 0, SORT_ORDER FROM PAGE WHERE PATH=#pagePath#)
+	</insert>
+	
+	<update id="userMenu.update">
+			UPDATE MENU
+			SET MENU_ORDER=#menuOrder#
+			WHERE PRINCIPAL_ID=#principalId# AND PAGE_ID=#pageId# AND MENU_TYPE=#menuType#
+	</update>
+	
+	<update id="userMenu.updateMyPageOrder">
+			UPDATE PAGE
+			SET SORT_ORDER=#menuOrder#
+			WHERE PAGE_ID=#pageId#
+	</update>
+	
+	<delete id="userMenu.delete">
+			DELETE FROM MENU
+			WHERE 1=1 
+				AND PRINCIPAL_ID=#principalId#
+				AND PAGE_ID=#pageId#
+				AND MENU_TYPE=#menuType#
+	</delete>
+	
+	<delete id="userMenu.deleteAll">
+			DELETE FROM MENU
+			WHERE 1=1 
+				AND PRINCIPAL_ID=#principalId#
+				AND MENU_TYPE=#menuType#
+	</delete>
+
+</sqlMap>
+

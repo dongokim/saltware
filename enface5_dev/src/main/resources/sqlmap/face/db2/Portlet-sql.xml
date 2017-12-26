@@ -1,0 +1,26 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="face">
+	<resultMap class="com.saltware.enface.portlet.board.service.MiniBoardVO" id="MiniBoardVO.findBltn">
+	    <result property="bltnNo" column="BLTN_NO"/>
+	    <result property="regDatim" column="REG_DATIM"/>
+	    <result property="updDatim" column="UPD_DATIM"/>
+	    <result property="bltnSubj" column="BLTN_SUBJ"/>
+	</resultMap>
+	<select id="miniBoard.findBltn" resultMap="MiniBoardVO.findBltn">
+		SELECT
+		  t1.board_id,
+		  t1.bltn_no,
+		  t1.reg_datim,
+		  t1.upd_datim,
+		  t1.bltn_subj
+		FROM
+		  bulletin t1 
+		WHERE
+		  t1.board_id=#boardId# 
+		  AND t1.bltn_gid = 'EB'
+	    ORDER BY t1.bltn_gn DESC, t1.bltn_gq DESC
+		FETCH FIRST 5 ROWS ONLY
+	</select>
+</sqlMap>
+

@@ -1,0 +1,62 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="face">
+	
+	<!-- Query for [ 사용자 : OpenAccessToken ] Table -->
+	
+	<resultMap id="face_OpenApiVO" class="com.saltware.enface.openapi.service.OauthVO">
+		<result property="userId" column="USER_ID" columnIndex="1"/>	 
+		<result property="accessToken" column="ACCESS_TOKEN" columnIndex="2"/>	 
+		<result property="accessSecret" column="ACCESS_SECRET" columnIndex="3"/>	 
+		<result property="m2UserId" column="M2_USER_ID" columnIndex="4"/>
+		<result property="oauthSns" column="SNS" columnIndex="5"/>
+	</resultMap>
+	
+	<resultMap id="face_OpenApiOauthUrlVo" class="com.saltware.enface.openapi.service.OauthUrlVO">
+		<result property="oauthSns" column="SNS" columnIndex="1"/>	 
+		<result property="apiUrl" column="API_URL" columnIndex="2"/>
+	    <result property="requestTokenUrl" column="REQUEST_TOKEN_URL" columnIndex="3"/>	 
+		<result property="authorizeUrl" column="AUTHORIZE_URL" columnIndex="4"/>	 
+		<result property="accessTokenUrl" column="ACCESS_TOKEN_URL" columnIndex="5"/>
+		<result property="callBackUrl" column="CALL_BACK_URL" columnIndex="6"/>
+	</resultMap>
+	
+	<resultMap id="face_OpenApiOauthConsumerVo" class="com.saltware.enface.openapi.service.OauthConsumerVO">
+		<result property="oauthSns" column="SNS" columnIndex="1"/>	 
+		<result property="consuMerKey" column="CONSUMER_KEY" columnIndex="2"/>
+	    <result property="consuMerSecret" column="CONSUMER_SECRET" columnIndex="3"/>	 
+	    
+	</resultMap>
+	
+		
+<select id="oauth.serch" resultMap="face_OpenApiVO">
+			SELECT *
+            from OPEN_API
+            where USER_ID=#userId# and SNS=#oauthSns#
+</select>
+
+
+<select id="oauthurl" resultMap="face_OpenApiOauthUrlVo">
+			SELECT *
+            from OPEN_API_ADDRESS
+            where SNS=#oauthSns#
+</select>
+
+<select id="oauthconsumer" resultMap="face_OpenApiOauthConsumerVo">
+			SELECT *
+            from OPEN_API_APP
+            where SNS=#oauthSns#
+</select>
+
+<insert id="accesstoken.insert">
+            INSERT INTO OPEN_API(USER_ID, ACCESS_TOKEN, ACCESS_SECRET, M2_USER_ID, SNS)
+			VALUES(#userId#,#accessToken#,#accessSecret#,#m2UserId#,#oauthSns#) 
+</insert>
+
+<update id="accesstoken.update">
+			UPDATE OPEN_API
+			set ACCESS_TOKEN=#accessToken#, ACCESS_SECRET=#accessSecret#, M2_USER_ID=#m2UserId#
+			where USER_ID=#userId# and SNS=#oauthSns#
+</update>
+
+</sqlMap>

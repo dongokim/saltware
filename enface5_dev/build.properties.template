@@ -1,0 +1,58 @@
+#------------------------------------------------------------
+# Directories
+#------------------------------------------------------------
+project.id=enface
+product.id=enview
+product.bsc=basic
+product.pro=professional
+product.ent=enterprise
+product.appl=appliance
+product.sns=sns
+product.dir=E:/Deployment/enProduct
+
+version=3.2.5
+
+compile.debug= true
+compile.optimize= false
+compile.deprecation= true
+compile.encoding= utf-8
+
+src.dir=${basedir}/src/main/java
+res.dir=${basedir}/src/main/resources
+web.dir=${basedir}/src/main/webapp
+target.dir=${basedir}/bin
+
+# START: Tomcat setting #
+was.tomcat.dir=E:/WAS/Tomcat6
+was.tomcat.shared.dir=${was.tomcat.dir}/${product.id}-${version}/ROOT
+
+deploy.tomcat.dir=${product.dir}/deploy/tomcat/${product.id}-${version}
+deploy.tomcat.domain.dir=${deploy.tomcat.dir}/ROOT
+# END: Tomcat setting #
+
+# START: jBoss setting #
+was.jboss.dir=E:/WAS/jboss6.1
+was.jboss.shared.dir=${was.jboss.dir}/${product.id}-${version}/domain/standalone/lib
+
+deploy.jboss.dir=${product.dir}/deploy/jboss/${product.id}-${version}
+deploy.jboss.domain.dir=${deploy.jboss.dir}/ROOT
+# END: jBoss setting #
+
+ftp.server.ip=119.81.132.250
+ftp.tomcat.home.dir=/was/tomcat
+ftp.jboss.home.dir=/was/jboss-eap-6.1.0
+
+ftp.src.default.basedir=/shared/default
+#ftp.src.default.upload.dir=/shared/default/upload
+#ftp.src.default.webapps.dir=/shared/default/webapps
+#ftp.src.default.webdocs.dir=/shared/default/webdocs
+ftp.src.saltware.basedir=/shared/saltware
+#ftp.src.saltware.upload.dir=/shared/saltware/upload
+#ftp.src.saltware.webapps.dir=/shared/saltware/webapps
+#ftp.src.saltware.webdocs.dir=/shared/saltware/webdocs
+ftp.src.uos.basedir=/shared/uos
+#ftp.src.uos.upload.dir=/shared/uos/upload
+#ftp.src.uos.webapps.dir=/shared/uos/webapps
+#ftp.src.uos.webdocs.dir=/shared/uos/webdocs
+
+sharedLib.dir=${deploy.basedir}/lib

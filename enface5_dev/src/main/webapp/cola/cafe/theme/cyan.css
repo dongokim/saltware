@@ -1,0 +1,139 @@
+/********************************************************************************** 
+*****	encafe theme : basic 
+**********************************************************************************/
+
+/*== 배경 ==*/
+.CF0102_bgColor { background-color: transparent }
+.CF0102_bgHeight { height: 94px }
+.CF0102_bgImage { background-image: none }
+.CF0102_bgImgPos { background-position-x: left; background-position-y: top }
+.CF0102_bgImgRepeat { background-repeat: no-repeat }
+.CF0102_brdrColor { border-color: transparent }
+.CF0102_brdrStyle { border-style: solid }
+.CF0102_brdrWidth { border-width: 0px }
+.CF0102_trpcValue { opacity: 1.0 }
+
+/*== 카페명 ==*/
+.CF0103_display { display: block }
+.CF0103_fontColor { color: #333333 }
+.CF0103_fontNm { font-family: dotum }
+.CF0103_fontSize { font-size: 17px; font-weight: bold }
+.CF0103_position { position: absolute; top: 0px; left: 10px }
+
+/*== 카페 주소 ==*/
+.CF0104_display { display: block }
+.CF0104_fontColor { color: #adadad }
+.CF0104_fontNm { font-family: dotum }
+.CF0104_fontSize { font-size: 11px }
+.CF0104_position { position: absolute; top: 25px; left: 10px }
+
+/*== 카페상단메뉴 ==*/
+.CF0105_baseFontColor { color: #fff;}
+.CF0105_bgColor { background-color: cyan }
+.CF0105_brdrColor { border-color: cyan }
+.CF0105_brdrStyle { border-style: solid;border-radius:5px }
+.CF0105_brdrWidth { border-width: 1px }
+.CF0105_display { display: block }
+.CF0105_fontNm { font-family: sans-serif }
+.CF0105_position { position: absolute; top: 57px; left: 0px }
+.CF0105_selFontColor { color: black }
+
+/*== 카페 검색 ==*/
+.CF0106_brdrStyle { border: 1px solid black }
+.CF0106_btnBgColor { background-color: white }
+.CF0106_btnFontColor { color: red }
+.CF0106_fieldBgColor { background-color: white }
+.CF0106_fieldFontColor { color: red }
+.CF0106_position { position: absolute; top: 191px; left: 730px }
+
+/*== 카운터 ==*/
+.CF0107_position { position: absolute; top: 173px; left: 740px }
+.CF0107_trpcValue { opacity: 1.0 }
+
+/*== 사용자정보 ==*/
+.CF0301_baseFontColor { color: #444444 }
+.CF0301_bgColor { background-color: white }
+.CF0301_brdrColor { border-color: cyan;border-radius:5px }
+.CF0301_btnBgColor { background-color: cyan }
+.CF0301_btnFontColor { color: info#7c84f6 }
+.CF0301_myInfoButton { background-image: url(/cola/cafe/images/each/encafe/info/ic_view.gif) }
+.CF0301_myInfoButton2 { display: none }
+.CF0301_sepBrdrColor { border-color: cyan }
+.CF0301_valFontColor { color: #6173e8 }
+
+/*== 카페좌측메뉴 ==*/
+.CF0401_baseFontColor { color: #75747d }
+.CF0401_bgColor { background-color: white }
+.CF0401_brdrColor { border-color: cyan }
+.CF0401_brdrStyle { border-style: solid;border-radius:5px }
+.CF0401_brdrWidth { border-width: 1px 1px 1px 1px }
+.CF0401_menuGrpBgColor { background-color: transparent }
+.CF0401_sepBrdrColor { border-color: cyan }
+.CF0401_sepBrdrStyle { border-top-style: solid }
+.CF0401_sepBrdrWidth { border-top-width: 1px }
+.CF0401_valFontColor { color: #62626e }
+
+/*== 카페 메뉴아이콘 ==*/
+
+/* 일반 아이콘 */
+.CF0402_menuIcon10 { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/board.gif) }
+/* 익명 아이콘 */
+.CF0402_menuIcon11 { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/board.gif) }
+/* Q&A 아이콘 */
+.CF0402_menuIcon12 { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/board.gif) }
+/* 사진 아이콘 */
+.CF0402_menuIcon13 { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/board.gif) }
+/* 한줄 아이콘 */
+.CF0402_menuIcon14 { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/one.gif) }
+/* 최신 아이콘 */
+.CF0402_menuIcon90 { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/new.gif) }
+/* 인기 아이콘 */
+.CF0402_menuIcon91 { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/hot.gif) }
+/* 이미지 아이콘 */
+.CF0402_menuIcon92 { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/img.gif) }
+/* 새글 알림 아이콘 */
+.CF0402_newIcon { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/bul_new.gif) }
+.CF0402_pddngLft { padding-left: 15px }
+.CF0402_selImg { background-image: url(/cola/cafe/resource/images/menu/template/icon/base/sel.gif) }
+.CF0402_txtIndnt { text-indent: 13px }
+
+/*== 컨텐츠 ==*/
+/*게시판명 */
+.CF0501_nmBrdrColor { border-color: cyan } 
+.CF0501_nmBrdrStyle { border-style: solid }
+.CF0501_nmBrdrWidth { border-width: 0px 0px 2px 0px }
+.CF0501_nmFontColor { color: #6173e8 }
+.CF0501_nmFontSize { font-size: 15px }
+/* 댓글*/
+.CF0501_rplFontColor { color: #6173e8 }
+/* 제목 */
+.CF0501_subjFontColor { color: #474253 }
+.CF0501_subjFontNm { font-family: sans-serif }
+.CF0501_subjFontSize { font-size: 12px }
+
+/*== 카페검색 ==*/
+.CF0601_bgColor { background-color: white }
+.CF0601_bgImage { background-image: none }
+.CF0601_bgImgRepeat { background-repeat: no-repeat }
+.CF0601_brdrColor { border-color: cyan }
+.CF0601_brdrStyle { border-style: solid;border-radius:5px }
+.CF0601_brdrWidth { border-width: 1px }
+.CF0601_fontColor { color: #fff }
+.CF0601_srchBtn { background-color: cyan; border-radius:5px; color:#fff}
+
+/*== 테마 ==*/
+.CF0802_bgColor { background-color: rgb(254; 254; 254) }
+.CF0802_bgImage { background-image: url(/cola/cafe/resource/images/skin/background/background01.jpg) }
+.CF0802_bgImgPos { background-position-x: left; background-position-y: top }
+.CF0802_bgImgRepeat { background-repeat: repeat-x }
+.CF0802_extraBgColor { background-color: #ffffff }
+.CF0802_extraBrdrColor { border-color: cyan }
+.CF0802_extraColor { color: #dbe2e5 }
+
+/*== 칼라셋 ==*/
+.CF0803_colorSet01 { baseColor: #7c84f6; baseBgColor: white; ttlFontColor: #333333; ttlUrlFontColor: #adadad; ttlMenuFontColor: #d0d7f6; ttlMenuBgColor: #7c84f6; ttlMenuBrdrColor: #5c64fe; infoBaseColor: #444444; infoValColor: #6173e8; infoBrdrColor: cyan; menuBaseColor: #75747d; menuValColor: #62626e; cnttNmFontColor: #6173e8; cnttNmBrdrColor: #6173E8; cnttRplFontColor: #6173e8; srchBrdrColor: #bbbbbb; srchBgColor: white; srchFontColor: #444444; srchBtnUrl: url(/cola/cafe/resource/images/srch/template/srchBtn/b01_1_btn_search.gif); extraBrdrColor: #e9e9e9; extraColor: #e9e9e9 }
+.CF0803_colorSet02 { baseColor: #ffffff; baseBgColor: white; ttlFontColor: #333333; ttlUrlFontColor: #adadad; ttlMenuFontColor: #777777; ttlMenuBgColor: #ffffff; ttlMenuBrdrColor: #a2a2a2; infoBaseColor: #444444; infoValColor: #f8571e; infoBrdrColor: #777777; menuBaseColor: #75747d; menuValColor: #62626e; cnttNmFontColor: #444444; cnttNmBrdrColor: #aaaaaa; cnttRplFontColor: #f8571e; srchBrdrColor: #bbbbbb; srchBgColor: white; srchFontColor: #444444; srchBtnUrl: url(/cola/cafe/resource/images/srch/template/srchBtn/b02_4_btn_search.gif); extraBrdrColor: #e9e9e9; extraColor: #e9e9e9 }
+.CF0803_colorSet03 { baseColor: #737373; baseBgColor: white; ttlFontColor: #333333; ttlUrlFontColor: #adadad; ttlMenuFontColor: #bdbdbd; ttlMenuBgColor: #777777; ttlMenuBrdrColor: #444444; infoBaseColor: #444444; infoValColor: #f8571e; infoBrdrColor: #777777; menuBaseColor: #75747d; menuValColor: #62626e; cnttNmFontColor: #444444; cnttNmBrdrColor: #aaaaaa; cnttRplFontColor: #f8571e; srchBrdrColor: #bbbbbb; srchBgColor: white; srchFontColor: #444444; srchBtnUrl: url(/cola/cafe/resource/images/srch/template/srchBtn/b02_4_btn_search.gif); extraBrdrColor: #e9e9e9; extraColor: #e9e9e9 }
+.CF0803_colorSet04 { baseColor: #73bbca; baseBgColor: white; ttlFontColor: #333333; ttlUrlFontColor: #adadad; ttlMenuFontColor: #c9ebf1; ttlMenuBgColor: #6ab3c2; ttlMenuBrdrColor: #52b491; infoBaseColor: #444444; infoValColor: #4299ab; infoBrdrColor: #9ec2c8; menuBaseColor: #75747d; menuValColor: #62626e; cnttNmFontColor: #4299ab; cnttNmBrdrColor: #4299ab; cnttRplFontColor: #4ba7ba; srchBrdrColor: #bbbbbb; srchBgColor: white; srchFontColor: #444444; srchBtnUrl: url(/cola/cafe/resource/images/srch/template/srchBtn/b01_4_btn_search.gif); extraBrdrColor: #e9e9e9; extraColor: #e9e9e9 }
+.CF0803_colorSet05 { baseColor: #8bc144; baseBgColor: rgb(249; 250; 244); ttlFontColor: #333333; ttlUrlFontColor: #adadad; ttlMenuFontColor: #d8edbd; ttlMenuBgColor: #87ba77; ttlMenuBrdrColor: #a7aa37; infoBaseColor: #444444; infoValColor: #db4d0f; infoBrdrColor: #679a17; menuBaseColor: #75747d; menuValColor: #62626e; cnttNmFontColor: #679a17; cnttNmBrdrColor: #b1c88c; cnttRplFontColor: #f8571e; srchBrdrColor: #bbbbbb; srchBgColor: white; srchFontColor: #444444; srchBtnUrl: url(/cola/cafe/resource/images/srch/template/srchBtn/b01_5_btn_search.gif); extraBrdrColor: #e9e9e9; extraColor: #e9e9e9 }	
+

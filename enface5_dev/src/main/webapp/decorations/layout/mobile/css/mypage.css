@@ -1,0 +1,17 @@
+.column-my {}
+.column-fixed { }
+.portlet-my { margin: 0px; padding:0px;display: block;background-color:#fff; float: left; width: 100%; }
+.portlet-fixed { margin: 0px }
+.portlet-header-my { margin:0px; padding:0px; border:solid 1px #aaa; border-radius:4px; display: none; position: absolute; z-index: -1}
+.portlet-header-my .ui-icon { float: right; }
+.portlet-content-my { float: left; margin:0px; padding: 0px; width: 100%; }
+.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; }
+.ui-sortable-placeholder * { visibility: hidden; }
+.ui-icon-plus {cursor:pointer;float: right;}
+.ui-icon-close {cursor:pointer;float: right;}
+.ui-icon-refresh {cursor:pointer;float: right;}
+
+
+
+
+.portlet-my { border: 0px solid #ccc; }

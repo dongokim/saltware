@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+	
+<sqlMapConfig>
+	<sqlMap resource="sqlmap/face/oracle/BoardManage-sql.xml"/>
+	<sqlMap resource="sqlmap/face/oracle/BoardMenu-sql.xml"/>
+	<sqlMap resource="sqlmap/face/oracle/User-sql.xml"/>
+	<sqlMap resource="sqlmap/face/oracle/Tool-sql.xml"/>
+	<sqlMap resource="sqlmap/face/oracle/UserMenu-sql.xml"/>
+    <sqlMap resource="sqlmap/face/oracle/OpenApi-sql.xml"/>
+	<sqlMap resource="sqlmap/face/oracle/Portlet-sql.xml"/>
+	<sqlMap resource="sqlmap/face/oracle/File-sql.xml"/>
+</sqlMapConfig>
+

@@ -1,0 +1,11 @@
+.column-my {}
+.column-fixed { }
+.portlet-my { margin: 0px; padding:0px; z-index: 0}
+.portlet-fixed { margin: 0px }
+.portlet-header-my { margin:0px;  padding:0px; display:inline-block; float: right; position:relative; height: 14px;}
+.portlet-header-my .ui-icon { float: right; }
+.portlet-content-my { margin:0px; padding: 0px; }
+.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; }
+.ui-sortable-placeholder * { visibility: hidden; }
+.portlet-toolbar .ui-icon {cursor:pointer;float: right;}
+.portlet-header-my-icon  { display:none; height:14px;z-index: 1; border: 1px solid #ccc; padding-left:4px; padding-right: 4px ; border-top-left-radius:4px; border-top-right-radius:4px;background-color:#eee;}

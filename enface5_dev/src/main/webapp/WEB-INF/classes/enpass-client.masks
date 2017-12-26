@@ -1,0 +1,10 @@
+mask.extensions=gif,jpg,bmp,css,js,html,htm,swf
+
+# 'uri' string must start with '/' and may not contain ContextPath. 
+#mask.uri.0001=
+
+#trans.postUri.0001=
+
+#mask.prefix.0001=
+#mask.contain.0001=
+#mask.postfix.0001=

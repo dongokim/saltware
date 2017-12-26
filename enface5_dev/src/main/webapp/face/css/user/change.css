@@ -1,0 +1,47 @@
+@CHARSET "EUC-KR";
+
+#changeForm table{ 
+	border-width:thin; 
+	border-color:gray; 
+	border-collapse:collapse; 
+	background-color:#DDDDFF;
+	width:700px;
+}
+#changeForm tr{
+	height:35px; font-family:gulim; font-size: 13px;
+	color: black; text-align: center;
+}
+
+#changeForm tr#two{
+	height:70px; font-family:gulim; font-size: 13px;
+	color: black; text-align: center;
+}
+
+#changeForm th{
+	width: 120px; border-style:ridge; border-color:gray; border-width:thin; 
+}
+#changeForm td{
+	width: 580px; border-style:ridge; border-width:thin; 
+	border-color:gray; text-align: left;
+}
+#changeForm td label{
+	font-family:gulim; font-size: 12px; color:black;
+	border:none; padding-top:2px; padding-left:5px; padding-right:5px;
+}
+
+#changeForm select{
+	border-color:black; border-width:thin; background-color:#BFCCFF;
+}
+
+#changeForm input{
+	border-color:black; border-width:thin; background-color:#BFCCFF;
+}
+
+#changeForm input.confirmData:FOCUS{
+	background-color:yellow;
+}
+
+#changeForm input.required:FOCUS{
+	background-color:yellow;
+}
+

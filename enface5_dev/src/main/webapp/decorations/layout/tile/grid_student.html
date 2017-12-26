@@ -1,0 +1,631 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>:: enview_Appliance _ TilePortlet</title>
+<link rel="stylesheet" type="text/css" href="CSS/style.css" />
+<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</head>
+
+<body>
+<!-- header -->
+<div id="header">
+	<!-- header_wrap -->
+	<div class="header_wrap">
+		<!-- navigation -->
+		<div class="nav">
+			<!-- 포틀릿 바로가기 네비게이션 영역 -->
+			<ul class="nav_left">
+				<li class="first"><a href="#">공지사항</a></li>
+				<li><a href="#">일정</a></li>
+				<li><a href="#">설문/투표</a></li>
+				<li><a href="#">이벤트/행사</a></li>
+				<li><a href="#">카페</a></li>
+				<li><a href="#">마이페이지</a></li>
+			</ul>
+			<!-- 포틀릿 바로가기 네비게이션 영역 //-->
+			<!-- 서브메뉴 바로가기 네비게이션 영역 -->
+			<ul class="nav_right">
+				<li class="first"><a href="#">로그아웃</a></li>
+				<li><a href="#">홈</a></li>
+				<li><a href="#">Q&A</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">총장에게바란다</a></li>
+				<li><a href="#">건의합니다</a></li>
+			</ul>
+			<!-- 서브메뉴 바로가기 네비게이션 영역 //-->
+		</div>
+		<!-- navigation //-->
+		<h1><img src="${themePath}/image/logo.gif" alt="솔트웨어 로고" /></h1>
+        <!-- searchArea -->
+        <div class="searchArea">
+            <form name="searchfrm">
+                <fieldset>
+                    <legend>검색</legend>
+					<div class="searchbar">
+						<label for="search"></label><input type="text" id="search" class="search" />
+					</div>
+					<input type="image" name="btn_search" id="btn_search" src="${themePath}/image/research_btn.gif" value="검색"/>
+                </fieldset>
+            </form>
+        </div>
+        <!-- searchArea //-->
+        <!-- weather -->		
+        <a href="#" class="weather">
+        	<p><img src="${themePath}/image/weather_icon.gif" alt="날씨아이콘" /><span class="templete">22℃</span></p>
+        	<span><strong>서울</strong> 6월 18일 <strong>13 :00</strong> 현재</span>
+        </a>
+        <!-- weather //-->
+		<!-- GNB 영역 -->
+		<div class="gnb">
+			<ul>
+				<li><a href="#">홈페이지</a></li>
+				<li><a href="#">웹메일</a></li>
+				<li><a href="#">학사</a></li>
+				<li><a href="#">행정</a></li>
+				<li><a href="#">도서관</a></li>
+			</ul>
+		</div>
+		<!-- GNB 영역 //-->
+		<!-- 시스템 더보기 영역 -->
+		<div id="menu">
+			<!-- allmArea//-->
+			<div class="allmArea">
+				<p class="btn_off"><a href="#"><img src="${themePath}/image/btn_off.gif" alt="시스템 더보기" /></a></p>
+				<p class="btn_on"><a href="#"><img src="${themePath}/image/btn_on.gif" alt="시스템 닫기" /></a></p>
+				<!-- 시스템 더보기 영역 리스트 리스트-->
+				<div id="allmenu">
+					<ul>
+						<li><a href="#">시스템더보기</a></li>
+						<li><a href="#">시스템더보기</a></li>
+					</ul>
+				</div>
+				<!-- 시스템 더보기 영역 리스트 //-->
+			</div>
+			<!-- allmArea//-->
+		</div>
+		<!-- 시스템 더보기 영역 // -->
+	</div>
+	<!-- header_wrap -->
+</div>
+<!-- header //-->
+<!-- body -->
+<div id="body">
+	<!-- body_wrap -->
+	<div class="body_wrap">
+		<!-- contentsArea -->
+		<div class="contentsArea">
+			<!-- leftArea -->
+			<div id="leftArea">
+				<!-- 공지사항 포틀릿 영역 -->
+				<div class="notice_portlet">
+					<!-- portalNotice-->
+					<div id="portNotice" class="portNotice m1">
+						<!-- 탭영역-->
+						<ul>
+							<!-- 공지사항 -->
+							<li class="m1"><a href="#" class="first"><span>공지사항</span></a>
+								<!-- Data -->
+								<ul>
+									<li><span class="title"><a href="#">[경력개발센터] 동국제강그룹 유니온스틸 재학생 주니어 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-11-11</span></li>
+									<li><span class="title"><a href="#">2013 Global Research 참가자 모집 안내 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[경력개발센터] 한국전력공사 채용연계형 인턴 추천</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">'지겹지 아니한가 스트레스...힐링텐트로 오세요~‘</a></span> <span class="date">2014-06-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+								</ul>
+								<!-- Data //-->
+								<span class="more"><a href="#">더보기</a></span>                            
+							 </li>
+							 <!-- 공지사항 //-->
+							 <!-- 학사공지 -->
+							 <li class="m2"><a href="#"><span>학사공지</span></a>
+								<!-- Data -->
+								<ul>
+									<li><span class="title"><a href="#">[경력개발센터] 동국제강그룹 유니온스틸 재학생 주니어 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-11-11</span></li>
+									<li><span class="title"><a href="#">2013 Global Research 참가자 모집 안내 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[경력개발센터] 한국전력공사 채용연계형 인턴 추천</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">'지겹지 아니한가 스트레스...힐링텐트로 오세요~‘</a></span> <span class="date">2014-06-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+								</ul>
+								<!-- Data -->
+								<span class="more"><a href="#">더보기</a></span>                            
+							</li>
+							<!-- 학사공지 //-->
+							<!-- 학과공지 -->
+							<li class="m3"><a href="#"><span>학과공지</span></a>
+								<!-- Data -->
+								<ul>
+									<li><span class="title"><a href="#">[경력개발센터] 동국제강그룹 유니온스틸 재학생 주니어 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-11-11</span></li>
+									<li><span class="title"><a href="#">2013 Global Research 참가자 모집 안내 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[경력개발센터] 한국전력공사 채용연계형 인턴 추천</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">'지겹지 아니한가 스트레스...힐링텐트로 오세요~‘</a></span> <span class="date">2014-06-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+								</ul>
+								<!-- Data -->
+							<span class="more"><a href="#">더보기</a></span>                            
+							</li>
+							<!-- 학과공지 //-->
+							<!-- 장학공지 -->
+							<li class="m4"><a href="#"><span>장학공지</span></a>
+								<!-- Data -->
+								<ul>
+									<li><span class="title"><a href="#">[경력개발센터] 동국제강그룹 유니온스틸 재학생 주니어 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-11-11</span></li>
+									<li><span class="title"><a href="#">2013 Global Research 참가자 모집 안내  <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[경력개발센터] 한국전력공사 채용연계형 인턴 추천</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">'지겹지 아니한가 스트레스...힐링텐트로 오세요~‘</a></span> <span class="date">2014-06-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+								</ul>
+								<!-- Data //-->
+							<span class="more"><a href="#">더보기</a></span>                            
+							</li>
+							<!-- 장학공지 //-->
+						</ul>
+						<!-- 탭영역//-->
+					</div>
+					<!-- portalNotice//-->
+				</div>
+				<!-- 공지사항 포틀릿 영역 //-->
+				<!-- 학교소식 포틀릿 영역 -->
+				<div class="news_portlet">
+				<!-- portalNotice02 -->
+					<div id="portNotice02" class="portNotice02 m1">
+						<!-- 탭영역-->
+						<ul>
+							<!-- 학교소식 -->
+							<li class="m1"><a href="#" class="first"><span>학교소식</span></a>
+								<!-- data -->
+								<ul>
+									<li><span class="title"><a href="#">[경력개발센터] 동국제강그룹 유니온스틸 재학생 주니어 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-11-11</span></li>
+									<li><span class="title"><a href="#">2013 Global Research 참가자 모집 안내 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[경력개발센터] 한국전력공사 채용연계형 인턴 추천</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+									<li><span class="title"><a href="#">'지겹지 아니한가 스트레스...힐링텐트로 오세요~‘</a></span> <span class="date">2014-06-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+								</ul>
+								<!-- data //-->
+								<span class="more"><a href="#">더보기</a></span>                            
+							 </li>
+							 <!-- 학교소식 //-->
+							 <!-- 학과게시판 -->
+							 <li class="m2"><a href="#"><span>학과게시판</span></a>
+								<!-- data -->
+								<ul>
+									<li><span class="title"><a href="#">[경력개발센터] 동국제강그룹 유니온스틸 재학생 주니어 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-11-11</span></li>
+									<li><span class="title"><a href="#">2013 Global Research 참가자 모집 안내 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[경력개발센터] 한국전력공사 채용연계형 인턴 추천</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+									<li><span class="title"><a href="#">'지겹지 아니한가 스트레스...힐링텐트로 오세요~‘</a></span> <span class="date">2014-06-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+								</ul>
+								<!-- data //-->
+								<span class="more"><a href="#">더보기</a></span>                            
+							</li>
+							<!-- 학과게시판 //-->
+							<!-- 연구과제 -->
+							<li class="m3"><a href="#"><span>연구과제</span></a>
+								<!-- data -->
+								<ul>
+									<li><span class="title"><a href="#">[경력개발센터] 동국제강그룹 유니온스틸 재학생 주니어 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-11-11</span></li>
+									<li><span class="title"><a href="#">2013 Global Research 참가자 모집 안내 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[경력개발센터] 한국전력공사 채용연계형 인턴 추천</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+									<li><span class="title"><a href="#">'지겹지 아니한가 스트레스...힐링텐트로 오세요~‘</a></span> <span class="date">2014-06-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+								</ul>
+								<!-- data //-->
+							<span class="more"><a href="#">더보기</a></span>                            
+							</li>
+							<!-- 연구과제 //-->
+							<!-- 자유게시판 -->
+							<li class="m4"><a href="#"><span>자유게시판</span></a>
+								<!-- data -->
+								<ul>
+									<li><span class="title"><a href="#">[경력개발센터] 동국제강그룹 유니온스틸 재학생 주니어 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-11-11</span></li>
+									<li><span class="title"><a href="#">2013 Global Research 참가자 모집 안내 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[경력개발센터] 한국전력공사 채용연계형 인턴 추천</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+									<li><span class="title"><a href="#">'지겹지 아니한가 스트레스...힐링텐트로 오세요~‘</a></span> <span class="date">2014-06-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+								</ul>
+								<!-- data //-->
+							<span class="more"><a href="#">더보기</a></span>                            
+							</li>
+							<!-- 자유게시판 //-->
+							<!-- 벼룩시장 -->
+							<li class="m5"><a href="#"><span>벼룩시장</span></a>
+								<!-- data -->
+								<ul>
+									<li><span class="title"><a href="#">[경력개발센터] 동국제강그룹 유니온스틸 재학생 주니어 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-11-11</span></li>
+									<li><span class="title"><a href="#">2013 Global Research 참가자 모집 안내 <img src="${themePath}/image/new_icon.gif" alt="새로운 글" /></a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[경력개발센터] 한국전력공사 채용연계형 인턴 추천</a></span> <span class="date">2014-07-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+									<li><span class="title"><a href="#">'지겹지 아니한가 스트레스...힐링텐트로 오세요~‘</a></span> <span class="date">2014-06-11</span></li>
+									<li><span class="title"><a href="#">[모집] 자원봉사지원센터 '이웃사랑' 32기 봉사자 모집</a></span> <span class="date">2014-07-04</span></li>
+								</ul>
+								<!-- data //-->
+							<span class="more"><a href="#">더보기</a></span>                            
+							</li>
+							<!-- 벼룩시장 //-->
+						</ul>
+						<!-- 탭영역//-->
+					</div>
+					<!-- portalNotice02 //-->
+				</div>
+				<!-- 학교소식 포틀릿 영역 //-->
+				<!-- 이벤트/행사 포틀릿 영역 -->
+				<div class ="event">
+					<!-- title_type2-->
+					<p class="title_type2">이벤트/행사</p>
+					<!-- title_type2-->
+					<!-- data -->
+					<ul>
+						<li><span class="title"><a href="#">학내 창업스쿨 강연회</a></span></li>
+						<li><span class="title"><a href="#">여름방학 농촌활동 참가안내드립니</a></span></li>
+						<li><span class="title"><a href="#">학내 창업스쿨 강연회</a></span></li>
+						<li><span class="title"><a href="#">여름방학 농촌활동 참가안내드립니</a></span></li>
+						<li><span class="title"><a href="#">학내 창업스쿨 강연회</a></span></li>
+						<li><span class="title"><a href="#">학내 창업스쿨 강연회</a></span></li>
+					</ul>
+					<!-- data //-->
+					<span class="more"><a href="#">더보기</a></span>   
+				</div>
+				<!-- 이벤트/행사 포틀릿 영역 //-->
+				<!-- Cafe 포틀릿 영역 -->
+				<div class="cafe">                 
+					<!-- title_type2-->
+					<p class="title_type2"><span class="title">Cafe</span></p>
+					<!-- title_type2-->
+					<!-- data-->
+					<div id="portcom" class="portcom m1">
+						<!-- 탭영역-->
+						<ul>
+							<!-- 최신글-->
+							<li class="m1"><a href="#" class="first"><span>최신글</span></a>
+								<ul>
+									<li><span class="title"><a href="#">고전문학회 모꼬지 일정</a></span></li>
+									<li><span class="title"><a href="#">밴드원 모집에 대하여 알려드립니..</a></span></li>
+									<li><span class="title"><a href="#">카페이용 시 유의사항을 알려드립..</a></span></li>
+									<li><span class="title"><a href="#">카페 개설 안내</a></span></li>
+								</ul>                            
+							</li>
+							<span class="more"><a href="#">더보기</a></span>
+							<!-- 최신글-->
+							<!-- 가입카페 -->
+							<li class="m2"><a href="#"><span>가입카페</span></a>
+								<ul>
+									<li><span class="title"><a href="#">고전문학회 모꼬지 일정</a></span></li>
+									<li><span class="title"><a href="#">밴드원 모집에 대하여 알려드립니..</a></span></li>
+									<li><span class="title"><a href="#">카페이용 시 유의사항을 알려드립..</a></span></li>
+									<li><span class="title"><a href="#">카페 개설 안내</a></span></li>
+								</ul>                               
+							</li>
+							<span class="more"><a href="#">더보기</a></span>
+							<!-- 가입카페 //-->
+							<!-- 최신카페 -->
+							<li class="m3"><a href="#"><span>최신카페</span></a>
+								<ul>
+									<li><span class="title"><a href="#">고전문학회 모꼬지 일정</a></span></li>
+									<li><span class="title"><a href="#">밴드원 모집에 대하여 알려드립니..</a></span></li>
+									<li><span class="title"><a href="#">카페이용 시 유의사항을 알려드립..</a></span></li>
+									<li><span class="title"><a href="#">카페 개설 안내</a></span></li>
+								</ul>
+							</li>
+							<span class="more"><a href="#">더보기</a></span>
+							<!-- 최신카페 //-->
+						</ul>
+						<!-- 탭영역//-->
+					</div>                
+					<!-- data//-->
+				</div>
+				<!-- Cafe 포틀릿 영역//-->
+			</div>
+			<!-- leftArea -->
+			<!-- centerArea -->
+			<div id="centerArea">
+				<!-- lecture -->
+				<div class="lecture">
+					<!-- work-->
+					<div id="WfindNotice" class="WfindNotice m1">
+						<!-- 탭영역-->
+						<ul>
+							<!-- 나의 개설강좌 -->
+							<li class="m1"><a href="#" class="first"><span>나의 개설강좌</span></a>
+								<ul class="overflow" style="height:170px; top:65px;  overflow:hidden !important; overflow-y:scroll !important; ">
+									<li><span class="title"><a href="#">09:30 ~ 11:30 [인문관 201호]</a></span>
+										<div>
+											<p><span class="subtitle"><a href="#">국어학개론</a></span></p>
+										</div>
+									</li>
+									<li><span class="title"><a href="#">12:30 ~ 14:30 [인문관 411호]</a></span>
+										<div>
+											<p><span class="subtitle"><a href="#">구비문학개론</a></span></p>
+										</div>
+									</li>
+									<li><span class="title"><a href="#">15:30 ~ 16:30 [인문관 405호]</a></span>
+										<div>
+											<p><span class="subtitle"><a href="#">화곡론</a></span></p>
+										</div>
+									</li>
+									<li><span class="title"><a href="#">12:30 ~ 14:30 [인문관 411호]</a></span>
+										<div>
+											<p><span class="subtitle"><a href="#">구비문학개론</a></span></p>
+										</div>
+									</li>
+								</ul>				
+							 </li>
+							 <!-- 나의 개설강좌 -->
+							 <!-- 강의 시간표-->
+							 <li class="m2"><a href="#"><span>강의 시간표</span></a>
+								<ul class="overflow" style="height:170px; top:65px;  overflow:hidden !important; overflow-y:scroll !important; ">
+									<!-- 강의 시간 테이블 표 -->								
+									<table summary="나의강의시간표" class="lecture_table">
+									<caption>나의 강의시간표 테이블</caption>
+									<colgroup>
+										<col width="40px" />
+										<col width="40px" />
+										<col width="40px" />
+										<col width="40px" />
+										<col width="40px" />
+										<col width="40px" />
+										<col width="40px" />
+										<col width="40px" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th class="first">요일</th>
+											<th>월</th>
+											<th>화</th>
+											<th>수</th>
+											<th>목</th>
+											<th>금</th>
+											<th>토</th>
+											<th>일</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="first">09:00</td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+										</tr>
+										<tr>
+											<td class="first">10:00</td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+										</tr>
+										<tr>
+											<td class="first">11:00</td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+										</tr>
+										<tr>
+											<td class="first">13:00</td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+										</tr>
+										<tr>
+											<td class="first">14:00</td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+										</tr>
+										<tr>
+											<td class="first">15:00</td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+										</tr>
+										<tr>
+											<td class="first">16:00</td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+										</tr>
+										<tr>
+											<td class="first">17:00</td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+										</tr>
+										<tr>
+											<td class="first">18:00</td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+										</tr>
+										<tr>
+											<td class="first">19:00</td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+										</tr>
+										<tr>
+											<td class="first">20:00</td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+										</tr>
+										<tr>
+											<td class="first">21:00</td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론"></a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+											<td><a href="#" title="구비문학개론">●</a></td>
+										</tr>
+									</tbody>
+									</table>
+									<!-- 강의 시간 테이블표 //-->
+								</ul>				
+							</li>
+							<!-- 강의 시간표 //-->
+						</ul>
+						<!-- 탭영역//-->
+					</div>
+					<!-- work//-->
+				</div>
+				<!-- lecture //-->
+				<!-- 학사일정 포틀릿 영역 -->
+				<div class ="schedule">
+					<!-- title_type2-->
+					<p class="title_type1">학사일정</p>
+					<!-- title_type2-->
+					<!-- data -->
+					<p class="schedule_date"><a href="#"><img src="${themePath}/image/schedule_pre.gif" alt="이전달" /></a> <span class="month">2014.<strong>06</strong><em>월</em></span> <a href="#"><img src="${themePath}/image/schedule_next.gif" alt="다음달" /></a> </p>
+					<ul>
+						<li><span class="title"><a href="#">여름방학 일정 공지 7월 10일 ~ 8월..</a></span></li>
+						<li><span class="title"><a href="#">기말고사 일정에 대하여 알려드립..</a></span></li>
+						<li><span class="title"><a href="#">여름방학 일정 공지 7월 10일 ~ 8월..</a></span></li>
+						<li><span class="title"><a href="#">기말고사 일정에 대하여 알려드립..</a></span></li>
+						<li><span class="title"><a href="#">여름방학 일정 공지 7월 10일 ~ 8월..</a></span></li>
+					</ul>
+					<!-- data //-->
+					<span class="more"><a href="#">더보기</a></span>   
+				</div>
+				<!-- 학사일정 포틀릿 영역 //-->
+				<!-- 아이콘 영역 -->
+				<div class="icon">
+					<ul>
+						<li><a href="#"><img src="${themePath}/image/icon_certificate.png" alt="증명서 발급" /></a></li>
+						<li><a href="#"><img src="${themePath}/image/icon_gradehits.png" alt="성적조회" /></a></li>
+						<li><a href="#"><img src="${themePath}/image/icon_credithits.png" alt="이수학점 조회" /></a></li>
+						<li><a href="#"><img src="${themePath}/image/icon_subjecthits.png" alt="교과과정 조회" /></a></li>
+						<li><a href="#"><img src="${themePath}/image/icon_consulting.png" alt="지도교수 상담" /></a></li>
+						<li><a href="#"><img src="${themePath}/image/icon_scholarship.png" alt="장학금 신청" /></a></li>
+					</ul>
+				</div>
+				<!-- 아이콘 영역 //-->
+			</div>
+			<!-- centerArea -->
+			<!-- rightArea -->
+			<div id="rightArea">
+				<!-- 로그인 영역 -->
+				<div class="login">
+					<p class="name"><strong>홍길동</strong>님<span>국어국문학과(재학)</span></p>
+					<div class="myinfo">
+						<ul>
+							<li><span>메일</span><em>00통</em></li>
+							<li><span class="message">쪽지</span><em>00통</em></li>
+							<li class="list"><span>최종로그인 2014.06.01 03:21</span></li>
+						</ul>
+						<!-- 학생 (재학) 체크란 -->
+						<div class="accountsel">
+							<span class="adjust"><a href="#"><img src="${themePath}/image/login_myinfo_btn.gif" alt="개인정보 수정"></a><a href="#"><img class="password" src="${themePath}/image/login_password_btn.gif" alt="비밀번호 변경"></a></span>
+							<div class="account">
+								<select><option selected="선택">학생(재학)</option><option>교원(전임)</option><option>직원(재직)</option></select>
+							</div>
+						</div>
+						<!-- 학생 (재학) 체크란 //-->
+					</div>
+					<p class="login_btn"><a href="#"><img src="${themePath}/image/login_logout.gif " alt="로그아웃"></a><span><a href="#"><img src="${themePath}/image/login_mypage.gif" alt="마이페이지" /></a></span></p>
+				</div>
+				<!-- 로그인 영역 //-->
+				<!-- 설문/투표 영역 -->
+				<div class="radio"> 
+					<p class="title_type2">설문 / 투표</p>
+					<p class="question"><strong>질문 ) </strong>신용보증재단 포털시스템을 사용해보신 소감을 선택해주세요.</p>
+					<form id="form1" name="form1" method="post" action="">
+						<label for="survey_0"></label><input type="radio" name="survey" value="매우만족" id="survey_0" /> 매우만족한다<br />
+						<label for="survey_1"></label><input type="radio" name="survey" value="만족한다" id="survey_1" /> 만족한다<br />
+						<label for="survey_2"></label><input type="radio" name="survey" value="불만족한다." id="survey_2" /> 불만족한다<br />
+						<label for="survey_3"></label><input type="radio" name="survey" value="매우 불만족한다." id="survey_3" /> 매우 불만족한다
+					</form>
+					<p class="btnArea"><a href="#"><img src="${themePath}/image/survey_partbtn.gif" alt="참여하기" /></a><span><a href="#"><img src="${themePath}/image/survey_resultbtn.gif" alt="결과보기" /></a></span></p>
+				</div>
+				<!-- 설문/투표 영역 //-->
+				<!-- 주간식단 안내 영역 -->
+				<div class="menubanner">
+					<p><span class="title">주간식단안내</span><span class="txt"><a href="#">자세히보기</a></span></p>
+				</div>
+				<!-- 주간식단 안내 영역//-->
+				<!-- Banner Zome영역 -->
+				<div class="bannerzone">
+					 <div class="contBox">
+						<p class="title_type3">Banner Zone</p>
+						<p class="num">
+							<a href="#" class="page"><img src="${themePath}/image/li_off.png" alt="첫번째페이지" /></a>
+							<a href="#" class="page"><img src="${themePath}/image/li_on.png" alt="두번째페이지" /></a>
+							<a href="#" class="page"><img src="${themePath}/image/li_off.png" alt="세번째페이지" /></a>
+						</p>
+						<p><a href="#"><img class="bannerimage" src="${themePath}/image/banner.gif" alt="배너 존 이미지" /></a></p>
+					</div>
+				</div>
+				<!-- Banner Zone영역 //-->
+			</div>
+			<!-- rightArea //-->
+		</div>
+		<!-- contentsArea //-->
+		<!-- footer -->
+		<div id="footer">
+			<p class="logo"><img src="${themePath}/image/Footer_logo.gif" alt="솔트웨어 로고" /></p>
+			<ul>
+				<li class="address">서울특별시 구로구 디지털로 34길 55, 9F 솔트웨어 (코오롱 싸이언스밸리 2차) <span class="footer_border">TEL<strong>02-2025-0066</strong></span><span class="footer_border">FAX <strong>02-2025-4935</strong></span></li>
+				<li class="copyright">COPYRIGHT 2014 SALTWARE UNIVERSIRT. ALL RIGHTS RESERVED.</li>
+			</ul>
+		</div>
+		<!-- footer //-->
+	</div>
+	<!-- body_wrap //-->
+</div>
+<!-- body //-->
+</body>
+</html>

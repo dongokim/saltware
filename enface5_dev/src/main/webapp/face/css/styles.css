@@ -1,0 +1,138 @@
+body { 		
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+body,td,th {
+	font-family:Dotum,Gulim,arial,verdana ; 
+	font-size:12px; 
+	color: #333333;
+	/*line-height: 130%;*/
+	padding: 0px;
+}
+
+
+/**** link css ****/
+
+/*basic link*/
+a:link {text-decoration:none; color:#333333 }
+a:visited {text-decoration:none; color:#333333 }
+a:active {text-decoration:none; color:#333333 } 
+a:hover {text-decoration:none; color:#000000 }
+
+/*leftmenu link*/
+a.left:link {  text-decoration: none; font-size:11px; color:#2F2272;}
+a.left:visited {  text-decoration: none; font-size:11px; color:#2F2272;}
+a.left:hover {  text-decoration: underline; font-size:11px; color:#2F2272;}
+a.left:active {  text-decoration: none; font-size:11px; color:#2F2272;}
+
+/* text */
+.t11 {font-size:11px;line-height:1.3;}
+.title {font-size:15px;font-weight: bold;color: #222222;line-height:1.3;}
+
+/*images css*/
+img {
+	border: 0px;	
+}
+
+.login-content {
+	position: absolute;
+	top:  50%;
+	left: 50%;
+	width:  571px;
+	height: 353px;
+	margin-left: -286px;
+	margin-top:  -177px;
+	padding: 0px;
+}
+.login-bg {
+	position: relative;
+	width:  571px;
+	height: 303px;
+	padding: 0px;
+}
+
+.login_form {
+	position: relative;
+	top: 195px;
+	left: 5px;
+}
+.login-copyright {
+	position: relative;
+	width:  571px;
+	height: 50px;
+	padding-top: 5px;
+}
+.login-input {
+	BORDER-RIGHT: #CCCCCC 1px solid; 
+	BORDER-TOP: #CCCCCC 1px solid; 
+	FONT-SIZE: 9pt; 
+	BORDER-LEFT: #CCCCCC 1px solid; 
+	BORDER-BOTTOM: #CCCCCC 1px solid; 
+	FONT-FAMILY: "Dotum"; 
+	color: #585858;
+}
+
+/*********************************************************/
+/*  CSS Button
+/*********************************************************/
+/* Temp */
+/*
+table{width:100%}
+th, td{padding:5px}
+*/
+caption{font-weight:bold;text-align:left}
+.btn_pack,
+.btn_pack *{display:inline-block;overflow:visible;position:relative;margin:0;padding:0;border:0;background:url(../images/button/btn_pack.gif) no-repeat;font-size:12px;font-family:Tahoma, Sans-serif;color:#333;text-decoration:none !important;vertical-align:top;white-space:nowrap}
+.btn_pack{margin-right:4px}
+.btn_pack *{left:0px;cursor:pointer;_cursor:hand}
+.btn_pack.medium,
+.btn_pack.medium *{height:24px;line-height:24px}
+.btn_pack.large,
+.btn_pack.large *{height:30px;line-height:30px}
+.btn_pack.xlarge,
+.btn_pack.xlarge *{height:36px;line-height:36px}
+.btn_pack.small,
+.btn_pack.small *{height:19px;line-height:19px; width:60px;}
+.btn_pack.medium{background-position:left 0}
+.btn_pack.large{background-position:left -30px}
+.btn_pack.xlarge{background-position:left -65px}
+.btn_pack.small{background-position:left -106px}
+.btn_pack.medium *{padding:0 10px 0 6px;background-position:right top;font-size:12px}
+.btn_pack.large *{padding:0 10px 0 6px;background-position:right -30px;font-size:16px}
+.btn_pack.xlarge *{padding:0 10px 0 6px;background-position:right -65px;font-size:20px}
+.btn_pack.small *{padding:0 0px 0 0px;background-position:right -106px;font-size:11px}
+.btn_pack *:hover,
+.btn_pack *:active,
+.btn_pack *:focus{color:#690}
+.btn_pack.strong *{font-weight:bold !important}
+.btn_pack.icon *{padding-left:20px}
+.btn_pack.small.icon *{padding-left:16px}
+.btn_pack.icon span{width:20px;margin-right:-20px;padding:0 !important}
+.btn_pack.medium .check{background-position:4px -150px}
+.btn_pack.large .check{background-position:4px -146px}
+.btn_pack.xlarge .check{background-position:5px -144px}
+.btn_pack.small .check{background-position:3px -153px}
+.btn_pack.medium .add{background-position:-16px -150px}
+.btn_pack.large .add{background-position:-14px -146px}
+.btn_pack.xlarge .add{background-position:-14px -144px}
+.btn_pack.small .add{background-position:-18px -153px}
+.btn_pack.medium .delete{background-position:-34px -150px}
+.btn_pack.large .delete{background-position:-34px -146px}
+.btn_pack.xlarge .delete{background-position:-34px -144px}
+.btn_pack.small .delete{background-position:-37px -153px}
+.btn_pack.medium .calendar{background-position:-56px -150px}
+.btn_pack.large .calendar{background-position:-56px -146px}
+.btn_pack.xlarge .calendar{background-position:-56px -144px}
+.btn_pack.small .calendar{background-position:-59px -153px}
+.btn_pack.medium .refresh{background-position:-76px -150px}
+.btn_pack.large .refresh{background-position:-76px -146px}
+.btn_pack.xlarge .refresh{background-position:-76px -144px}
+.btn_pack.small .refresh{background-position:-79px -153px}
+.btn_pack.medium .download{background-position:-96px -151px}
+.btn_pack.large .download{background-position:-96px -147px}
+.btn_pack.xlarge .download{background-position:-96px -145px}
+.btn_pack.small .download{background-position:-99px -154px}
+/* //UI Object */

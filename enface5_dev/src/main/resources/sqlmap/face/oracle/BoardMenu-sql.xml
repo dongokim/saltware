@@ -1,0 +1,107 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="face">
+	
+	<!--
+	1. 처리내용: 게시판 메뉴 조회 ResultMap
+	2. 관련 DAO: BoardMenuDao.selectList
+	3. 작성자  : 나상모
+	4. 작성일  : 2015.08.16
+	5. History : 2013.08.06 최초작성
+	-->
+	<resultMap id="boardMenu" class="com.saltware.enface.enboard.vo.BoardMenuVo">
+		<result property="pageId"		column="PAGE_ID" />	 
+		<result property="parentId"		column="PARENT_ID"/>	
+		<result property="menuType"		column="TYPE" />			
+		<result property="menuOrder"	column="ORD" />			
+		<result property="url"			column="URL" />		 
+		<result property="depth"		column="DEPTH" />
+		<result property="title"		column="TITLE" />	
+		<result property="shortTitle"	column="SHORT_TITLE" />	
+		<result property="pageInfo03"	column="LINK_YNS" />	
+		<result property="actionMask"	column="ACTION_MASK" />	
+	</resultMap>
+	
+	<!-- 
+	1. 처리내용: 게시판 메뉴 조회
+	2. 관련 DAO: BoardMenuDao.selectBoardMenuList
+	3. 작성자  : 나상모
+	4. 작성일  : 2015.08.16
+	5. History : 2013.08.06 최초작성
+	 -->
+	<select id="boardMenu.selectList" resultMap="boardMenu">
+		/* boardMenu.selectList */
+		SELECT * FROM (
+		SELECT 1 DEPTH, 'root' PARENT_ID, C.CATE_ORDER ORD, '' || C.CATE_ID PAGE_ID,  L.CATE_NM SHORT_TITLE, L.CATE_DESC TITLE, '/category/' || C.CATE_ID URL, 'C' TYPE, 0 ACTION_MASK, C.CATE_INFO03 LINK_YNS 
+		FROM CATEBASE C
+		JOIN CATEBASE_LANG L ON C.CATE_ID = L.CATE_ID AND L.LANG_KND=#langKnd#
+		WHERE C.PARENT_CATE_ID = #rootCateId#
+		UNION
+		SELECT 2 DEPTH, '' || C.PARENT_CATE_ID PARENT_ID, C.CATE_ORDER ORD,  '' ||  C.CATE_ID PAGE_ID,  L.CATE_NM SHORT_TITLE, L.CATE_DESC TITLE, '/category/' || C.CATE_ID URL, 'C' TYPE, 0 ACTION_MASK, C.CATE_INFO03 LINK_YNS
+		FROM CATEBASE P
+		JOIN CATEBASE C ON C.PARENT_CATE_ID = P.CATE_ID  
+		JOIN CATEBASE_LANG L ON C.CATE_ID = L.CATE_ID AND L.LANG_KND=#langKnd#
+		WHERE P.PARENT_CATE_ID = #rootCateId#
+		UNION 
+		<isEqual property="isAdmin" compareValue="true">
+		SELECT 3 DEPTH, '' || C.CATE_ID PARENT_ID, C.BOARD_ORDER ORD, L.BOARD_ID PAGE_ID,  L.BOARD_TTL SHORT_TITLE, L.BOARD_NM  TITLE, '/enboard/' || L.BOARD_ID URL, 'B' TYPE, 4095 ACTION_MASK, B.LINK_YNS
+		FROM BOARD_LANG L
+		JOIN CATE_BOARD C ON L.BOARD_ID = C.BOARD_ID
+		JOIN CATEBASE CB ON CB.CATE_ID = C.CATE_ID
+		JOIN CATEBASE_LANG C2 ON C2.CATE_ID =  C.CATE_ID AND C2.LANG_KND=#langKnd#
+		JOIN CATEBASE_LANG C1 ON C1.CATE_ID =  CB.PARENT_CATE_ID AND C1.LANG_KND=#langKnd#
+		JOIN BOARD B ON L.BOARD_ID = B.BOARD_ID
+		WHERE B.BOARD_ACTIVE='Y'
+		AND L.LANG_KND=#langKnd#
+		</isEqual>
+		<isEqual property="isAdmin" compareValue="false">
+		SELECT 3 DEPTH, '' || C.CATE_ID PARENT_ID, C.BOARD_ORDER ORD, L.BOARD_ID PAGE_ID,  L.BOARD_TTL SHORT_TITLE, L.BOARD_NM  TITLE, '/enboard/' || L.BOARD_ID URL, 'B' TYPE, P.ACTION_MASK, B.LINK_YNS
+		FROM BOARD_LANG L
+		JOIN CATE_BOARD C ON L.BOARD_ID = C.BOARD_ID
+		JOIN CATEBASE CB ON CB.CATE_ID = C.CATE_ID
+		JOIN CATEBASE_LANG C2 ON C2.CATE_ID =  C.CATE_ID AND C2.LANG_KND=#langKnd#
+		JOIN CATEBASE_LANG C1 ON C1.CATE_ID =  CB.PARENT_CATE_ID AND C1.LANG_KND=#langKnd#
+		JOIN BOARD B ON L.BOARD_ID = B.BOARD_ID
+	    JOIN SECURITY_PERMISSION P ON L.BOARD_ID = RES_URL 
+            AND FLOOR( MOD( P.ACTION_MASK, 4) /2 ) > 0 
+	    	AND 
+			(RES_TYPE=50 
+			<isNotEmpty property="idList">
+				OR RES_TYPE=51 
+				OR ( RES_TYPE=5 AND PRINCIPAL_ID IN 
+				<iterate property="idList" open="(" conjunction="," close=")">#idList[]#</iterate> 
+				)
+			</isNotEmpty>
+			)
+		WHERE B.BOARD_ACTIVE='Y'
+		AND L.LANG_KND=#langKnd#
+		</isEqual>
+	) X
+	<isNotEmpty property="linkYns">
+	WHERE X.LINK_YNS=#linkYns#
+	</isNotEmpty>
+	</select>
+	
+	<!-- 
+	1. 처리내용: 게시판 전체 개수 조회
+	2. 관련 DAO: BoardMenuDao.selectAllCount
+	3. 작성자  : 나상모
+	4. 작성일  : 2015.09.14
+	5. History : 2013.09.14 최초작성
+	 -->
+	<select id="boardMenu.selectAllCount" resultClass="java.lang.Integer">
+	SELECT COUNT(*) 
+	FROM BOARD A
+	JOIN CATE_BOARD B ON A.BOARD_ID = B.BOARD_ID 
+	JOIN (
+		SELECT  CATE_ID
+		  FROM CATEBASE
+		 START WITH CATE_ID=11
+		CONNECT BY PRIOR  CATE_ID = PARENT_CATE_ID
+		) C ON B.CATE_ID = C.CATE_ID
+	WHERE A.BOARD_ACTIVE='Y' 
+	AND MERGE_TYPE='A'	
+	</select>
+	
+</sqlMap>
+

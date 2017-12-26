@@ -1,0 +1,1187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" 
+    version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"> 
+    <portlet id="DynamicContentPortlet">
+        <portlet-name>DynamicContentPortlet</portlet-name>
+        <description xml:lang="ko">동적컨텐츠 생성포틀릿</description>
+        <display-name xml:lang="ko">동적컨텐츠 생성</display-name>
+        <portlet-class>com.saltware.enview.portlet.common.DynamicContentPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>start-here.png</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>DynamicContent Portlet</title>
+            <short-title>DynamicContent Portlet</short-title>
+            <keywords>null</keywords>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+                <name>SRC</name>
+                <value>/statics/dummy.html</value>
+                <read-only>false</read-only>
+            </preference>
+            <preference>
+                <name>WIDTH</name>
+                <value>100%</value>
+                <read-only>false</read-only>
+            </preference>
+            <preference>
+                <name>MAX-WIDTH</name>
+                <value>100%</value>
+                <read-only>false</read-only>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="StaticContentPortlet">
+        <portlet-name>StaticContentPortlet</portlet-name>
+        <description xml:lang="ko">정적컨텐츠 생성포틀릿</description>
+        <display-name xml:lang="ko">정적컨텐츠 생성</display-name>
+        <portlet-class>com.saltware.enview.portlet.common.StaticContentPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>start-here.png</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>StaticContent Portlet</title>
+            <short-title>StaticContent Portlet</short-title>
+            <keywords>null</keywords>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+                <name>SRC</name>
+                <value>/statics/dummy.html</value>
+                <read-only>false</read-only>
+            </preference>
+            <preference>
+                <name>WIDTH</name>
+                <value>100%</value>
+                <read-only>false</read-only>
+            </preference>
+            <preference>
+                <name>MAX-WIDTH</name>
+                <value>100%</value>
+                <read-only>false</read-only>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="IFramePortlet">
+        <portlet-name>IFramePortlet</portlet-name>
+        <description xml:lang="ko">IFrame포틀릿</description>
+        <display-name xml:lang="ko">IFrame포틀릿</display-name>
+        <portlet-class>com.saltware.enview.portlet.common.IFrameGenericPortlet</portlet-class>
+        <init-param>
+            <description xml:lang="en"></description>
+            <name>portlet-icon</name>
+            <value>start-here.png</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>IFramePortlet</title>
+            <short-title>IFramePortlet</short-title>
+            <keywords>null</keywords>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+                <name>SRC</name>
+                <value>#</value>
+                <read-only>false</read-only>
+            </preference>
+            <preference>
+                <name>MAX-WIDTH</name>
+                <value>100%</value>
+                <read-only>false</read-only>
+            </preference>
+            <preference>
+                <name>WIDTH</name>
+                <value>100%</value>
+                <read-only>false</read-only>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="MiniBoardPortlet">
+        <portlet-name>MiniBoardPortlet</portlet-name>
+        <description xml:lang="ko">미니보드</description>
+        <display-name xml:lang="ko">미니보드</display-name>
+        <portlet-class>com.saltware.enface.portlet.board.web.MiniBoardPortlet</portlet-class>
+        <init-param>
+            <description xml:lang="en"></description>
+            <name>portlet-icon</name>
+            <value>icon_board.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/miniBoard/miniBoardView.jsp</value>
+        </init-param>
+        <init-param>
+            <name>BOARD-ID</name>
+            <value>notice</value>
+        </init-param>
+        <init-param>
+            <name>MORE-TARGET</name>
+            <value>testMiniBoard</value>
+        </init-param>
+        <init-param>
+            <name>MORE-WIDTH</name>
+            <value>600</value>
+        </init-param>
+        <init-param>
+            <name>MORE-HEIGHT</name>
+            <value>400</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>5</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>MiniBoardPortlet</title>
+            <short-title>MiniBoardPortlet</short-title>
+            <keywords>null</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="AttendedLecturePortlet">
+        <portlet-name>AttendedLecturePortlet</portlet-name>
+        <description xml:lang="ko">수강과목 포틀릿</description>
+        <description xml:lang="en">AttendedLecture Portlet</description>
+        <display-name xml:lang="ko">수강과목</display-name>
+        <display-name xml:lang="en">AttendedLecture</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.AttendedLecturePortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>lecture.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/attendedLectureView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>AttendedLecture Portlet</title>
+            <short-title>AttendedLecture Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="LecturePortlet">
+        <portlet-name>LecturePortlet</portlet-name>
+        <description xml:lang="ko">강의과목 포틀릿</description>
+        <description xml:lang="en">Lecture Portlet</description>
+        <display-name xml:lang="ko">강의과목</display-name>
+        <display-name xml:lang="en">Lecture</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.LecturePortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>lecture.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/lectureView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Lecture Portlet</title>
+            <short-title>Lecture Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="UserInfoPortlet">
+        <portlet-name>UserInfoPortlet</portlet-name>
+        <description xml:lang="ko">사용자정보 포틀릿</description>
+        <description xml:lang="en">UserInfo Portlet</description>
+        <display-name xml:lang="ko">사용자정보</display-name>
+        <display-name xml:lang="en">UserInfo</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.UserInfoPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>contact-new.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/userInfoView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>UserInfo Portlet</title>
+            <short-title>UserInfo Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="BannerPortlet">
+        <portlet-name>BannerPortlet</portlet-name>
+        <description xml:lang="ko">배너</description>
+        <display-name xml:lang="ko">배너</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.BannerPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>banner.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 높이. 1은 정사각형 포틀릿의 절반크기이다.</description>
+            <name>SIZEY</name>
+            <value>1</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/bannerView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Banner Portlet</title>
+            <short-title>Banner Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        <preference>
+                <name>CATEGORY_SEQ</name>
+                <value>0</value>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="BoardsForStudent Portlet">
+        <portlet-name>BoardsForStudent Portlet</portlet-name>
+        <description xml:lang="ko">게시판(학생)</description>
+        <display-name xml:lang="ko">게시판(학생)</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.BoardsPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>board.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 너비</description>
+            <name>SIZEX</name>
+            <value>2</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/boardsView.jsp</value>
+        </init-param>
+        <init-param>
+            <name>ResourcePage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/boardsResource.jsp</value>
+        </init-param>
+        <init-param>
+            <name>BOARD-IDS</name>
+            <value>schoolNews,departmentForums,researchProblem,freeBulletinBoard,fleaMarket</value>
+        </init-param>
+        <init-param>
+            <name>MENU-PATH</name>
+            <value>/main/boards/</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>BoardsForStudent Portlet</title>
+            <short-title>BoardsForStudent Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="BoardsForFacultyPortlet">
+        <portlet-name>BoardsForFacultyPortlet</portlet-name>
+        <description xml:lang="ko">게시판(교원)</description>
+        <display-name xml:lang="ko">게시판(교원)</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.BoardsPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>board.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 너비</description>
+            <name>SIZEX</name>
+            <value>2</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/boardsView.jsp</value>
+        </init-param>
+        <init-param>
+            <name>ResourcePage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/boardsResource.jsp</value>
+        </init-param>
+        <init-param>
+            <name>BOARD-IDS</name>
+            <value>schoolNews,departmentForums,researchProblem,aegyeongsa,facultyForums</value>
+        </init-param>
+        <init-param>
+            <name>MENU-PATH</name>
+            <value>/main/boards/</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>BoardsForFaculty Portlet</title>
+            <short-title>BoardsForFaculty Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="BoardsForEmployee Portlet">
+        <portlet-name>BoardsForEmployee Portlet</portlet-name>
+        <description xml:lang="ko">게시판(직원)</description>
+        <display-name xml:lang="ko">게시판(직원)</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.BoardsPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>board.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 너비</description>
+            <name>SIZEX</name>
+            <value>2</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/boardsView.jsp</value>
+        </init-param>
+        <init-param>
+            <name>ResourcePage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/boardsResource.jsp</value>
+        </init-param>
+        <init-param>
+            <name>BOARD-IDS</name>
+            <value>schoolNews,departmentForums,aegyeongsa,facultyForums</value>
+        </init-param>
+        <init-param>
+            <name>MENU-PATH</name>
+            <value>/main/boards/</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>BoardsForEmployee Portlet</title>
+            <short-title>BoardsForEmployee Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="CafePortlet">
+        <portlet-name>CafePortlet</portlet-name>
+        <description xml:lang="ko">카페</description>
+        <display-name xml:lang="ko">카페</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.CafePortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>cafe.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/cafeView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Cafe Portlet</title>
+            <short-title>Cafe Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="CafeteriaPortlet">
+        <portlet-name>CafeteriaPortlet</portlet-name>
+        <description xml:lang="ko">주간식단</description>
+        <display-name xml:lang="ko">주간식단</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.CafeteriaPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>cafeteria.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 높이. 1은 정사각형 포틀릿의 절반크기이다.</description>
+            <name>SIZEY</name>
+            <value>1</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/cafeteriaView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Cafeteria Portlet</title>
+            <short-title>Cafeteria Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="EventPortlet">
+        <portlet-name>EventPortlet</portlet-name>
+        <description xml:lang="ko">이벤트</description>
+        <display-name xml:lang="ko">이벤트</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.EventPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>event.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/eventView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Event Portlet</title>
+            <short-title>Event Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="NoticesPortlet">
+        <portlet-name>NoticesPortlet</portlet-name>
+        <description xml:lang="ko">공지사항</description>
+        <display-name xml:lang="ko">공지사항</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.NoticesPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>news.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 너비</description>
+            <name>SIZEX</name>
+            <value>2</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/noticesView.jsp</value>
+        </init-param>
+        <init-param>
+            <name>BOARD-IDS</name>
+            <value>notice,academicNotice,majorNotice,fundNotice</value>
+        </init-param>
+        <init-param>
+            <name>MENU-PATH</name>
+            <value>/main/notices/</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Notices Portlet</title>
+            <short-title>Notices Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="NoticesForEmployee Portlet">
+        <portlet-name>NoticesForEmployee Portlet</portlet-name>
+        <description xml:lang="ko">공지사항(직원)</description>
+        <display-name xml:lang="ko">공지사항(직원)</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.NoticesPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>news.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 너비</description>
+            <name>SIZEX</name>
+            <value>2</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/noticesView.jsp</value>
+        </init-param>
+        <init-param>
+            <name>BOARD-IDS</name>
+            <value>notice,academicNotice,majorNotice,fundNotice,bidNotice</value>
+        </init-param>
+        <init-param>
+            <name>MENU-PATH</name>
+            <value>/main/notices/</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>NoticesForEmployee Portlet</title>
+            <short-title>NoticesForEmployee Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="SchedulePortlet">
+        <portlet-name>SchedulePortlet</portlet-name>
+        <description xml:lang="ko">학사일정</description>
+        <display-name xml:lang="ko">학사일정</display-name>
+        <portlet-class>com.saltware.enface.portlet.calendar.web.SchedulePortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>office-calendar.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/calendar/scheduleView.jsp</value>
+        </init-param>
+        <init-param>
+            <name>CALENDAR-ID</name>
+            <value>1</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>SchedulePortlet</title>
+            <short-title>SchedulePortlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="SurveyPortlet">
+        <portlet-name>SurveyPortlet</portlet-name>
+        <description xml:lang="ko">설문/투표</description>
+        <display-name xml:lang="ko">설문/투표</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.SurveyPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>poll.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/surveyView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Survey Portlet</title>
+            <short-title>Survey Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="GroupwarePortlet">
+        <portlet-name>GroupwarePortlet</portlet-name>
+        <description xml:lang="ko">전자결재</description>
+        <display-name xml:lang="ko">전자결재</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.GroupWareCountPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>internet-news-reader.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 높이.1은 정사각형 포틀릿의 절반크기이다.</description>
+            <name>SIZEY</name>
+            <value>1</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/groupWareCountView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Groupware Portlet</title>
+            <short-title>Groupware Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="LibraryPortlet">
+        <portlet-name>LibraryPortlet</portlet-name>
+        <description xml:lang="ko">도서관</description>
+        <display-name xml:lang="ko">도서관</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.LibraryCountPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>bookmark-new.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 높이. 1은 정사각형 포틀릿의 절반크기이다.</description>
+            <name>SIZEY</name>
+            <value>1</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/libraryCountView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Library Portlet</title>
+            <short-title>Library Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="FavorateMenusPortlet">
+        <portlet-name>FavorateMenusPortlet</portlet-name>
+        <description xml:lang="ko">자주쓰는메뉴</description>
+        <display-name xml:lang="ko">자주쓰는메뉴</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.FavorateMenusPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>preferences-system-windows.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/favorateMenusView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>FavorateMenus Portlet</title>
+            <short-title>FavorateMenus Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="MajorServicesPortlet">
+        <portlet-name>MajorServicesPortlet</portlet-name>
+        <description xml:lang="ko">주요서비스</description>
+        <display-name xml:lang="ko">주요서비스</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.MajorServicesPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>count_use.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/majorServicesView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>MajorServices Portlet</title>
+            <short-title>MajorServices Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="TodoForFacultyPortlet">
+        <portlet-name>TodoForFacultyPortlet</portlet-name>
+        <description xml:lang="ko">To-Do(교원)</description>
+        <display-name xml:lang="ko">To-Do(교원)</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.TodoForFacultyPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>accessories-text-editor.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 가로크기</description>
+            <name>SIZEX</name>
+            <value>2</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/todoForFacultyView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>TodoForFaculty Portlet</title>
+            <short-title>TodoForFaculty Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="TodoForEmployeePortlet">
+        <portlet-name>TodoForEmployeePortlet</portlet-name>
+        <description xml:lang="ko">To-Do(직원)</description>
+        <display-name xml:lang="ko">To-Do(직원)</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.TodoForEmployeePortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>accessories-text-editor.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 가로크기</description>
+            <name>SIZEX</name>
+            <value>2</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/todoForEmployeeView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>TodoForEmployee Portlet</title>
+            <short-title>TodoForEmployee Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="WeatherPortlet">
+        <portlet-name>WeatherPortlet</portlet-name>
+        <description xml:lang="ko">날씨 포틀릿</description>
+        <description xml:lang="en">Weather Portlet</description>
+        <display-name xml:lang="ko">날씨</display-name>
+        <display-name xml:lang="en">Weather</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.WeatherPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>weather-showers.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 가로크기</description>
+            <name>SIZEY</name>
+            <value>1</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/weatherView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Weather Portlet</title>
+            <short-title>Weather Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="Schedule(1x3)Portlet">
+        <portlet-name>Schedule(1x3)Portlet</portlet-name>
+        <description xml:lang="ko">학사일정(1x3) 포틀릿</description>
+        <description xml:lang="en">Schedule(1x3) Portlet</description>
+        <display-name xml:lang="ko">학사일정(1x3)</display-name>
+        <display-name xml:lang="en">Schedule(1x3)</display-name>
+        <portlet-class>com.saltware.enface.portlet.calendar.web.MiniCalendarPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>office-calendar.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/calendar/schedule1x3View.jsp</value>
+        </init-param>
+        <init-param>
+            <name>title</name>
+            <value>학사일정</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 세로크기</description>
+            <name>SIZEY</name>
+            <value>3</value>
+        </init-param>
+        <init-param>
+            <name>CALENDAR-ID</name>
+            <value>1</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Schedule(1x3)Portlet</title>
+            <short-title>Schedule(1x3)Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="MySchedule(1x3)Portlet">
+        <portlet-name>MySchedule(1x3)Portlet</portlet-name>
+        <description xml:lang="ko">미니캘린더(1x3) 포틀릿</description>
+        <description xml:lang="en">MySchedule(1x3)Portlet</description>
+        <display-name xml:lang="ko">미니캘린더(1x3) 포틀릿</display-name>
+        <display-name xml:lang="en">MySchedule(1x3)Portlet</display-name>
+        <portlet-class>com.saltware.enface.portlet.calendar.web.MyMiniCalendarPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>office-calendar.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/calendar/mySchedule1x3View.jsp</value>
+        </init-param>
+        <init-param>
+            <name>title</name>
+            <value>미니캘린더</value>
+        </init-param>
+        <init-param>
+            <name>CALENDAR-ID</name>
+            <value>1</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 세로크기</description>
+            <name>SIZEY</name>
+            <value>3</value>
+        </init-param>
+        
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>MySchedule(1x3)Portlet</title>
+            <short-title>MySchedule(1x3)Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+        
+    <portlet id="MajorServices(4x2)Portlet">
+        <portlet-name>MajorServices(4x2)Portlet</portlet-name>
+        <description xml:lang="ko">주요서비스(4x2) 포틀릿</description>
+        <description xml:lang="en">MajorServices(4x2) Portlet</description>
+        <display-name xml:lang="ko">주요서비스(4x2)</display-name>
+        <display-name xml:lang="en">MajorServices(4x2)</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.MajorServicesPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>count_use.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 가로크기</description>
+            <name>SIZEX</name>
+            <value>2</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/majorServices4x2View.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>MajorServices(4x2) Portlet</title>
+            <short-title>MajorServices(4x2) Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="MajorServices(4x1)Portlet">
+        <portlet-name>MajorServices(4x1)Portlet</portlet-name>
+        <description xml:lang="ko">주요서비스(4x1) 포틀릿</description>
+        <description xml:lang="en">MajorServices(4x1) Portlet</description>
+        <display-name xml:lang="ko">주요서비스(4x1)</display-name>
+        <display-name xml:lang="en">MajorServices(4x1)</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.MajorServicesPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>count_use.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 가로크기</description>
+            <name>SIZEX</name>
+            <value>2</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 세로크기</description>
+            <name>SIZEY</name>
+            <value>1</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/majorServices4x1View.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>MajorServices(4x1) Portlet</title>
+            <short-title>MajorServices(4x1) Portlet</short-title>
+            <keywords>university</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+    <portlet id="WeatherPortlet2">
+        <portlet-name>WeatherPortle2t</portlet-name>
+        <description xml:lang="ko">날씨 포틀릿</description>
+        <description xml:lang="en">Weather Portlet</description>
+        <display-name xml:lang="ko">날씨</display-name>
+        <display-name xml:lang="en">Weather</display-name>
+        <portlet-class>com.saltware.enface.portlet.academic.WeatherPortlet</portlet-class>
+        <init-param>
+            <name>portlet-icon</name>
+            <value>weather-showers.png</value>
+        </init-param>
+        <init-param>
+            <description xml:lang="en">포틀릿 가로크기</description>
+            <name>SIZEY</name>
+            <value>1</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/weatherView.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>ko</supported-locale>
+        <portlet-info>
+            <title>Weather Portlet</title>
+            <short-title>Weather Portlet</short-title>
+            <keywords>company</keywords>
+        </portlet-info>
+        <portlet-preferences>
+        </portlet-preferences>
+    </portlet>
+
+
+    <portlet id="TextPortlet">
+        <portlet-name>TextPortlet</portlet-name>
+        <description xml:lang="ko">텍스트포틀릿</description>
+        <display-name xml:lang="ko">텍스트포틀릿</display-name>
+        <portlet-class>com.saltware.enview.portlet.common.TextPortlet</portlet-class>
+        <init-param>
+            <description xml:lang="en"></description>
+            <name>portlet-icon</name>
+            <value>start-here.png</value>
+        </init-param>
+        <init-param>
+            <name>ViewPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/majorServices4x1View.jsp</value>
+        </init-param>
+        <init-param>
+            <name>EditPage</name>
+            <value>/WEB-INF/apps/enface/WEB-INF/view/portlet/academic/majorServices4x1View.jsp</value>
+        </init-param>
+        <resource-bundle></resource-bundle>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>edit</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>TextPortlet</title>
+            <short-title>TextPortlet</short-title>
+            <keywords>null</keywords>
+        </portlet-info>
+        <portlet-preferences>
+            <preference>
+                <name>TEXT</name>
+                <value>Edit Text</value>
+                <read-only>false</read-only>
+            </preference>
+            <preference>
+                <name>MAX-WIDTH</name>
+                <value>100%</value>
+                <read-only>false</read-only>
+            </preference>
+            <preference>
+                <name>WIDTH</name>
+                <value>100%</value>
+                <read-only>false</read-only>
+            </preference>
+        </portlet-preferences>
+    </portlet>
+
+</portlet-app>

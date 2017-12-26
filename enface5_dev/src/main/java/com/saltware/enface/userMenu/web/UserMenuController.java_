@@ -1,0 +1,961 @@
+
+package com.saltware.enface.userMenu.web;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+
+import com.saltware.enview.Enview;
+import com.saltware.enview.code.EnviewCodeManager;
+import com.saltware.enview.codebase.CodeBundle;
+import com.saltware.enview.exception.BaseException;
+import com.saltware.enview.multiresource.EnviewMultiResourceManager;
+import com.saltware.enview.multiresource.MultiResourceBundle;
+import com.saltware.enview.session.SessionConstants;
+import com.saltware.enview.session.SessionManager;
+import com.saltware.enview.util.EnviewLocale;
+
+import com.saltware.enface.userMenu.web.UserMenuForm;
+import com.saltware.enface.userMenu.service.UserMenuService;
+import com.saltware.enface.userMenu.service.EnviewMenu;
+import com.saltware.enface.userMenu.service.UserMenuPK;
+import com.saltware.enface.userMenu.service.impl.MenuSessionContext;
+
+/**  
+ * @Class Name : UserMenuController.java
+ * @Description : 사용자메뉴관리 Controller
+ * @
+ * @author kevin
+ * @since 2011.07.26 13:2:324
+ * @version 1.0
+ * @see
+ * 
+ *  Copyright (C) by Saltware All right reserved.
+ */
+public class UserMenuController extends MultiActionController
+{
+	private final Log   log = LogFactory.getLog(getClass());
+	
+	private UserMenuService userMenuService;
+	private SessionManager enviewSessionManager;
+	
+	public void setUserMenuService(UserMenuService userMenuService)
+	{
+		this.userMenuService = userMenuService;
+	}
+	
+	public UserMenuController()
+	{
+		this.enviewSessionManager = (SessionManager)Enview.getComponentManager().getComponent("com.saltware.enview.session.SessionManager");
+	}
+	
+	/**
+	 * Retrieve user My Menu list
+	 * and response with json format
+	 */
+	public ModelAndView listMenuForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+		StringBuffer buffer = new StringBuffer();
+		String forwardPath = null;
+		
+    	try {
+    		String path = request.getParameter("path");
+    		String orientation = request.getParameter("orientation");
+    		if( "top".equals(orientation) ) {
+    			forwardPath = "userMenu/topMenu";
+    		}
+    		else {
+    			forwardPath = "userMenu/leftMenu";
+    		}
+    		
+    		Collection results = userMenuService.findByPath(request, path);
+			
+			request.setAttribute("results", results);
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String msgKey = be.getMessageKey();
+	        String errorMessage = be.getMessage();
+	        if( msgKey != null ) {
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        request.setAttribute("errorMessage", "[" + be.getClass() + "] " + errorMessage);
+	        formData.setResultStatus("fail");
+    		formData.setFailureReason( "[" + be.getClass() + "] " + errorMessage );
+    		request.setAttribute("inform", formData);
+        }
+		
+		return new ModelAndView( forwardPath );
+	}
+	
+	/**
+	 * Retrieve all user access Menu list
+	 * and response with json format
+	 */
+	public ModelAndView getAccessableMenuList(HttpServletRequest request, HttpServletResponse response) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+		
+		String forwardPath = null;
+		String isTree = request.getParameter("tree");
+		if( "true".equals(isTree) ) {
+			forwardPath = "userMenu/selectUserMenuTree";
+		}
+		else {
+			forwardPath = "userMenu/selectUserMenu";
+			
+			EnviewMenu rootMenu = userMenuService.getRootMenu(request);
+			
+			Set myMenuMap = new HashSet();
+			Collection myMenus = userMenuService.findUserByType(request, MenuSessionContext.MENUTYPE_MY_MENU);
+			if( myMenus != null ) {
+				for(Iterator it=myMenus.iterator(); it.hasNext(); ) {
+					EnviewMenu menu = (EnviewMenu)it.next();
+					myMenuMap.add(menu.getId());
+				}
+			}
+			
+			request.setAttribute("rootMenu", rootMenu);
+			request.setAttribute("myMenuMap", myMenuMap);
+			request.setAttribute("messages", enviewMessages);
+		}
+		
+		return new ModelAndView( forwardPath );
+	}
+	
+	/**
+	 * Retrieve all group access Menu list
+	 * and response with json format
+	 */
+	public ModelAndView getAccessableGroupMenuList(HttpServletRequest request, HttpServletResponse response) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+		
+		String forwardPath = null;
+		String isTree = request.getParameter("tree");
+		if( "true".equals(isTree) ) {
+			forwardPath = "userMenu/selectGroupMenuTree";
+		}
+		else {
+			forwardPath = "userMenu/selectGroupMenu";
+			
+			EnviewMenu rootMenu = userMenuService.getRootMenu(request);
+			
+			Set groupMenuMap = new HashSet();
+			Collection myGroups = userMenuService.findGroupByType(request, MenuSessionContext.MENUTYPE_MY_MENU);
+			if( myGroups != null ) {
+				for(Iterator it=myGroups.iterator(); it.hasNext(); ) {
+					EnviewMenu menu = (EnviewMenu)it.next();
+					groupMenuMap.add(menu.getId());
+				}
+			}
+			
+			request.setAttribute("rootMenu", rootMenu);
+			request.setAttribute("groupMenuMap", groupMenuMap);
+			request.setAttribute("messages", enviewMessages);
+		}
+		
+		return new ModelAndView( forwardPath );
+	}
+	
+	/**
+	 * Retrieve page children for tree
+	 * and response with json format
+	 */
+	public ModelAndView retrieveTreeForAjax(HttpServletRequest request, HttpServletResponse response) throws Exception 
+	{
+		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+		String langKnd = (String)userInfoMap.get("lang_knd");
+		MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+		StringBuffer buffer = new StringBuffer();
+		Locale locale = new Locale(langKnd);
+		String userSite = (String)userInfoMap.get("site_name");
+
+    	try {
+			Map paramMap = new HashMap();
+			String id = request.getParameter( "id" );
+			if( id == null || id.length() == 0 ) {
+				id = userSite;
+			}
+			
+			Collection results = userMenuService.findById(request, id);
+			
+			Set myMenuMap = new HashSet();
+			Collection myMenus = userMenuService.findUserByType(request, MenuSessionContext.MENUTYPE_MY_MENU);
+			if( myMenus != null ) {
+				for(Iterator it=myMenus.iterator(); it.hasNext(); ) {
+					EnviewMenu menu = (EnviewMenu)it.next();
+					myMenuMap.add(menu.getId());
+				}
+			}
+			
+			request.setAttribute("id", id);
+    		request.setAttribute("results", results);
+    		
+    		if( id.equals(userSite) ) {
+				buffer.append("<tree id=\"0\">");
+				buffer.append("<item id=\"/\" im0=\"_folder.gif\" im1=\"_folder_open.gif\" im2=\"folder.gif\" open=\"1\" call=\"1\" select=\"1\"><![CDATA[/]]>");
+			}
+			else {
+				buffer.append("<tree id=\"").append( id ).append("\">");
+			}
+			for(Iterator it=results.iterator(); it.hasNext(); ) {
+				EnviewMenu menu = (EnviewMenu)it.next();
+				String isChild = "0";
+				String isChecked = "";
+				if( menu.getElements() != null && menu.getElements().size() > 0 ) {
+					isChild = "1";
+				}
+				if( myMenuMap.contains(menu.getId()) ) {
+					isChecked = "checked=\"true\"";
+				}
+				
+				buffer.append("<item child=\"").append(isChild).append("\" id=\"").append( menu.getPath() ).append("\" ").append(isChecked).append(" im0=\"page.gif\" im1=\"page.gif\" im2=\"page.gif\" userData=\"").append( menu.getId() ).append("\"><![CDATA[").append( menu.getShortTitle() ).append("]]></item>");
+			}
+			if( id.equals(userSite) ) {
+				buffer.append("</item>");
+			}
+			buffer.append("</tree>");
+    		log.debug("*** result=" + buffer.toString());
+    		
+    		response.setContentType("text/xml;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+			
+    	}
+		catch(Exception be) 
+		{
+			be.printStackTrace();
+			throw be;
+        }
+		
+		return null; //new ModelAndView("page/retrieveTreeForAjax");
+	}
+	
+	/**
+	 * Retrieve page children for tree
+	 * and response with json format
+	 */
+	public ModelAndView retrieveGroupTreeForAjax(HttpServletRequest request, HttpServletResponse response) throws Exception 
+	{
+		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+		String langKnd = (String)userInfoMap.get("lang_knd");
+		MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+		StringBuffer buffer = new StringBuffer();
+		Locale locale = new Locale(langKnd);
+		String userSite = (String)userInfoMap.get("site_name");
+
+    	try {
+			Map paramMap = new HashMap();
+			String id = request.getParameter( "id" );
+			if( id == null || id.length() == 0 ) {
+				id = userSite;
+			}
+			
+			Collection results = userMenuService.findById(request, id);
+			
+			Set groupMenuMap = new HashSet();
+			Collection myGroups = userMenuService.findGroupByType(request, MenuSessionContext.MENUTYPE_MY_MENU);
+			if( myGroups != null ) {
+				for(Iterator it=myGroups.iterator(); it.hasNext(); ) {
+					EnviewMenu menu = (EnviewMenu)it.next();
+					groupMenuMap.add(menu.getId());
+				}
+			}
+			
+			request.setAttribute("id", id);
+    		request.setAttribute("results", results);
+    		
+    		if( id.equals(userSite) ) {
+				buffer.append("<tree id=\"0\">");
+				buffer.append("<item id=\"/\" im0=\"_folder.gif\" im1=\"_folder_open.gif\" im2=\"folder.gif\" open=\"1\" call=\"1\" select=\"1\"><![CDATA[/]]>");
+			}
+			else {
+				buffer.append("<tree id=\"").append( id ).append("\">");
+			}
+			for(Iterator it=results.iterator(); it.hasNext(); ) {
+				EnviewMenu menu = (EnviewMenu)it.next();
+				String isChild = "0";
+				String isChecked = "";
+				if( menu.getElements() != null && menu.getElements().size() > 0 ) {
+					isChild = "1";
+				}
+				if( groupMenuMap.contains(menu.getId()) ) {
+					isChecked = "checked=\"true\"";
+				}
+				
+				buffer.append("<item child=\"").append(isChild).append("\" id=\"").append( menu.getPath() ).append("\" ").append(isChecked).append(" im0=\"page.gif\" im1=\"page.gif\" im2=\"page.gif\" userData=\"").append( menu.getId() ).append("\"><![CDATA[").append( menu.getShortTitle() ).append("]]></item>");
+			}
+			if( id.equals(userSite) ) {
+				buffer.append("</item>");
+			}
+			buffer.append("</tree>");
+    		log.debug("*** result=" + buffer.toString());
+    		
+    		response.setContentType("text/xml;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+			
+    	}
+		catch(Exception be) 
+		{
+			be.printStackTrace();
+			throw be;
+        }
+		
+		return null; //new ModelAndView("page/retrieveTreeForAjax");
+	}
+
+	/**
+	 * Retrieve user My Menu list
+	 * and response with json format
+	 */
+	public ModelAndView listMyMenuForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+		CodeBundle enviewCodeBundle = EnviewCodeManager.getInstance().getBundle( langKnd );
+		
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		Collection results = (List)userInfoMap.get("myMenus");
+    		
+    		if( results == null || results.size() == 0 ) {
+	    		String principalId = (String)enviewSessionManager.getUserDataValue(request, "principal_id");
+	    		Map searchCondition = formData.getSearchCondition();
+	    		searchCondition.put("principalId", principalId);
+	    		searchCondition.put("langKnd", langKnd);
+	    		searchCondition.put("menuType", "1");
+	    		
+	    		results = userMenuService.findByCondition(searchCondition);
+	    		if( results != null ) {
+	    			userInfoMap.put("myMenus", results);
+	    		}
+	    		else {
+	    			userInfoMap.put("myMenus", new ArrayList());
+	    		}
+    		}
+			
+			formData.setResultStatus("success");
+    		formData.setFailureReason("");
+    		formData.setTotalSize( results.size() );
+    		formData.setResultSize( results.size() );
+    		
+    		request.setAttribute("inform", formData);
+    		request.setAttribute("results", results);
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String msgKey = be.getMessageKey();
+	        String errorMessage = be.getMessage();
+	        if( msgKey != null ) {
+	        	errorMessage = enviewMessages.getString( msgKey );
+		        //log.debug("*** errorMessage=" + errorMessage);
+	        }
+	        request.setAttribute("errorMessage", "[" + be.getClass() + "] " + errorMessage);
+	        formData.setResultStatus("fail");
+    		formData.setFailureReason( "[" + be.getClass() + "] " + errorMessage );
+    		request.setAttribute("inform", formData);
+        }
+		
+		return new ModelAndView("userMenu/retrieveForAjax");
+	}
+	
+	/**
+	 * Add new user My Menu information
+	 * and response with json format
+	 */
+	public ModelAndView addMyMenuForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("principal_id");
+			EnviewMenu enviewMenu = formData.getUpdateObject();
+			enviewMenu.setPrincipalId( principalId );
+			enviewMenu.setLangKnd(langKnd);
+			enviewMenu.setMenuType("1");
+
+			boolean exist = userMenuService.exist(enviewMenu);
+			if( exist == true ) {
+				BaseException be = new BaseException("pt.ev.error.Duplicated");
+				throw be;
+			}
+			
+    		userMenuService.insert(enviewMenu);
+			userInfoMap.remove("myMenus");
+			
+			buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null;
+	}
+	
+	/**
+	 * Remove all user Menu and add new user My Menu list information
+	 * and response with json format
+	 */
+	public ModelAndView addMyMenusForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("principal_id");
+    		String pageIds = request.getParameter( "pageIds" );
+    		Map paramSet = new HashMap();
+			paramSet.put("principalId", principalId);
+			paramSet.put("langKnd", langKnd);
+			paramSet.put("menuType", "1");
+			paramSet.put("pageIds", pageIds);
+    		userMenuService.insertList(paramSet);
+    		userInfoMap.remove("myMenus");
+
+    		buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null;
+	}
+	
+	/**
+	 * Add new user My Menu list information
+	 * and response with json format
+	 */
+	public ModelAndView addMyMenusOnlyForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("principal_id");
+    		String pageIds = request.getParameter( "pageIds" );
+    		Map paramSet = new HashMap();
+			paramSet.put("principalId", principalId);
+			paramSet.put("langKnd", langKnd);
+			paramSet.put("menuType", "1");
+			paramSet.put("pageIds", pageIds);
+    		userMenuService.insertListOnly(paramSet);
+    		userInfoMap.remove("myMenus");
+
+    		buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null;
+	}
+	
+	/**
+	 * Change user My Menu order information
+	 * and response with json format
+	 */
+	public ModelAndView changeMyMenuOrderForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("principal_id");
+    		String toDownStr = request.getParameter( "toDown" );
+    		boolean toDown = true;
+			if( toDownStr != null && toDownStr.length() > 0 ) {
+				toDown = Boolean.parseBoolean(toDownStr);
+			}
+			
+			Map paramMap = new HashMap();
+			paramMap.put("principalId", principalId);
+			paramMap.put("pageId", formData.getPageId());
+			paramMap.put("langKnd", langKnd);
+			paramMap.put("menuType", "1");
+			userMenuService.changeOrder(paramMap, toDown);
+    		
+    		userInfoMap.remove("myMenus");
+    		
+    		buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null;
+	}
+	
+	/**
+	 * Remove user My Menu information
+	 * and response with json format
+	 */
+	public ModelAndView removeMyMenuForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("principal_id");
+    		UserMenuPK userMenuPK = new UserMenuPK();
+    		userMenuPK.setPrincipalId( principalId );
+    		userMenuPK.setPageId( formData.getPageId() );
+    		userMenuPK.setMenuType("1");
+			userMenuService.delete(userMenuPK);
+			
+			userInfoMap.remove("myMenus");
+    		
+    		buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null; //new ModelAndView();
+	}
+	
+	/**
+	 * Retrieve user quick Menu list
+	 * and response with json format
+	 */
+	public ModelAndView listQuickMenuForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+		CodeBundle enviewCodeBundle = EnviewCodeManager.getInstance().getBundle( langKnd );
+		
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		Collection results = (List)userInfoMap.get("myQuickMenus");
+    		
+    		if( results == null || results.size() == 0 ) {
+	    		String principalId = (String)userInfoMap.get("principal_id");
+	    		Map searchCondition = formData.getSearchCondition();
+	    		searchCondition.put("principalId", principalId);
+	    		searchCondition.put("langKnd", langKnd);
+	    		searchCondition.put("menuType", "2");
+	    		
+	    		results = userMenuService.findByCondition(searchCondition);
+	    		if( results != null ) {
+	    			userInfoMap.put("myQuickMenus", results);
+	    		}
+	    		else {
+	    			userInfoMap.put("myQuickMenus", new ArrayList());
+	    		}
+    		}
+    		
+			formData.setResultStatus("success");
+    		formData.setFailureReason("");
+    		formData.setTotalSize( results.size() );
+    		formData.setResultSize( results.size() );
+    		
+    		request.setAttribute("inform", formData);
+    		request.setAttribute("results", results);
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String msgKey = be.getMessageKey();
+	        String errorMessage = be.getMessage();
+	        if( msgKey != null ) {
+	        	errorMessage = enviewMessages.getString( msgKey );
+		        //log.debug("*** errorMessage=" + errorMessage);
+	        }
+	        request.setAttribute("errorMessage", "[" + be.getClass() + "] " + errorMessage);
+	        formData.setResultStatus("fail");
+    		formData.setFailureReason( "[" + be.getClass() + "] " + errorMessage );
+    		request.setAttribute("inform", formData);
+        }
+		
+		return new ModelAndView("userMenu/retrieveForAjax");
+	}
+	
+		
+	/**
+	 * Add new user Quick Menu information
+	 * and response with json format
+	 */
+	public ModelAndView addQuickMenuForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("principal_id");
+			EnviewMenu enviewMenu = formData.getUpdateObject();
+			enviewMenu.setLangKnd(langKnd);
+			enviewMenu.setPrincipalId( principalId );
+			enviewMenu.setMenuType("2");
+			
+			boolean exist = userMenuService.exist(enviewMenu);
+			if( exist == true ) {
+				BaseException be = new BaseException("pt.ev.error.Duplicated");
+				throw be;
+			}
+			
+    		userMenuService.insert(enviewMenu);
+    		
+    		userInfoMap.remove("myQuickMenus");
+    		
+    		buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null;
+	}
+	
+	/**
+	 * Remove user Quick Menu information
+	 * and response with json format
+	 */
+	public ModelAndView removeQuickMenuForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("principal_id");
+    		UserMenuPK userMenuPK = new UserMenuPK();
+    		userMenuPK.setPrincipalId( principalId );
+    		userMenuPK.setPageId( formData.getPageId() );
+    		userMenuPK.setMenuType("2");
+			userMenuService.delete(userMenuPK);
+			
+			userInfoMap.remove("myQuickMenus");
+    		
+    		buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null; //new ModelAndView();
+	}
+	
+	/**
+	 * Change user Quick Menu order information
+	 * and response with json format
+	 */
+	public ModelAndView changeQuickMenuOrderForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("principal_id");
+    		String toDownStr = request.getParameter( "toDown" );
+    		boolean toDown = true;
+			if( toDownStr != null && toDownStr.length() > 0 ) {
+				toDown = Boolean.parseBoolean(toDownStr);
+			}
+			
+			Map paramMap = new HashMap();
+			paramMap.put("principalId", principalId);
+			paramMap.put("pageId", formData.getPageId());
+			paramMap.put("langKnd", langKnd);
+			paramMap.put("menuType", "2");
+			userMenuService.changeOrder(paramMap, toDown);
+    		
+    		userInfoMap.remove("myQuickMenus");
+
+    		buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null;
+	}
+	
+	/**
+	 * Remove all group Menu and add new Group Menu list information
+	 * and response with json format
+	 */
+	public ModelAndView addGroupMenusForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("groupPagePrincipalId");
+    		String pageIds = request.getParameter( "pageIds" );
+    		Map paramSet = new HashMap();
+			paramSet.put("principalId", principalId);
+			paramSet.put("langKnd", langKnd);
+			paramSet.put("menuType", "3");
+			paramSet.put("pageIds", pageIds);
+    		userMenuService.insertList(paramSet);
+    		userInfoMap.remove("groupMenus");
+
+    		buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null;
+	}
+	
+	/**
+	 * Add new Group Menu list information
+	 * and response with json format
+	 */
+	public ModelAndView addGroupMenusOnlyForAjax(HttpServletRequest request, HttpServletResponse response, UserMenuForm formData) throws Exception 
+	{
+		String langKnd = EnviewLocale.getLocale(request, enviewSessionManager);
+		StringBuffer buffer = new StringBuffer();
+
+    	try {
+    		Map userInfoMap = (Map)enviewSessionManager.getUserData(request);
+    		String principalId = (String)userInfoMap.get("groupPagePrincipalId");
+    		String pageIds = request.getParameter( "pageIds" );
+    		Map paramSet = new HashMap();
+			paramSet.put("principalId", principalId);
+			paramSet.put("langKnd", langKnd);
+			paramSet.put("menuType", "3");
+			paramSet.put("pageIds", pageIds);
+    		userMenuService.insertListOnly(paramSet);
+    		userInfoMap.remove("groupMenus");
+
+    		buffer.append("{");
+    		buffer.append("\"Status\": \"success\"");
+    		buffer.append("}");
+    		
+    		response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+    	}
+		catch(BaseException be) 
+		{
+			be.printStackTrace();
+	        String errorMessage = be.getMessage();
+	        String msgKey = be.getMessageKey();
+	        if( msgKey != null ) {
+				MultiResourceBundle enviewMessages = EnviewMultiResourceManager.getInstance().getBundle( langKnd );
+	        	errorMessage = enviewMessages.getString( msgKey );
+	        }
+	        
+	        buffer.append("{");
+    		buffer.append("\"Status\": \"fail\",");
+    		buffer.append("\"Reason\": \"").append( errorMessage ).append("\"");
+    		buffer.append("}");
+	        response.setContentType("text/json;charset=UTF-8");
+	        response.getWriter().print(buffer.toString());
+        }
+		
+		return null;
+	}
+}

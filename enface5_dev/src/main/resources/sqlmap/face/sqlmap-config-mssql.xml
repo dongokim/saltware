@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+	
+<sqlMapConfig>
+	<sqlMap resource="sqlmap/face/mssql/User-sql.xml"/>
+	<sqlMap resource="sqlmap/face/mssql/Tool-sql.xml"/>
+	<sqlMap resource="sqlmap/face/mssql/UserMenu-sql.xml"/>
+    <sqlMap resource="sqlmap/face/mssql/OpenApi-sql.xml"/>
+	<sqlMap resource="sqlmap/face/mssql/Sample-sql.xml"/>
+</sqlMapConfig>
+

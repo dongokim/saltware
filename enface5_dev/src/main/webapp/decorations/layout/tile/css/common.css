@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*정렬*/
+.L {text-align:left; }
+.C {text-align:center; }
+.R {text-align:right; }
+
+/*button*/
+.btnArea{width:100%; }
+.btnArea a:hover{text-decoration:none; }
+.btnArea:after{display:block; clear:both; content:"";}
+.leftArea{float:left; }
+.rightArea{float:right;}
+/*btn_search*/
+.btn_search{display:inline-block; height:25px; color:#ccc; background:url(../images/sub/btn_search_L.gif) no-repeat left top; padding:0 0 0 40px; }
+.btn_search span{display:inline-block; height:26px; color:#ccc; line-height:27px; letter-spacing:-1px;  background:url(../images/sub/btn_black_R.gif) no-repeat right top; padding:0 10px 0 0;}
+/*btn_excel*/
+.btn_excel{display:inline-block; height:25px; color:#ccc; background:url(../images/sub/btn_excel_L.GIF) no-repeat left top; padding:0 0 0 10px; }
+.btn_excel span{display:inline-block; height:26px; color:#ccc; line-height:27px; letter-spacing:-1px;  background:url(../images/sub/btn_black_R.gif) no-repeat right top; padding:0 10px 0 0;}
+/*btn_black*/
+.btn_black{display:inline-block; height:26px; color:#ccc; background:url(../images/sub/btn_black_L.gif) no-repeat left top; padding:0 0 0 10px; }
+.btn_black span{display:inline-block; height:26px; color:#ccc; line-height:27px; letter-spacing:-1px;  background:url(../images/sub/btn_black_R.gif) no-repeat right top; padding:0 10px 0 0;}
+/*btn_gray*/
+a.btn_gray{display:inline-block;  height:28px; color:#474a51; background:url(../images/sub/btn_gray_L.gif) no-repeat left top; padding:0 0 0 20px; }
+.btn_gray span{display:inline-block; height:28px; color:#474a51; line-height:29px; letter-spacing:-1px;  background:url(../images/sub/btn_gray_R.gif) no-repeat right top; padding:0 20px 0 0;}
+/*btn_white*/
+.btn_white{display:inline-block; height:28px; color:#000; background:url(../images/sub/btn_white_L.gif) no-repeat left top; padding:0 0 0 10px; }
+.btn_white span{display:inline-block; height:28px; color:#000; line-height:29px; letter-spacing:-1px;  background:url(../images/sub/btn_white_R.gif) no-repeat right top; padding:0 10px 0 0;}
+/*btn_darkgra*/
+.btn_darkgra{display:inline-block; height:28px; color:#474a51; background:url(../images/sub/btn_darkgra_L.gif) no-repeat left top; padding:0 0 0 10px; }
+.btn_darkgra span{display:inline-block; height:28px; color:#474a51; line-height:29px; letter-spacing:-1px;  background:url(../images/sub/btn_darkgra_R.gif) no-repeat right top; padding:0 10px 0 0;}

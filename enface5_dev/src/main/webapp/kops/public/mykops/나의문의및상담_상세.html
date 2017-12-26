@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>환자안전포탈</title>
+<meta name="author" content="환자안전포탈"/>
+<meta name="description" content="환자안전포탈"/>
+<meta name="keywords" content="환자안전포탈"/>
+<meta name="Resource-type" content="Document"/>
+<link rel="stylesheet" type="text/css" href="../css/default.css"/>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/sub.js"></script>
+</head>
+
+<body>
+<!-- Header -->
+<div id="header">
+	<div class="gnb_wrap">
+		<div class="depth1_cont">
+			<p class="logo"><a href="#"><img src="../images/common/logo.png" alt="환자안전보고학습시스템 로고" /></a></p>
+			<!-- 우측메뉴 -->
+			<div class="login">
+				<ul>
+					<li><a href="#">회원가입</a></li>
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">My KOPS</a></li>
+					<li>
+						<div class="search">
+							<a href="javascript:setVisible(true);">검색</a>
+							<p class="sch_box" id="layer1"><input type="text" name="" />
+								<a href="#" class="s_btn">검색</a>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //우측메뉴 -->
+			<!-- GNB -->
+			<div class="gnb" id="top1menu">
+				<ul id="top1m2">
+					<li><a href="#">보고하기</a></li>
+					<li><a href="#">신고하기</a></li>
+					<li><a href="#">학습하기</a></li>
+					<li><a href="#">문의하기</a></li>
+					<li><a href="#">KOPS</a></li>
+				</ul>
+			</div>
+			<!-- Quick_menu -->
+			<div class="quick_menu">
+				<div class="ac-container">
+					<input id="ac-1" name="accordion-1" type="checkbox" />
+					<label for="ac-1">Quick menu</label>
+					<article class="ac-small">
+						<ul class="quick_cont">
+							<li class="m1"><a href="#">주의경보</a></li>
+							<li class="m2"><a href="#">보고하기</a></li>
+							<li class="m3"><a href="#">신고하기</a></li>
+							<li class="m4"><a href="#">환자안전보고란</a></li>
+							<li class="m5"><a href="#">홍보영상</a></li>
+						</ul>
+					</article>
+				</div>
+			</div>
+			<!-- //Quick_menu -->
+		</div>
+		<div id="top2m2" class="top2m">
+			<div class="depth2_cont">
+				<div class="left_cont">
+					<p>최근 주의 경보 <strong class="">약물투여</strong></p>
+					<p class="pdt10"><img src="../images/common/img_live_icon1.png" alt="심각" /></p>
+				</div>
+				<div class="menu_wrap">
+					<ul>
+						<li><a href="#">보고 가이드</a></li>
+						<li><a href="#">환자/보호자용</a></li>
+						<li><a href="#">보건의료인용</a></li>
+						<li><a href="#">전담인력용</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">신고 가이드</a></li>
+						<li><a href="#">전담인력 신고</a></li>
+						<li><a href="#">환자안전 기준/지표</a></li>
+						<li><a href="#">환자안전위원회</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">자료실</a></li>
+						<li><a href="#">주의 경보</a></li>
+						<li><a href="#">교육일정</a></li>
+						<li><a href="#">교육안내/신청</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">문의 및 상담</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">인사말</a></li>
+						<li><a href="#">제도안내</a></li>
+						<li><a href="#">KOPS소개</a></li>
+						<li><a href="#">보도자료</a></li>
+						<li><a href="#">홍보자료</a></li>
+					</ul>
+				</div>
+				<div class="right_cont">
+					<p>환자안전사고 누적 보고 <span class="">230,454건</span></p>
+					<p>환자안전 전담인력 <span class="">20,454건</span></p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Sub_2depth -->
+		<div class="sub_menu">
+			<div class="top_depth2">
+				<ul class="menu6">
+					<li class="m1"><a href="#"><span>나의 보고내역</span></a></li>
+					<li class="m2"><a href="#"><span>나의 사실증명</span></a></li>
+					<li class="m3"><a href="#"><span>나의 신고내역</span></a></li>
+					<li class="m4"><a href="#"><span>나의 주의정보 <br />피드백</span></a></li>
+					<li class="m5"><a href="#"><span>나의 교육내역</span></a></li>
+					<li class="m6"><a href="#"><span>지표측정조사</span></a></li>
+					<li class="m7"><a href="#"><span>환자안전위원회 현황</span></a></li>
+					<li class="m8"><a href="#" class="on"><span>나의 문의 및 상담</span></a></li>
+					<li class="m9"><a href="#"><span>나의 정보</span></a></li>
+					<li class="m10"><a href="#"><span>회원탈퇴</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //Sub_2depth -->
+		<!-- //GNB -->
+	</div>
+	<script type="text/javascript">initTopMenu();</script>
+</div>
+<!-- //Header -->
+
+<!-- Contents -->
+<div id="container">
+	<!-- Navigation -->
+	<div class="navigation">
+		<a href="#">HOME</a><a href="#">My KOPS</a><a href="#">나의 문의 및 상담</a>
+	</div>
+	<!-- //Navigation -->
+
+	<!-- iframe -->
+	<div class="contents">
+		<!-- contents -->
+		<h2 class="sub_title">나의 문의 및 상담</h2>
+		<div class="board_box">
+			<div class="board_list mgt30">
+				<table class="table_t2" summary="번호, 제목, 등록자, 등록일의 정보를 제공합니다.">
+					<caption>게시판 리스트</caption>
+					<colgroup>
+						<col width="">
+						<col width="12%">
+						<col width="10%">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">제목</th>
+						<th scope="col">등록일</th>
+						<th scope="col">답변여부</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td class="t_left">요양병원 인증조사기준(Ver2.0) 정오표 등 공지(관련법령 개정 관련)</td>
+						<td>2017-09-25</td>
+						<td><a href="#" class="btn_gray">답변완료</a></td>
+					</tr>
+					<tr>
+						<td colspan="4" class="view_cont">
+							<div class="cont">
+								<p>제목: 한국의 환자안전문화 측정</p>
+								<p>주관연구기관: 의료기관평가인증원</p>
+								<p>책임연구원: 정연이</p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="view_cont bd_no">
+							<div class="reply">
+								<p class="f_bold c_black">의무등록사항이 아닙니다.</p>
+								<p class="date"><span>교육팀</span>2017-09-26</p>
+								<p>의무 등록사항이 아닙니다. <br />다만, 500병상이상의 종합병원은 전담인력을 1명 배정하여야 합니다.</p>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="btn_box mgt40">
+				<a href="#n" class="btn_pre">목 록</a>
+			</div>
+		</div>
+		<!-- //contents -->
+	</div>
+	<!-- //iframe -->
+
+</div>
+<!-- Contents -->
+
+<!-- Footer -->
+<div id="footer">
+	<!-- Link_Area -->
+	<div class="foot_link">
+		<div class="menu_wrap">
+			<ul>
+				<li>보고하기</li>
+				<li><a href="#">보고 가이드</a></li>
+				<li><a href="#">환자/보호자용</a></li>
+				<li><a href="#">보건의료인용</a></li>
+				<li><a href="#">전담인력용</a></li>
+			</ul>
+			<ul>
+				<li>신고하기</li>
+				<li><a href="#">신고 가이드</a></li>
+				<li><a href="#">전담인력 신고</a></li>
+				<li><a href="#">환자안전 기준/지표</a></li>
+				<li><a href="#">환자안전위원회</a></li>
+			</ul>
+			<ul>
+				<li>학습하기</li>
+				<li><a href="#">자료실</a></li>
+				<li><a href="#">주의 경보</a></li>
+				<li><a href="#">교육일정</a></li>
+				<li><a href="#">교육안내/신청</a></li>
+			</ul>
+			<ul>
+				<li>문의하기</li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">문의 및 상담</a></li>
+			</ul>
+			<ul>
+				<li>KOPS</li>
+				<li><a href="#">인사말</a></li>
+				<li><a href="#">제도안내</a></li>
+				<li><a href="#">KOPS소개</a></li>
+				<li><a href="#">보도자료</a></li>
+				<li><a href="#">홍보자료</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- //Link_Area -->
+	<div class="foot_info">
+		<p class="f_logo"><a href="#"><img src="../images/common/f_logo.png" alt="환자안전보고학습시스템 로고" /></a></p>
+		<div class="link2">
+			<ul>
+				<li><a href="#">개인정보 보호 방침</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li class="ico"><a href="#">저작권정책안내</a></li>
+				<li class="ico"><a href="#">이메일주소무단수집거부</a></li>
+				<li class="ico"><a href="#">찾아오시는길</a></li>
+			</ul>
+			<p class="copyrighter">
+				<span>서울시 영등포구 국회대로76길 10(여의도동) 10층 우편번호07283 TEL:02-2076-0600 FAX:02-2076-0666</span>
+				<span>Copyright © 2013 <em>KOIHA</em>. All rights reserved.</span>
+			</p>
+		</div>
+		<div class="site_link">
+			<select id="" style="width:185px;">
+				<option>관련사이트 바로가기</option>
+			</select>
+			<p class="pdt10"><a href="#"><img src="../images/common/f_logo2.png" alt="의료기관평가인증원 로고" /></a></p>
+		</div>
+	</div>
+</div>
+<!-- //Footer -->
+</body>
+</html>

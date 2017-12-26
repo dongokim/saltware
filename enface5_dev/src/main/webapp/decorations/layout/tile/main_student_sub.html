@@ -1,0 +1,1096 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>:: enview_Appliance _ TilePortlet</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+<!-- header -->
+<div id="header">
+	<!-- header_wrap -->
+	<div class="header_wrap">
+		<!-- 네비게이션 -->
+		<div class="nav">
+			<ul>
+				<li class="first"><a href="#">공지사항</a></li>
+				<li><a href="#">일정</a></li>
+				<li><a href="#">설문/투표</a></li>
+				<li><a href="#">이벤트/행사</a></li>
+				<li><a href="#">카페</a></li>
+				<li><a href="#">마이페이지</a></li>
+			</ul>
+			<ul class="nav_login">
+				<li class="first"><a href="#">로그아웃</a></li>
+				<li><a href="#">홈</a></li>
+				<li><a href="#">Q&A</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">총장에게바란다</a></li>
+				<li><a href="#">건의합니다</a></li>
+			</ul>
+		</div>
+		<!-- 네비게이션 //-->
+		<h1><img src="images/logo.png" alt="솔트웨어 로고" /></h1>
+        <!-- 검색 -->
+        <div class="searchArea">
+            <form name="searchfrm">
+                <fieldset>
+                    <legend>검색</legend>
+					<div class="searchbar">
+						<label for="search"></label><input type="text" id="search" class="search" value="검색어를 입력하세요"/>
+					</div>
+					<a href="#">검색</a>
+                </fieldset>
+            </form>
+        </div>
+        <!-- 검색 //-->
+        <!-- 날씨 -->		
+        <a href="#" class="weather">
+        	<p><img src="images/weather_icon.gif" alt="날씨아이콘" /><span class="templete">22℃</span></p>
+        	<span><strong>서울</strong> 6월 18일 <strong>13 :00</strong> 현재</span>
+        </a>
+        <!-- 날씨 //-->
+		<!-- GNB -->
+		<div class="gnb">
+			<ul>
+				<li><a href="#">홈페이지</a></li>
+				<li><a href="#">웹메일</a></li>
+				<li><a href="#">학사</a></li>
+				<li><a href="#">행정</a></li>
+				<li><a href="#">도서관</a></li>
+			</ul>
+		</div>
+		<!-- GNB //-->
+		<!-- 시스템 더보기 -->
+		<div id="menu">
+			<!-- allmArea -->
+			<div class="allmArea">
+				<p class="btn_off"><a href="#"><span>시스템 더보기</span></a></p>
+				<p class="btn_on"><a href="#"><span>시스템 더보기</span></a></p>
+				<!-- 시스템 더보기 리스트-->
+				<div id="allmenu">
+					<ul>
+						<li><a href="#">시스템더보기</a></li>
+						<li><a href="#">시스템더보기</a></li>
+					</ul>
+				</div>
+				<!-- 시스템 더보기 리스트 //-->
+			</div>
+			<!-- allmArea//-->
+		</div>
+		<!-- 시스템 더보기 -->
+	</div>
+	<!-- header_wrap -->
+</div>
+<!-- header //-->
+<!-- subbody -->
+<div id="subbody">
+	<!-- body_wrap -->
+	<div class="body_wrap">
+		<!-- contentsArea -->
+		<div id="contentsArea">
+			<!-- lnbArea -->
+			<div id="lnbArea">
+				<div id="sidemenu">
+					<h2 class="menutitle">전체공지</h2>
+					<ul>
+						<li class="liston"><a href="#">공지사항</a>
+							<ul class="dept_02">
+								<li class="on"><a href="#">전체공지</a></li>
+								<li class="off"><a href="#">중앙회공지</a></li>
+							</ul>
+						</li>
+						<li class="listoff"><a href="#">게시판</a></li>
+						<li class="listoff"><a href="#">일정</a></li>
+						<li class="listoff"><a href="#">설문/투표</a></li>
+						<li class="listoff"><a href="#">업무현황</a></li>
+						<li class="listoff"><a href="#">최근게시물</a></li>
+						<li class="listoff"><a href="#">커뮤니티</a></li>
+						<li class="listoff"><a href="#">마이페이지</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- lnbArea// -->
+            <!-- container-->
+            <div id="container">
+                <!-- h1Area-->
+                <div class="h1Area">
+                    <!-- pageNav-->
+                    <div class="pageNav">
+                        <a href="#" class="first">HOME</a> <a href="#">공지사항</a> <a href="#" class="here">전체공지</a>
+                    </div>
+                    <!-- pageMav//-->
+                </div>
+                <!-- h1Area//-->
+                <!-- searchArea-->
+                <div class="tsearchArea">
+                    <p>총 : 4000개의 게시물이 있습니다.</p>
+                    <fieldset>
+                        <form>
+                            <div class="sel_100">
+                                <select class="txt_100">
+                                    <option>제목</option>
+                                    <option>제목</option>
+                                    <option>제목</option>
+                                    <option>제목</option>
+                                    <option>제목</option>
+                                    <option>제목</option>
+                                </select>
+                            </div>
+                            <label for="search"></label><input type="text" id="search" class="txt_150"/>
+                            <a href="#" class="btn_search"><span>검색</span></a>
+                        </form>
+                    </fieldset>
+                </div>
+                <!-- searchArea//-->
+                <!-- cover : layer popup 작동시 사용-->
+                <div class="cover">
+                    <!-- layerpopup-->
+                    <!-- writeinfor -->
+                    <div id="writeinfor" class="writeinfor">
+                        <p class="titleAera">
+                            <span class="title">작성자정보</span>
+                            <span class="layerClose"><a href="javascript:closeinfor();"><img src="images/sub/layer_close.gif" alt="닫기" /></a></span>
+                        </p>
+                        <ul>
+                            <li class="first"><span class="title">성명</span> <span>홍길동</span></li>
+                            <li><span class="title">부서</span> <span>전산정보부</span></a></li>
+                            <li><span class="title">직급</span> <span>과장</span></li>
+                        </ul>
+                    </div>
+                    <!-- markList //-->
+                    <!-- table-->
+                    <table class="list" cellpadding="0" cellspacing="0" summary="게시판리스트"  style="margin-top:0; position:relative;">  
+                    <caption>게시판리스트</caption>
+                        <colgroup>
+                            <col width="8%" />
+                            <col width="*%" />
+                            <col width="8%" />
+                            <col width="12%" />
+                            <col width="10%" />
+                            <col width="10%" />
+                            <col width="8%" />
+                            <col width="8%" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th class="first">번호</th>
+                                <th>제목</th>
+                                <th>재단</th>
+                                <th>부서</th>
+                                <th>작성자</th>
+                                <th>작성일</th>
+                                <th>조회</th>
+                                <th>첨부</th>
+                            </tr>
+                        </thead>
+                        <tbody>   
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span class="title">포털오픈을 알려드립니다알려드립니다알려드립니다알려드립니다알려드립니다알려드립니다알려드립니다알려드립니다알려드립니다.</span><span><img src="images/sub/icon_new.gif" alt="새 게시물" /></span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C"><a href="javascript:openinfor();">홍길동</a></td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"><img src="images/sub/icon_file.gif" alt="첨부파일있음" /></td>
+                            </tr>
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span class="title">포털오픈을 알려드립니다.</span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C">홍길동</td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"><img src="images/sub/icon_file.gif" alt="첨부파일있음" /></td>
+                            </tr>
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span class="title">포털오픈을 알려드립니다.</span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C">홍길동</td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"></td>
+                            </tr>
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span class="title">포털오픈을 알려드립니다</span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C">홍길동</td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"><img src="images/sub/icon_file.gif" alt="첨부파일있음" /></td>
+                            </tr>
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span><img src="images/sub/icon_reply.gif" alt="새 게시물" /></span> <span class="title">포털오픈을 알려드립니다.</span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C">홍길동</td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"><img src="images/sub/icon_file.gif" alt="첨부파일있음" /></td>
+                            </tr>
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span class="title">포털오픈을 알려드립니다.</span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C">홍길동</td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"></td>
+                            </tr>
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span class="title">포털오픈을 알려드립니다.</span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C">홍길동</td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"></td>
+                            </tr>
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span class="title">포털오픈을 알려드립니다.</span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C">홍길동</td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"></td>
+                            </tr>
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span class="title">포털오픈을 알려드립니다.</span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C">홍길동</td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"></td>
+                            </tr>
+                            <tr>
+                                <td class="first C">공지</td>
+                                <td><a href="#"><span class="title">포털오픈을 알려드립니다.</span></a></td>
+                                <td class="C">경기</td>
+                                <td class="C">전산정보부</td>
+                                <td class="C">홍길동</td>
+                                <td class="C">2013.12.10</td>
+                                <td class="C">1111</td>
+                                <td class="C"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- table//-->
+                </div>
+                <!-- cover//-->
+                <!-- tcontrol-->
+                <div class="tcontrol">
+                    <!-- listcounts-->
+                    <div class="listcounts">
+                        <div class="sel_100">
+                            <select class="txt_100">
+                                <option>10건씩보기</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- listcounts//-->
+                    <!-- paging -->
+                    <div class="paging">            	
+                        <a href="#" class="noline" title="처음페이지"><img src="images/sub/btn_first.gif" alt="첫 페이지로 이동" /></a> <a href="#" class="noline" title="이전페이지"><img src="images/sub/btn_prev.gif" alt="이전 페이지로 이동" /></a> <a href="#" class="first">1</a> <a href="#" class="on">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#" class="noline"><img src="images/sub/btn_next.gif" alt="다음 페이지로 이동" title="다음페이지"/></a> <a href="#" class="noline"><img src="images/sub/btn_last.gif" alt="마지막 페이지로 이동" title="마지막페이지"/></a>
+                    </div>
+                    <!-- paging//-->
+                </div>
+                <!-- tcontrol//-->
+                <!-- btnArea-->
+                <div class="btnArea">
+                    <div class="rightArea"><a href="#" class="btn_gray"><span>등 록</span></a></div>
+                </div>
+                <!-- btnArea//-->
+                <!-- 4page//-->
+                
+                <!-- 5,7page-->
+                <!-- table-->
+                <table cellpadding="0" cellspacing="0" summary="게시판등록">
+                <caption>게시판등록</caption>
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="22%" />
+                        <col width="12%" />
+                        <col width="21%" />
+                        <col width="12%" />
+                        <col width="20%" />
+                    </colgroup>
+                    <tr>
+                        <th scope="row" class="L first">제목</th>
+                        <td colspan="5"><label for="subject" style="display:none;"></label><input type="text" id="subject" class="subject" /></td>
+                    </tr>
+                    <tr>
+                    	<th scope="row" class="L first">공지</th>
+                        <td colspan="5">
+                            <fieldset>
+                                <form id="notice" name="notice" method="post" action="">
+                                    <input type="radio" name="notice" value="부서명" id="notice_0" />
+                                    <label for="notice_0">부서명</label>
+                                    <input type="radio" name="notice" value="성명" id="notice_1" />
+                                    <label for="notice_1">성명</label>
+                                    <label for="date_01"></label><input type="text" id="date_01" class="txt_70" value="2014.01.01" style="color:#9b9b9b; text-align:center;" /> ~ <label for="date_02"></label><input type="text" id="date_02" class="txt_70" value="2014.01.31" style="color:#9b9b9b; text-align:center;"/> <span><img src="images/icon_calender.gif" alt="달력" /></span>
+                                </form>
+                            </fieldset>                    
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">재단</th>
+                        <td>
+                            <div class="sel_150">                            	
+                                <select class="txt_150">
+                                    <option>재단을선택하세요</option>
+                                </select>
+                            </div>
+                        </td>
+                        <th scope="row" class="L">부서</th>
+                        <td colspan="3">전산정보부</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">작성자</th>
+                        <td>
+                            <fieldset>
+                                <form id="writer" name="writer" method="post" action="">
+                                    <input type="radio" name="writer" value="무기명" id="writer_0" />
+                                    <label for="writer_0">무기명</label>
+                                    <input type="radio" name="writer" value="실명" id="writer_1" />
+                                    <label for="writer_1">실명</label>
+                                </form>
+                            </fieldset>
+                        </td>
+                        <th scope="row" class="L">작성일</th>
+                        <td>2014.1.28</td>
+                        <th scope="row" class="L">조회</th>
+                        <td>1111</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">내용</th>
+                        <td colspan="5">
+                            <span class="fieldset">
+                                <fieldset>
+                                    <form id="conttxt" name="conttxt" method="post" action="">
+                                        <input type="radio" name="conttxt" value="일반 TEXT" id="conttxt_0" />
+                                        <label for="conttxt_0">일반 TEXT</label>
+                                        <input type="radio" name="conttxt" value="HTML 편집기" id="conttxt_1" />
+                                        <label for="conttxt_1">HTML 편집기</label>
+                                    </form>
+                                </fieldset>
+                            </span>
+                            <textarea name="conttxt" cols="" rows=""></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">첨부</th>
+                        <td colspan="5">
+                            <div class="addFile">
+                                <div class="filelist">
+                                    <p>파일은 10개까지 첨부할 수 있으며, 전체 용량은 100Mbyte를 넘을 수 없습니다.</p>
+                                    <select name="select" multiple="multiple" id="select">
+                                        <option>영남대학교소개자료.pptx (827KB)</option>
+                                        <option>영남대학교소개자료.xls (125.03KB)</option>
+                                        <option>영남대학교소개자료.xls (125.03KB)</option>
+                                        <option>영남대학교소개자료.xls (125.03KB)</option>
+                                        <option>영남대학교소개자료.xls (125.03KB)</option>
+                                        <option>영남대학교소개자료.pptx (827KB)</option>
+                                        <option>영남대학교소개자료.xls (125.03KB)</option>
+                                        <option>영남대학교소개자료.xls (125.03KB)</option>
+                                        <option>영남대학교소개자료.xls (125.03KB)</option>
+                                        <option>영남대학교소개자료.xls (125.03KB)</option>
+                                    </select>
+                                </div>
+                                <input type="file" name="fileField" title="파일첨부" class="file_input" id="fileField" />
+                                <div class="rightArea">
+                                    <a href="#" class="btn_black"><span>파일추가+</span></a> <a href="#" class="btn_black"><span>파일삭제-</span></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <!-- table//-->  
+                <!-- btnArea-->
+                <div class="btnArea">
+                    <div class="leftArea"><a href="#" class="btn_gray"><span>삭 제</span></a></div>
+                    <div class="rightArea"><a href="#" class="btn_gray"><span>취 소</span></a> <a href="#" class="btn_gray"><span>등 록</span></a></div>
+                </div>
+                <!-- btnArea//-->
+                <!-- 5,7page//-->
+                
+                <!-- view-->
+                <!-- table-->
+                <table cellpadding="0" cellspacing="0" summary="게시판읽기">
+                <caption>게시판읽기</caption>
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="18%" />
+                        <col width="12%" />
+                        <col width="21%" />
+                        <col width="12%" />
+                        <col width="22%" />
+                    </colgroup>
+                    <tr>
+                        <th scope="row" class="L first">제목</th>
+                        <td colspan="5">포털 오픈을 알려드립니다.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">재단</th>
+                        <td></td>
+                        <th scope="row" class="L">부서</th>
+                        <td colspan="3">전산정보부</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">작성자</th>
+                        <td>홍길동</td>
+                        <th scope="row" class="L">작성일</th>
+                        <td>2014.1.28</td>
+                        <th scope="row" class="L">조회</th>
+                        <td>1111</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">내용</th>
+                        <td colspan="5">
+                        	<div class="viewArea">
+                                <p>포털시스템 오픈일정을 알려드립니다.</p>
+                                <br />
+                                <p>포털시스템 오픈일정을 알려드립니다.</p>
+                                <br />
+                                <p>포털시스템 오픈일정을 알려드립니다.</p>
+                                <p>포털시스템 오픈일정을 알려드립니다.</p>
+                                <p>포털시스템 오픈일정을 알려드립니다.</p>
+                                <p>포털시스템 오픈일정을 알려드립니다.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">첨부</th>
+                        <td colspan="5"><span class="addfile">일정표 1.hwp</span> <span class="addfile">일정표 1.hwp</span> <span class="addfile">일정표 1.hwp</span></td>
+                    </tr>
+                </table>
+                <!-- table//--> 
+                <!-- btnArea-->
+                <div class="btnArea">
+                    <div class="leftArea"><a href="#" class="btn_gray"><span>삭 제</span></a> <a href="#" class="btn_gray"><span>수 정</span></a> </div>
+                    <div class="rightArea"><a href="#" class="btn_gray"><span>답 변</span></a> <a href="#" class="btn_gray"><span>인 쇄</span></a> <a href="#" class="btn_gray"><span>등 록</span></a></div>
+                </div>
+                <!-- btnArea//-->
+                <!-- table-->
+                <table class="secondtable" cellpadding="0" cellspacing="0" summary="게시판이동">
+                <caption>게시판이동</caption>
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="85%" />
+                    </colgroup>
+                    <tr>
+                        <th scope="row" class="L first"><span class="viewlist">이전글</span> <img src="images/sub/icon_prevview.gif" alt="이전글" /></th>
+                        <td>이전 글이 없습니다.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first"><span  class="viewlist">다음글</span> <img src="images/sub/icon_nextview.gif" alt="다음글" /></th>
+                        <td>포털 오픈을 알려드립니다.</td>
+                    </tr>
+                </table>
+                <!-- table//--> 
+                <!-- table-->
+                <table class="secondtable" cellpadding="0" cellspacing="0" summary="댓글등록영역">
+                <caption>댓글등록영역</caption>
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="85%" />
+                    </colgroup>
+                    <tr>
+                        <th scope="row" class="L first">댓글(3)</th>
+                        <td><label for="subject" style="display:none;"></label><input type="text" id="subject" class="subject" value="50자(100byte) 이내로 댓글을 달아주시기 바랍니다." style="color:#caccce;" /></td>
+                    </tr>
+                </table>
+                <!-- table//--> 
+                <!-- table-->
+                <table class="secondtable" cellpadding="0" cellspacing="0" summary="댓글리스트영역">
+                <caption>댓글리스트영역</caption>
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="85%" />
+                    </colgroup>
+                    <tr>
+                        <th scope="row" class="L first">장길산</th>
+                        <td><span class="comment">댓글을 달았습니다. 확인 부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다. <a href="#"><img src="images/sub/icon_close.gif" alt="삭제" /></a></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">장길산</th>
+                        <td><span class="comment">댓글을 달았습니다. 확인 부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다부탁드립니다. <a href="#"><img src="images/sub/icon_close.gif" alt="삭제" /></a></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">장길산</th>
+                        <td><span class="comment">댓글을 달았습니다. 확인 부탁드립니다. <a href="#"><img src="images/sub/icon_close.gif" alt="삭제" /></a></span></td>
+                    </tr>
+                </table>
+                <!-- table//--> 
+                <!-- view//-->
+                
+                <!-- survey-->                
+                <!-- table-->
+                <table cellpadding="0" cellspacing="0" summary="설문조사참여">
+                <caption>설문조사참여</caption>
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="35%" />
+                        <col width="12%" />
+                        <col width="38%" />
+                    </colgroup>
+                    <tr>
+                        <th scope="row" class="L first">제목</th>
+                        <td colspan="3">포털시스템 만족도 조사</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">구분</th>
+                        <td>진행중</td>
+                        <th scope="row" class="L">작성자</th>
+                        <td>홍길동</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">설문기간</th>
+                        <td>2013. 12. 10 ~ 2014. 02. 12</td>
+                        <th scope="row" class="L">조회</th>
+                        <td>1111</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">내용</th>
+                        <td colspan="3">
+                        	<ul>
+                            	<li class="first">
+                                	<p class="question">Q. 응답자 유형은 어떻게 되나요?</p>
+                                    <p>
+                                        <fieldset>
+                                            <form id="answerer" name="answerer" method="post" action="" style="margin:0 0 0 20px; ">
+                                                <input type="radio" name="answerer" value="직원" id="answerer_0" />
+                                                <label for="answerer_0">직원</label>
+                                                <input type="radio" name="answerer" value="임원" id="answerer_1" />
+                                                <label for="answerer_1">임원</label>
+                                                <input type="radio" name="answerer" value="관리자" id="answerer_2" />
+                                                <label for="answerer_2">관리자</label>
+                                            </form>
+                                        </fieldset>
+                                    </p>
+                                </li>
+                            	<li>
+                                	<p class="question">Q. 포털시스템에 추가 되어야할 기능이 있다면 무엇인가요?</p>
+                                    <p><textarea name="conttxt" cols="" rows="" style="height:24px; "></textarea></p>
+                                </li>
+                            	<li>
+                                	<p class="question">Q. 포털시스템 디자인 중 선호하는 유형을 선택하세요.</p>
+                                    <p>
+                                        <fieldset>
+                                            <form id="dtype" name="dtype" method="post" action="">
+                                                <span class="image first">
+                                                    <input type="radio" name="dtype" value="1type" id="dtype_0" />
+                                                    <label for="dtype_0"><img src="images/sub/img_default.gif" /></label>
+                                                </span>
+                                                <span class="image">
+                                                <input type="radio" name="dtype" value="2type" id="dtype_1" />
+                                                <label for="dtype_1"><img src="images/sub/img_default.gif" /></label>
+                                                </span>
+                                                <span class="image">
+                                                <input type="radio" name="dtype" value="3type" id="dtype_2" />
+                                                <label for="dtype_2"><img src="images/sub/img_default.gif" /></label>
+                                                </span>
+                                            </form>
+                                        </fieldset>
+                                    </p>
+                                </li>
+                            	<li>
+                                	<p class="question">Q. 신용보증재단 홍보 동영상 중 선호하는 유형을 선택하세요.</p>
+                                    <p>
+                                        <fieldset>
+                                            <form id="vtype" name="vtype" method="post" action="">
+                                                <span class="image first">
+                                                    <input type="radio" name="vtype" value="1type" id="vtype_0" />
+                                                    <label for="vtype_0"><img src="images/sub/img_default.gif" /></label>
+                                                </span>
+                                                <span class="image">
+                                                <input type="radio" name="vtype" value="2type" id="vtype_1" />
+                                                <label for="vtype_1"><img src="images/sub/img_default.gif" /></label>
+                                                </span>
+                                                <span class="image">
+                                                <input type="radio" name="vtype" value="3type" id="vtype_2" />
+                                                <label for="vtype_2"><img src="images/sub/img_default.gif" /></label>
+                                                </span>
+                                            </form>
+                                        </fieldset>
+                                    </p>
+                                </li>
+                                <li class="C">                                
+                                    <a href="#" class="btn_black"><span>참여하기</span></a> <a href="#" class="btn_black"><span>결과보기</span></a> 
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                <!-- table//--> 
+                <!-- btnArea-->
+                <div class="btnArea">
+                    <div class="rightArea"><a href="#" class="btn_gray"><span>목 록</span></a></div>
+                </div>
+                <!-- btnArea//-->
+                <!-- survey//-->
+                
+                <!-- result-->                
+                <!-- table-->
+                <table cellpadding="0" cellspacing="0" summary="설문조사참여">
+                <caption>설문조사참여</caption>
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="35%" />
+                        <col width="12%" />
+                        <col width="38%" />
+                    </colgroup>
+                    <tr>
+                        <th scope="row" class="L first">제목</th>
+                        <td colspan="3">포털시스템 만족도 조사</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">구분</th>
+                        <td>진행중</td>
+                        <th scope="row" class="L">작성자</th>
+                        <td>홍길동</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">설문기간</th>
+                        <td>2013. 12. 10 ~ 2014. 02. 12</td>
+                        <th scope="row" class="L">조회</th>
+                        <td>1111</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="L first">내용</th>
+                        <td colspan="3">
+                        	<ul>
+                            	<li class="first">
+                                	<p class="question">Q. 응답자 유형은 어떻게 되나요? (총 참여인원 100명)</p>
+                                    <ul>
+                                    	<li><span class="type">1. 직원</span> <span class="graph"></span> <span class="percent">50%(50명)</span> </li>
+                                        <li><span class="type">2. 임원</span> <span class="graph"></span> <span class="percent">30%(30명)</span> </li>
+                                        <li><span class="type">3. 관리자</span> <span class="graph"></span> <span class="percent">20%(20명)</span> </li>
+                                    </ul>
+                                </li>
+                            	<li>
+                                	<p class="question">Q. 포털시스템에 추가 되어야할 기능이 있다면 무엇인가요? (총 참여인원 100명)</p>
+                                    <ul>
+                                    	<li><span class="type">1. 응답율</span> <span class="graph"></span> <span class="percent">50%(50명)</span> </li>
+                                    </ul>
+                                </li>
+                            	<li>
+                                	<p class="question">Q. 포털시스템 디자인 중 선호하는 유형을 선택하세요. (총 참여인원 100명)</p>
+                                    <ul>
+                                    	<li><span class="type">1. 이미지보기</span> <span class="graph"></span> <span class="percent">50%(50명)</span> </li>
+                                        <li><span class="type">2. 이미지보기</span> <span class="graph"></span> <span class="percent">50%(50명)</span> </li>
+                                        <li><span class="type">3. 이미지보기</span> <span class="graph"></span> <span class="percent">50%(50명)</span> </li>
+                                    </ul>
+                                </li>
+                            	<li>
+                                	<p class="question">Q. 신용보증재단 홍보 동영상 중 선호하는 유형을 선택하세요. (총 참여인원 100명)</p>
+                                    <ul>
+                                    	<li><span class="type">1. 동영상보기</span> <span class="graph"></span> <span class="percent">50%(50명)</span> </li>
+                                        <li><span class="type">2. 동영상보기</span> <span class="graph"></span> <span class="percent">50%(50명)</span> </li>
+                                        <li><span class="type">3. 동영상보기</span> <span class="graph"></span> <span class="percent">50%(50명)</span> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                <!-- table//--> 
+                <!-- btnArea-->
+                <div class="btnArea">
+                    <div class="rightArea"><a href="#" class="btn_gray"><span>파일저장</span></a> <a href="#" class="btn_gray"><span>인 쇄</span></a> <a href="#" class="btn_gray"><span>목 록</span></a></div>
+                </div>
+                <!-- btnArea//-->
+                <!-- result//-->
+                
+                <!-- monthpage -->
+                <div class="btnArea" style="margin:10px 0 0 0;">
+                	<div class="leftArea"><a href="#" class="btn_white"><span>일(Day)</span></a> <a href="#" class="btn_white"><span>주(Week)</span></a> <a href="#" class="btn_darkgra"><span>월(Month)</span></a> <a href="#"><img src="images/sub/arr_perv_day.gif" alt="이전달" /></a> <span class="tomonth">2014년 1월</span> <a href="#"><img src="images/sub/arr_next_day.gif" alt="다음달" /></a></div>
+                    <div class="rightArea">
+                        <div class="sel_150">                            	
+                            <select class="txt_150">
+                                <option>전체</option>
+                            </select>
+                        </div>                    	
+                    </div>
+                </div>
+                <!-- monthpage//-->
+                <!-- table-->
+                <table cellpadding="0" cellspacing="0" summary="나의일정" class="month">
+                <caption>나의일정</caption>
+                    <colgroup>
+                        <col width="14%" />
+                        <col width="14%" />
+                        <col width="14%" />
+                        <col width="*%" />
+                        <col width="14%" />
+                        <col width="14%" />
+                        <col width="14%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="first">일</th>
+                            <th>월</th>
+                            <th>화</th>
+                            <th>수</th>
+                            <th>목</th>
+                            <th>금</th>
+                            <th>토</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="first sun"><a href="#"><span>29</span></a></td>
+                            <td><a href="#"><span>30</span></a></td>
+                            <td><a href="#"><span>31</span></a></td>
+                            <td><a href="#"><span>1</span></a></td>
+                            <td><a href="#"><span>2</span></a></td>
+                            <td><a href="#"><span>3</span></a></td>
+                            <td class="sat"><a href="#"><span>4</span></a></td>
+                        </tr>
+                        <tr>
+                            <td class="first sun"><a href="#"><span>5</span></a></td>
+                            <td><a href="#"><span>6</span></a></td>
+                            <td><a href="#"><span>7</span></a></td>
+                            <td><a href="#"><span>8</span></a></td>
+                            <td><a href="#"><span>9</span></a></td>
+                            <td><a href="#"><span>10</span></a></td>
+                            <td class="sat"><a href="#" ><span>11</span></a></td>
+                        </tr>
+                        <tr>
+                            <td class="first sun"><a href="#"><span>12</span></a></td>
+                            <td class="today"><a href="#"><span>13</span></a></td>
+                            <td><a href="#"><span>14</span></a></td>
+                            <td><a href="#"><span>15</span></a></td>
+                            <td><a href="#"><span>16</span></a></td>
+                            <td><a href="#"><span>17</span></a></td>
+                            <td class="sat"><a href="#"><span>18</span></a></td>
+                        </tr>
+                        <tr>
+                            <td class="first sun"><a href="#"><span>19</span></a></td>
+                            <td><a href="#"><span>20</span></a></td>
+                            <td><a href="#"><span>21</span></a></td>
+                            <td><a href="#"><span>22</span></a></td>
+                            <td><a href="#"><span>23</span></a></td>
+                            <td><a href="#"><span>24</span></a></td>
+                            <td class="sat"><a href="#"><span>25</span></a></td>
+                        </tr>
+                        <tr>
+                            <td class="first sun"><a href="#"><span>26</span></a></td>
+                            <td><a href="#"><span>27</span></a></td>
+                            <td><a href="#"><span>28</span></a></td>
+                            <td><a href="#"><span>29</span></a></td>
+                            <td class="sun"><a href="#"><span>30</span></a></td>
+                            <td class="sun"><a href="#"><span>31</span></a></td>
+                            <td class="sun"><a href="#" ><span>1</span></a></td>
+                        </tr>
+                        <tr>
+                            <td class="first sun"><a href="#"><span>2</span></a></td>
+                            <td><a href="#"><span>3</span></a></td>
+                            <td><a href="#"><span>4</span></a></td>
+                            <td><a href="#"><span></span></a></td>
+                            <td><a href="#"><span></span></a></td>
+                            <td><a href="#"><span></span></a></td>
+                            <td class="sat"><a href="#"><span></span></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- table//--> 
+                <!-- month page//-->
+                
+                <!-- day/week page -->
+                <!-- cover : layer popup 작동시 사용-->
+                <div class="cover">
+                    <!-- layerpopup-->
+                    <!-- Schedetail -->
+                    <div id="Schedetail" class="Schedetail">
+                        <p class="titleAera">
+                            <span class="title">일정</span>
+                            <span class="layerClose"><a href="javascript:closeSched();"><img src="images/sub/layer_close.gif" alt="닫기" /></a></span>
+                        </p>
+                        <ul>
+                            <li class="first"><span class="title">시간</span> <span>2014-01-13(월) 오후 12시 00분~ 2014년 01월 13일(월) 오후 1시 50분</span></li>
+                            <li><span class="title">제목</span> <span>고객과의 점심약속</span></a></li>
+                            <li><span class="title">내용</span> <span>정기적인 고객과의 약속</span></li>
+                        </ul>
+                        <ul style="background:#fff; padding:3px 0 0 0;">
+                            <li class="leftArea" style="background:none; padding:0; line-height:28px"><a href="#" class="btn_gray"><span>삭 제</span></a></li>
+                            <li class="rightArea" style="background:none; padding:0; line-height:28px"><a href="#" class="btn_gray"><span>수 정</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- Schedetail //-->
+                    <!-- monthpage -->
+                    <div class="btnArea" style="margin:10px 0 0 0;">
+                        <div class="leftArea"><a href="#" class="btn_white"><span>일(Day)</span></a> <a href="#" class="btn_darkgra"><span>주(Week)</span></a> <a href="#" class="btn_white"><span>월(Month)</span></a> <a href="#"><img src="images/sub/arr_perv_day.gif" alt="이전달" /></a> <span class="tomonth">2014년 1월 13일(월)</span> <a href="#"><img src="images/sub/arr_next_day.gif" alt="다음달" /></a></div>
+                        <div class="rightArea">
+                            <div class="sel_150">                            	
+                                <select class="txt_150">
+                                    <option>전체</option>
+                                </select>
+                            </div>                    	
+                        </div>
+                    </div>
+                    <!-- monthpage//-->
+                    <!-- table-->
+                    <table cellpadding="0" cellspacing="0" summary="일정리스트" style="*margin:15px 0 0 0;border-left:1px solid #e1e1e1; border-right:1px solid #e1e1e1;">  
+                    <caption>일정리스트</caption>
+                        <colgroup>
+                        <col width="15%" />
+                        <col width="85%" />
+                        </colgroup>
+                        <tr>
+                        	<th class="first"  rowspan="2"></th>
+                        	<th>종일일정</th>
+                        </tr>
+                        <tr>
+                        	<th>종일일정</th>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오전 6시</th>
+                            <td><a href="javascript:openSched();">일정이 들어감</a></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오전 7시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오전 8시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오전 9시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오전 10시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오전 11시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 12시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 1시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 2시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 3시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 4시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 5시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 6시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 7시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 8시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first" scope="row">오후 9시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 10시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 11시</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="first"  scope="row">오후 12시</th>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <!-- table//-->
+                </div>
+                <!-- cover//-->
+                <!-- day/week page//-->
+                
+                <!-- 일정등록-->
+                <!-- searchArea-->
+                <div class="tsearchArea">
+                    <p><strong>일정등록</strong></p>
+                </div>
+                <!-- searchArea//-->
+                <!-- table-->
+                <table cellpadding="0" cellspacing="0" summary="게시판리스트"  style="margin-top:0;">  
+                <caption>게시판리스트</caption>
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="85%" />
+                    </colgroup>
+                    <tr>
+                        <th class="first L">제목</th>
+                        <td><label for="subject" style="display:none;"></label><input type="text" id="subject" class="subject" /></td>
+                    </tr>
+                    <tr>
+                        <th class="first L">유형</th>
+                        <td>
+                            <div class="sel_150">                            	
+                                <select class="txt_150">
+                                    <option>2004-06-18(수)</option>
+                                </select>
+                            </div>
+                            <span style="margin:3px 0 0 5px"><img src="images/icon_calender.gif" alt="달력" /></span>
+                    	</td>
+                    </tr>
+                    <tr>
+                        <th class="first L" rowspan="2">시간</th>
+                        <td class="selzone">
+                        	<span class="start">
+                                <div class="sel_120">                            	
+                                    <select class="txt_120">
+                                        <option>2004-06-18(수)</option>
+                                    </select>
+                                </div>                            
+                                <div class="sel_100">                            	
+                                    <select class="txt_100">
+                                        <option>오전 12시</option>
+                                    </select>
+                                </div>
+                                <div class="sel_60">                            	
+                                    <select class="txt_60">
+                                        <option>00분</option>
+                                    </select>
+                                </div>
+                            </span><span>~</span>
+                        	<span class="end">
+                                <div class="sel_120">                            	
+                                    <select class="txt_120">
+                                        <option>2004-06-18(수)</option>
+                                    </select>
+                                </div>                            
+                                <div class="sel_100">                            	
+                                    <select class="txt_100">
+                                        <option>오전 12시</option>
+                                    </select>
+                                </div>
+                                <div class="sel_60">                            	
+                                    <select class="txt_60">
+                                        <option>00분</option>
+                                    </select>
+                                </div>
+                            </span>
+                    	</td>
+                   </tr>
+                   <tr>
+                        <td style="border-top:0 none;">
+                            <input name="" type="checkbox" id="chek" value="종일" /> <label for="chek">종일</label>
+                        </td>
+                    </tr>                   
+                  	<tr>
+                        <th class="first L" rowspan="2">반복</th>
+                        <td>
+                            <form id="sched" name="sched" method="post" action="">
+                                <label for="sched1_0"><input type="checkbox" name="sched" value="매일" id="sched1_0" /> 매일</label>
+                                <label for="sched1_1"><input type="checkbox" name="sched" value="월" id="sched1_1" /> 월</label>
+                                <label for="sched1_2"><input type="checkbox" name="sched" value="화" id="sched1_2" /> 화</label>
+                                <label for="sched1_3"><input type="checkbox" name="sched" value="수" id="sched1_3" /> 수</label>
+                                <label for="sched1_4"><input type="checkbox" name="sched" value="목" id="sched1_4" /> 목</label>
+                                <label for="sched1_5"><input type="checkbox" name="sched" value="금" id="sched1_5" /> 금</label>
+                                <label for="sched1_6"><input type="checkbox" name="sched" value="토" id="sched1_6" /> 토</label>
+                                <label for="sched1_7"><input type="checkbox" name="sched" value="일" id="sched1_7" /> 일</label>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:0 none;">
+                            <label for="start">시작일</label> <input type="text" id="start" class="txt_150" value="2014.01.13"/> <label for="end">종료일</label> <input type="text" id="end" class="txt_150" value="2014.01.15"/>
+                        </td>
+                    </tr>                         
+                    <tr>
+                        <th class="first L">공유</th>
+                        <td>
+                            <fieldset>
+                                <form id="share" name="share" method="post" action="">
+                                    <label for="share_0"><input type="radio" name="share" value="share" id="share_0" /> 전사</label>
+                                    <label for="share_1"><input type="radio" name="share" value="share" id="share_1" /> 부서</label>
+                                    <label for="share_2"><input type="radio" name="share" value="share" id="share_2" /> 개인</label>
+                                </form>
+                            </fieldset>
+                    	</td>
+                    </tr>                    
+                    <tr>
+                        <th class="first L">알림</th>
+                        <td>
+                            <form id="notice" name="notice" method="post" action="">
+                                <label for="notice 1_0"><input type="checkbox" name="notice" value="10분 전" id="sched1_0" /> 10분 전</label>
+                                <label for="notice 1_1"><input type="checkbox" name="notice" value="20분 전" id="sched1_1" /> 20분 전</label>
+                                <label for="notice 1_2"><input type="checkbox" name="notice" value="1시간 전" id="sched1_2" /> 1시간 전</label>
+                                <label for="notice 1_3"><input type="checkbox" name="notice" value="12시간 전" id="sched1_3" /> 12시간 전</label>
+                                <label for="notice 1_4"><input type="checkbox" name="notice" value="하루 전" id="sched1_4" /> 하루 전</label>
+                            </form> 
+                        </td>
+                    </tr>                   
+                    <tr>
+                        <th class="first L">내용</th>
+                        <td><textarea name="conttxt" cols="" rows=""></textarea></td>
+                    </tr>
+                </table>
+                <!-- table//-->
+                <!-- btnArea-->
+                <div class="btnArea">
+                    <div class="leftArea"><a href="#" class="btn_gray"><span>삭 제</span></a></div>
+                    <div class="rightArea"><a href="#" class="btn_gray"><span>취 소</span></a> <a href="#" class="btn_gray"><span>등 록</span></a></div>
+                </div>
+                <!-- btnArea//-->                
+                <!-- 일정등록//-->
+                
+            </div>
+            <!-- container//-->
+		</div>
+		<!-- contentsArea //-->
+		<!-- footerArea -->
+		<div id="footerArea">
+			<p class="footer_logo"><img src="images/Footer_logo.png" alt="솔트웨어 로고" /></p>
+			<p class="logo_txt">
+				<ul>
+					<li class="address">서울특별시 구로구 디지털로 34길 55, 9F 솔트웨어 (코오롱 싸이언스밸리 2차) <span class="footer_border">TEL<strong>02-2025-0066</strong></span><span class="footer_border">FAX <strong>02-2025-4935</strong></span></li>
+					<li class="copyright">COPYRIGHT 2014 SALTWARE UNIVERSIRT. ALL RIGHTS RESERVED.</li>
+				</ul>
+			</p>
+		</div>
+		<!-- footerArea //-->
+	</div>
+	<!-- body_wrap //-->
+</div>
+<!-- subbody //-->
+</body>
+</html>

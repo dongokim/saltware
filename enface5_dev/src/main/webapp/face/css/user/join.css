@@ -1,0 +1,53 @@
+@CHARSET "EUC-KR";
+
+#userForm table{ 
+	border-width:thin; 
+	border-color:gray; 
+	border-collapse:collapse; 
+	background-color:#DDDDFF;
+	width:700px;
+}
+#userForm tr{
+	height:35px; font-family:gulim; font-size: 13px;
+	color: black; text-align: center;
+}
+
+#userForm tr#two{
+	height:70px; font-family:gulim; font-size: 13px;
+	color: black; text-align: center;
+}
+
+#userForm th{
+	width: 120px; border-style:ridge; border-color:gray; border-width:thin; 
+}
+#userForm td{
+	width: 580px; border-style:ridge; border-width:thin; 
+	border-color:gray; text-align: left;
+}
+#userForm td label{
+	font-family:gulim; font-size: 12px; color:black;
+	border:none; padding-top:2px; padding-left:5px; padding-right:5px;
+}
+
+#userForm select{
+	border-color:black; border-width:thin; background-color:#BFCCFF;
+}
+
+#userForm select:FOCUS{
+	background-color:yellow;
+}
+
+#userForm input{
+	border-color:black; border-width:thin; background-color:#BFCCFF;
+}
+
+#userForm input.confirmData:FOCUS{
+	background-color:yellow;
+}
+
+#userForm input.required:FOCUS{
+	background-color:yellow;
+}
+
+
+

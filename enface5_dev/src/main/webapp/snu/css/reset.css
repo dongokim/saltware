@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+/*기본태그 정의*/
+html, body {padding:0;margin:0;height:100%;}
+/*기본태그 정의 수정*/
+html, body {padding:0;margin:0}
+body, td, select, textarea, input {font-size:12px; font-family: "Noto Sans KR", sans-serif; color:#333; }
+html, body, div, span,  applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, input{
+	margin: 0;
+	outline: 0;
+	border: 0;
+	padding: 0;
+	vertical-align: top;
+	background: transparent;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section { display: block; }
+
+body{}
+
+/* 리스트의 스타일 제거 */
+ol, ul {list-style:none;}
+
+/* 테이블 스타일 초기화 */
+table {border-collapse:collapse; border-spacing:0;table-layout:fixed;}
+
+/* 이미지 및 필드셋에서 보더 표시 초기화 */
+fieldset, img,iframe {border:0;}
+img{vertical-align:top;}
+
+/* 캡션 텍스트 정렬 초기화 */
+caption {text-align:left;}
+
+/* 폼태그의 초기화 */
+select {vertical-align:middle;}
+input {vertical-align:middle;}
+
+textarea {outline:none;}
+input.radio {vertical-align:middle;}
+
+input[type=text], input[type=password]{border:1px solid #ddd; background:#fff; height:30px; line-height:29px; padding:0 5px; box-sizing:border-box;}
+input[type=file]{border:1px solid #ddd; background:#fff; height:30px; line-height:29px; padding:0 5px;  box-sizing:border-box;}
+select{height:30px; border:1px solid #ddd; font-size:13px; }
+input[type=text]:focus, input[type=password]:focus{border:1px solid #a7a7a7; background:#fafafa; box-shadow:2px 2px 6px #d3d3d3 inset; }
+textarea:focus{border:1px solid #a7a7a7; background:#fafafa; box-shadow:2px 2px 6px #d3d3d3 inset; }
+input[type="checkbox"]{margin-right:5px;}
+
+a:link    {text-decoration:none; color:inherit;}
+a:active    {text-decoration:none; color:inherit;}
+a:visited    {text-decoration:none; color:inherit;}
+a:hover    {text-decoration:none; color:inherit;}
+
+/* hidden 처리 */
+caption{width:0;height:0;font-size:0;line-height:0;overflow:hidden;visibility:hidden;}
+legend{width:0;height:0;font-size:0;line-height:0;overflow:hidden;visibility:hidden;}
+.hide,hr{position:absolute;top:0;width:0;height:0;font-size:0;line-height:0;overflow:hidden;visibility:hidden;}

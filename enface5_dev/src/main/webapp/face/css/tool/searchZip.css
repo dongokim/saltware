@@ -1,0 +1,111 @@
+@CHARSET "EUC-KR";
+
+table{
+	border-collapse:collapse;
+	background-color:#BFCCFF;
+	width:450px;
+}
+
+table tr{
+	height:23px; font-family:gulim;
+	color: black; text-align: left;
+}
+
+table#searchTable tr{
+	height:25px; font-family:gulim;
+	color: black; text-align: left;
+}
+
+table th{
+	border-style:ridge; 
+	border-color:gray; 
+	text-align:center;
+	font-family:gulim;
+	font-size:10pt;
+	color:black;
+}
+
+table td{
+	border-style:ridge; 
+	border-width:thin; 
+	border-color:gray; 
+	text-align:left;
+	font-family:gulim;
+	font-size:10pt;
+	color:black;
+}
+
+input{
+	border-width:thin;
+	border-color:black;
+	background-color:#BFCCFF;
+}
+
+input.text:FOCUS {
+	background-color:yellow;
+}
+
+label.normal {
+	font-size:10pt;
+	font-family:gulim;
+	color:black;
+}
+
+label.example {
+	font-size:9pt;
+	font-family:gulim;
+	color:black;
+}	
+
+
+
+/* resultSet.jsp */
+
+table#resultMsgTable {
+	border:none;
+	border-collapse:collapse;
+	background-color:#EEEEFF;
+	width:450px;
+}
+
+table#resultMsgTable th{
+	text-align:center;
+	font-family:gulim;
+	font-size:10pt;
+	color:black;
+}
+
+label.result{
+	font-size:10pt;
+	font-family:gulim;
+	color:blue;
+}
+
+label.error{
+	font-size:10pt;
+	font-family:gulim;
+	color:red;
+}
+
+div#resultSet{
+	overflow-x:hidden;
+	overflow-y:scroll;
+	width:450px;
+	height:300px;
+	padding:0px;
+}
+
+a.data{
+	display:block;
+	padding:2px 2px 2px 2px;
+	background-color:#DDDDFF;
+	font-size:10pt;
+	font-family:Verdana;
+	color:black;
+	text-decoration:none;
+}
+
+a:HOVER{
+	color:#0033AA;
+	background-color:#BBBBEE;
+}	

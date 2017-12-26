@@ -1,0 +1,202 @@
+
+.webformpanel {
+	/*background: #CACACA;*/
+	/*width: 100%; */
+	padding: 4px;
+	font-size: 11px;
+	color: #333367;
+}
+
+.webformpanel .webformheaderline{
+	background-color: #CACACA;
+	height:1px; 
+	width:100%;
+}
+
+.webformpanel .webformfooterline{
+	background:transparent url(../images/table_b_bg.gif) repeat left top;
+	height:4px;
+	width:100%
+}
+
+.webformpanel .webformlabel {
+	background-color: #F2F0FB;
+	padding:3px 3px 3px 6px;
+	border:#CACACA solid;
+	border-width: 0px 1px 1px 0px;	
+	font-weight: bold;
+}
+
+.webformpanel .webformlabelmiddle {
+	background-color: #F2F0FB;
+	padding:3px 3px 3px 6px;
+	border:#CACACA solid;
+	border-width: 0px 1px 1px 1px;	
+	font-weight: bold;
+}
+
+.webformpanel td {
+	font-size: 11px;
+	font-weight: bold;
+}
+
+
+.webformpanel .webformfield {
+	background-color: #FFFFFF;
+	padding:3px 3px 3px 6px;
+	border:#CACACA solid;
+	border-width: 0px 0px 1px 0px;	
+}
+
+.webformpanel .webtextfield {
+	color:#333333; 
+	font-size:11px; 
+	font-family:arial,verdana; 
+	border:1 solid #BABABA; 
+	background-color:#FFFFFF;
+}
+
+.webformpanel .full_webtextfield {
+    color:#333333; 
+	font-size:11px; 
+	font-family:arial,verdana; 
+	border:1 solid #BABABA; 
+	background-color: #FFFFFF;
+	width: 98%;
+}
+
+.webformpanel .webtextarea {
+    width: 98%;
+    padding: 2px 0px 0px 3px;
+    border: 1px solid #DCD5C2;
+    font-family: "Verdana", "";
+    font-size: 11px;
+    text-decoration: none;
+    background-color: #FFFFFF;
+    margin: 0px;
+
+}
+
+.webformpanel .webpasswordfield {
+    border: 1px solid rgb(102,144,184);
+}
+
+.webformpanel .webradiogroup {
+    border: 0px solid rgb(102,144,184);
+}
+
+.webformpanel .webdropdownlist {
+    border: 1px solid rgb(102,144,184);
+}
+
+.webformpanel .weblistbox {
+    border: 1px solid rgb(102,144,184);
+}
+
+
+.webgridpanel {
+	background-color: #FFFFFF;
+	/* border:1px solid Silver; */
+	padding: 4px;
+	font-size: 11px;
+	color: #333367;
+	border:1px solid #ccc;
+}
+
+.webgridpanel .webgridheaderline{
+	background-color: #333367;
+	height:2px;
+}
+
+.webgridpanel .webgridheader {
+	background:transparent url(../images/tl_top_line.gif) no-repeat right top;
+	background-color: #F2F0FB;
+	padding:3px 3px 3px 3px;
+	border:#CACACA solid;
+	border-width: 0px 0px 1px 0px;	
+	font-size: 11px;
+	font-weight: bold;
+	color: #333367;
+	text-align: center;
+}
+
+.webgridpanel .webgridheaderlast {
+	background-color: #F2F0FB;
+	padding:3px 3px 3px 6px;
+	border:#CACACA solid;
+	border-width: 0px 0px 1px 0px;	
+	font-size: 11px;
+	font-weight: bold;
+	color: #333367;
+	text-align: center;
+}
+
+.webgridpanel .even {
+    background-color:#ffffff;
+    text-align:left;
+}
+.webgridpanel .odd {
+    background-color: #fafafa;
+    text-align:left;
+}
+
+.webgridpanel .webgridbody {
+	/*background-color: #FFFFFF;*/
+	padding:3px 5px 3px 5px;
+	border:#CACACA solid;
+	border-width: 0px 1px 1px 0px;	
+	font-size: 11px;
+	height: 20px;
+}
+
+.webgridpanel .webgridbodylast {
+	/*background-color: #FFFFFF;*/
+	padding:3px 5px 3px 5px;
+	border:#CACACA solid;
+	border-width: 0px 0px 1px 0px;	
+	font-size: 11px;
+	height: 20px;
+}
+
+.webgridpanel span,
+.webgridpanel td {
+	font-size: 11px;
+}
+
+.webpanel{
+	background-color: #F5F5F5;
+	/*padding:1px;*/
+	border:1px solid #CACACA;
+	border-width: 1px;	
+}
+
+.webnavigationpanel{
+	font-size: 11px;
+}
+
+a.webnavigation:link {  text-decoration: none; font-size:11px;}
+a.webnavigation:visited {  text-decoration: none; font-size:11px;}
+a.webnavigation:hover {  text-decoration: underline; font-size:11px;}
+a.webnavigation:active {  text-decoration: none; font-size:11px;}	
+
+.webdialogpanel{
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 8pt;
+	font-weight: bold;
+	background: #d9d4d2;
+	border: 1px solid #999999;
+	padding: 1px;
+	position: absolute;
+	z-index: 999;
+}
+
+.webdialogpanel .webdialogtitle {
+	height: 25px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #333367;
+}
+
+.webbuttonpanel {
+
+}

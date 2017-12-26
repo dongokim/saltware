@@ -1,0 +1,35 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="face">
+	<resultMap class="com.saltware.enface.portlet.board.service.MiniBoardVO" id="MiniBoardVO.findBltn">
+		<result columnIndex="1" property="bltnNo" column="BLTN_NO"/>
+		<result columnIndex="2" property="bltnSubj" column="BLTN_SUBJ" />
+		<result columnIndex="4" property="regDatim" column="REG_DATIM"/>
+	</resultMap>
+	<select id="miniBoard.findBltn" resultMap="MiniBoardVO.findBltn"> /* miniBoard.findBltn */
+		SELECT a.bltn_no,
+			a.bltn_subj,
+			a.REG_DATIM
+		FROM bulletin a 
+		WHERE a.board_id=#boardId# and a.bltn_gid = 'EB' AND a.DEL_FLAG = 'N'
+		AND rownum between 1 AND 20
+	</select>
+	
+	<select id="miniBoard.findBltnByCategory" resultMap="MiniBoardVO.findBltn"> /* miniBoard.findBltnByCategory */
+		SELECT a.board_id, a.bltn_no,
+			a.bltn_subj,
+			a.REG_DATIM
+		FROM bulletin a
+		WHERE BOARD_ID IN (
+			SELECT board_id from CATE_BOARD where cate_id = (
+				SELECT cate_id 
+				FROM cate_board 
+				WHERE board_id=#boardId#
+			)
+			AND board_id!=#boardId#
+		)
+		AND a.bltn_gid = 'EB' AND a.DEL_FLAG = 'N'
+		AND rownum between 1 AND 20
+	</select>
+</sqlMap>
+

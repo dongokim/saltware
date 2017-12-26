@@ -1,0 +1,30 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="face">
+
+	
+	
+	<!-- Query for [ Tools ] Table -->
+	
+	<resultMap id="face_ZipCodeVO" class="com.saltware.enface.tool.service.ZipCodeVO">
+	 
+		<result property="zipCode" column="ZIP_CD" columnIndex="1"/>	 
+		<result property="seq" column="SEQ" columnIndex="2"/>	 
+		<result property="sido" column="SIDO" columnIndex="3"/>	 
+		<result property="gugun" column="GUGUN" columnIndex="4"/>
+		<result property="dong" column="DONG" columnIndex="5"/>			
+		<result property="ri" column="RI" columnIndex="6"/>	
+		<result property="bldg" column="BLDG" columnIndex="7"/>	
+		<result property="stBunji" column="ST_BUNGI" columnIndex="8"/>	
+		<result property="edBunji" column="ED_BUNGI" columnIndex="9"/>	
+	</resultMap>
+	
+	<select id="tool.findZipCodes" resultMap="face_ZipCodeVO">
+			SELECT ZIP_CD, SEQ, SIDO, GUGUN, DONG, RI, BLDG, ST_BUNGI, ED_BUNGI
+    		FROM ZIPCODE
+    		WHERE DONG LIKE #dong# and LANG_KND=#langKnd#
+    		ORDER BY seq ASC
+	</select>
+
+</sqlMap>
+
